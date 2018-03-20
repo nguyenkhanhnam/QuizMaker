@@ -1,17 +1,10 @@
 # Ignore everything:
 /*
 
-# Except for these following directories:
-## Source code
+# Except for these following directories of source code:
 !/htdocs
 /htdocs/*
 !/htdocs/assignment
 
-## Database
-!/mysql
-/mysql/*
-!/mysql/data/
-/mysql/data/*
-!/mysql/data/assignment
 
 
