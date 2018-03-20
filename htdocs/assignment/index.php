@@ -13,6 +13,11 @@
     width: 50%;
     margin: 0 auto;
   }
+
+  #forgot {
+    text-decoration: none;
+    display: inline;
+  }
 </style>
 
 <body>
@@ -24,17 +29,28 @@
       <form method="POST" action="/login.php">
         <div class="form-group">
           <label for="username">Username</label>
-          <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i>
+            </span>
+            <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
+          </div>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="fa fa-key fa-lg" aria-hidden="true"></i>
+            </span>
+            <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+          </div>
         </div>
-        <div>
-          <a href="#">Forgot password?</a>
+        <div class="pull-left">
+          <a id="forgot" href="#">Forgot password?</a>
         </div>
         <div class="text-right">
-          <button type="submit" class="btn btn-default">Log In</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fa fa-sign-in" aria-hidden="true"></i> Log In</button>
         </div>
       </form>
     </div>

@@ -11,9 +11,14 @@
 <!--  Material Icons  -->
 <link href='//fonts.googleapis.com/css?family=Roboto400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
-<!-- My Stylesheet -->
-<!-- <link href="../css/style.css" rel="stylesheet" type="text/css"> -->
+<!-- Font Awesome Icons -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+<!-- Montserrat Font from Google -->
+<link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+
+<!-- My own Stylesheet -->
+<link href="../css/style.css" rel="stylesheet" type="text/css">
 
 <!--  jQuery  -->
 <script src="//code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

@@ -108,12 +108,12 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li class="active">
-            <a href="/">Log in
+            <a href="/"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i> Log in
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li>
-            <a href="#">Sign out</a>
+            <a href="/logout.php"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Log out</a>
           </li>
         </ul>
       </div>
