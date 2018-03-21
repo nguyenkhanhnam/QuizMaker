@@ -1,4 +1,7 @@
-﻿<div class="container-fluid">
+﻿<!-- The actual snackbar -->
+<div id="snackbar">Some text some message..</div>
+
+<div class="container-fluid">
   <p class="copyright text-center">
       &copy;
       <script>
