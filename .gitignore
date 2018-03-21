@@ -7,11 +7,4 @@
 /htdocs/*
 !/htdocs/assignment
 
-## Database
-!/mysql
-/mysql/*
-!/mysql/data/
-/mysql/data/*
-!/mysql/data/assignment
-
 
