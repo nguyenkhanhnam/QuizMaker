@@ -16,23 +16,12 @@
             password: password
         };
 
-        if(!username || !password){
-            // Get the snackbar DIV
-            var x = document.getElementById("snackbar");
-            $("#snackbar").html("Username is required");
-            if(!password){
-                $("#snackbar").html("Password is required");
-            }
-           
-            $('#snackbar').css("background-color","red");
-
-            // Add the "show" class to DIV
-            x.className = "show";
-
-            // After 3 seconds, remove the show class from DIV
-            return setTimeout(function () {
-                x.className = x.className.replace("show", "");
-            }, 3000);
+        if (!username) {
+            return displayToast('error', 'Username is required');
+        }
+        
+        if (!password) {
+            return displayToast('error', 'Password is required');
         }
 
         if (username != '' && password != '') {
@@ -46,37 +35,13 @@
                     success: function (data, textStatus, xhr) {
                         console.log(xhr.status);
                         if (xhr.status == 200) {
-                            // Get the snackbar DIV
-                            var x = document.getElementById("snackbar");
-                            $("#snackbar").html("Sign in successfully");
-                            $('#snackbar').css("background-color","black");
-
-                            // Add the "show" class to DIV
-                            x.className = "show";
-
-                            // After 3 seconds, remove the show class from DIV
-                            setTimeout(function () {
-                                x.className = x.className.replace("show", "");
-                                window.location.href = "/";
-                            }, 3000);
+                            displayToastWithRedirect('success', 'Sign in successfully', '/');
                         }
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         console.log(xhr.status);
-
                         if (xhr.status == 401) {
-                            // Get the snackbar DIV
-                            var x = document.getElementById("snackbar");
-                            $("#snackbar").html("Wrong email or password");
-                            $('#snackbar').css("background-color","red");
-
-                            // Add the "show" class to DIV
-                            x.className = "show";
-
-                            // After 3 seconds, remove the show class from DIV
-                            setTimeout(function () {
-                                x.className = x.className.replace("show", "");
-                            }, 3000);
+                            displayToast('error', 'Wrong email or password');
                         }
                     }
                 });
