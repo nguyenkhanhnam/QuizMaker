@@ -1,76 +1,28 @@
-﻿<!DOCTYPE html>
-<meta charset="utf-8" />
-<html lang="en">
+<?php
+require_once('./dbconnect.php');
 
-<head>
-  <?php include_once "share/import.php" ?>
-  <title>Quiz Maker</title>
-  <link rel="icon" type="image/png" href="/img/favicon.png" />
-</head>
+$username = trim($_POST["username"], " \t\n\r\0\x0B");
+$password = trim($_POST["password"], " \t\n\r\0\x0B");
+$role_value = trim($_POST["role_value"], " \t\n\r\0\x0B");
 
-<script src="js/login.js"></script>
 
-<style>
-  #login-form {
-    width: 50%;
-    margin: 0 auto;
-  }
+// Create connection
+//$conn = mysqli_connect($servername, $username, $password, $assignment);
+// Check connection
+/*if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}*/
 
-  #forgot {
-    text-decoration: none;
-    display: inline;
-  }
-</style>
+$sql = "INSERT INTO users (username, password, role)
+VALUES ('$username', '$password', '$role_value')";
 
-<body>
-  <div class="container">
-    <header>
-      <?php include_once "share/header.php" ?>
-    </header>
+if (mysqli_query($connection, $sql)) {
+    echo "New record created successfully";
+    return var_dump(http_response_code(200));
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+    return var_dump(http_response_code(409));
+}
 
-    <div id="login-form">
-      <form class="form-horizontal">
-
-        <div class="form-group">
-          <label for="inputUsername" class="col-sm-2 control-label">Username</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputUsername" placeholder="Username">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="inputPassword" class="col-sm-2 control-label">Password</label>
-          <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-          </div>
-        </div>
-
-        <div class="form-group">
-            <label for="inputPassword" class="col-sm-2 control-label">Role</label>
-            <div class="col-sm-10">
-                <label class="radio-inline">
-                  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="admin"> Admin
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="user"> User
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="staff"> Staff
-                </label>
-            </div>
-        </div>
-
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-primary">Add user</button>
-          </div>
-        </div>
-
-      </form>
-    </div>
-
-    <footer>
-      <?php include_once "share/footer.php" ?>
-    </footer>
-  </div>
-</body>
+mysqli_close($connection);
+?>
