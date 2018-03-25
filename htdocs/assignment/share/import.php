@@ -30,5 +30,8 @@
 <!-- Bootstrap JS  -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
 
+<!-- Import my Utils JS -->
+<script src="../js/utils.js" type="text/javascript"></script>
+
 <!-- Compiled and minified JavaScript -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
