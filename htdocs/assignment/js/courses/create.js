@@ -30,7 +30,7 @@
         $.ajax
             ({
                 type: 'POST',
-                url: 'course.php',
+                url: '/api/courses/',
                 data: courseData,
                 success: function (data, textStatus, xhr) {
                     console.log(xhr.status);

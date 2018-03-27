@@ -11,7 +11,7 @@
 <script src="js/login.js"></script>
 
 <style>
-  #login-form {
+  #form-center {
     width: 50%;
     margin: 0 auto;
   }
@@ -27,8 +27,8 @@
     <header>
       <?php include_once "share/header.php" ?>
     </header>
-    <div id="login-form">
-      <form>
+    <div id="form-center">
+      <form id="login-form">
         <div class="form-group">
           <label for="username">Username</label>
           <div class="input-group">

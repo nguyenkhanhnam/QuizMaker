@@ -4,7 +4,7 @@
 
 <head>
   <?php include_once "share/import.php" ?>
-  <title>Quiz Maker</title>
+  <title>Add User</title>
   <link rel="icon" type="image/png" href="/img/favicon.png" />
 </head>
 
