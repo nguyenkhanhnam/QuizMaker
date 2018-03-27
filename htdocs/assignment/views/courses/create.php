@@ -26,7 +26,7 @@
     <header>
       <?php include_once "../share/header.php" ?>
     </header>
-    <div id="login-form">
+    <div id="create-form">
       <form>
         <div class="form-group">
           <label for="code">Course code:</label>
