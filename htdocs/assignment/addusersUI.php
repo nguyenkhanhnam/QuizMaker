@@ -52,7 +52,7 @@
                   <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="0"> Admin
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="1"> User
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="1" checked="checked"> User
                 </label>
                 <label class="radio-inline">
                   <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="2"> Staff
