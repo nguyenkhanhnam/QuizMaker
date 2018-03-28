@@ -9,7 +9,7 @@
                 console.log(res)
             } else {
                 console.log(res);
-                console.log(res.responseJSON[0].name1);
+                console.log(res.responseJSON[0].name);
             }
         }
     }

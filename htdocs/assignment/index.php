@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="/img/favicon.png" />
 </head>
 
-<script src="js/login.js"></script>
+<!-- <script src="js/login.js"></script> -->
 
 <style>
   #form-center {
@@ -28,7 +28,7 @@
       <?php include_once "share/header.php" ?>
     </header>
     <div id="form-center">
-      <form id="login-form">
+      <form id="login-form" method= "POST" action= "login.php">
         <div class="form-group">
           <label for="username">Username</label>
           <div class="input-group">
@@ -51,7 +51,7 @@
           <a id="forgot" href="#">Forgot password?</a>
         </div>
         <div class="text-right">
-          <button type="button" id="btn-login" class="btn btn-primary">
+          <button type="submit" id="btn-login" class="btn btn-primary">
             <i class="fa fa-sign-in" aria-hidden="true"></i> Log In</button>
         </div>
       </form>
