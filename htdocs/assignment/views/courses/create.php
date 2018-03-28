@@ -10,7 +10,7 @@
 <script src="/js/courses/create.js"></script>
 
 <style>
-  #login-form {
+  #create-form {
     width: 50%;
     margin: 0 auto;
   }
