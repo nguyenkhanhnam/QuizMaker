@@ -3,7 +3,7 @@
 
     // get the HTTP method, path and body of the request
     $method = $_SERVER['REQUEST_METHOD'];
-
+    $data= array();
    
     switch($method){
         case 'GET': {
@@ -20,10 +20,13 @@
         //         echo "meos";
         //     }
 
-            $data= array(
-                array('name1' => "phat", 'name2' => "nam"),
-                array('name1' => "phat1",  'name2' => "nam")
-            );
+            // $data= array(
+            //     array('name1' => "phat", 'name2' => "nam"),
+            //     array('name1' => "phat1",  'name2' => "nam")
+            // );
+
+            array_push($data, array('name1' => "phat", 'name2' => "nam"));
+            array_push($data, array('name1' => "pha1t", 'name2' => "nam1"));
            
             echo json_encode($data);
             // echo "meo2";
