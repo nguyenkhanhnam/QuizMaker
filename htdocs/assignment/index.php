@@ -1,9 +1,12 @@
-﻿<!DOCTYPE html>
+﻿<?php include_once "login.php" ?>
+
+<!DOCTYPE html>
 <meta charset="utf-8" />
 <html lang="en">
 
 <head>
   <?php include_once "share/import.php" ?>
+  
   <title>Quiz Maker</title>
   <link rel="icon" type="image/png" href="/img/favicon.png" />
 </head>
@@ -27,8 +30,9 @@
     <header>
       <?php include_once "share/header.php" ?>
     </header>
+    
     <div id="form-center">
-      <form id="login-form" method= "POST" action= "login.php">
+      <form id="login-form" method= "POST" action= "">
         <div class="form-group">
           <label for="username">Username</label>
           <div class="input-group">
@@ -51,10 +55,19 @@
           <a id="forgot" href="#">Forgot password?</a>
         </div>
         <div class="text-right">
-          <button type="submit" id="btn-login" class="btn btn-primary">
+          <button type="submit" id="btn-login" class="btn btn-primary" name= "login">
             <i class="fa fa-sign-in" aria-hidden="true"></i> Log In</button>
         </div>
       </form>
+
+      <?php if(isset($error)){
+         echo "<script>
+                $(document).ready(function () {
+                  displayToast('error', '" . $error . "');
+                });
+         </script>"; 
+      }
+      ?>
     </div>
 
 
