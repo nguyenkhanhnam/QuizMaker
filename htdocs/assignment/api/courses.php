@@ -1,23 +1,32 @@
 ﻿<?php
-    require_once('dbconnect.php');
+    //require('dbconnect.php');
 
     // get the HTTP method, path and body of the request
     $method = $_SERVER['REQUEST_METHOD'];
 
+   
     switch($method){
         case 'GET': {
-            $sql =  "SELECT * FROM `courses`";
-            $response = array();
-            $result = mysqli_query($connection, $sql);
+            $connection= mysqli_connect("localhost", "root", "", "assignment");
 
-            header('Content-Type: application/json');
-            
-            while($row = mysqli_fetch_array($result)){
-                $response[]= array('id' => $row['id'], 'name' => $row['name'], 'code' => $row['code']);
-            }
+        //     $sql =  "SELECT * FROM `courses`";
+        // //    $response = array();
+        //     $result = mysqli_query($connection, $sql);
+        //     // header('Content-Type: application/json');
+        //     while($row = mysqli_fetch_array($result)){
+                
+        //         $response["id"]= $row['id'];
+        //         $response["code"]= $row['code'];
+        //         echo "meos";
+        //     }
 
+            $data= array(
+                array('name1' => "phat", 'name2' => "nam"),
+                array('name1' => "phat1",  'name2' => "nam")
+            );
            
-            echo json_encode($response);
+            echo json_encode($data);
+            // echo "meo2";
             break;
         }
         case 'POST': {
