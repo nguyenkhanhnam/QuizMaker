@@ -4,20 +4,15 @@
 
 <head>
   <?php include_once "../share/import.php" ?>
-  <title>Add Course</title>
+  <title>List Course</title>
 </head>
 
 <script src="/js/courses/list.js"></script>
 
 <style>
-  #login-form {
+  #course-table {
     width: 50%;
     margin: 0 auto;
-  }
-
-  #forgot {
-    text-decoration: none;
-    display: inline;
   }
 </style>
 

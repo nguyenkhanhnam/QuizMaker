@@ -21,4 +21,8 @@
         }
     }
     );
+
+    $("table > tbody").delegate('tr', 'click', function() {
+        window.location.href = '/courses/edit/'+$(this).children('td').html();
+    });
 });
