@@ -40,7 +40,6 @@ function displayToast(type, text) {
 };
 
 function displayToastWithRedirect(type, text, redirect) {
-    console.log(type);
     var toast = toastConfig.find(item => item.type === type);
 
     // Get the snackbar DIV

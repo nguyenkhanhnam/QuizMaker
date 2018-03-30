@@ -1,0 +1,38 @@
+# Reference
+## API
+1. [Create PHP Restful API without Any Rest Framework Dependency](https://www.phpflow.com/php/create-php-restful-api-without-rest-framework-dependency/)
+2. [REST API Tutorial](http://www.restapitutorial.com/)
+3. [HTTPFUL](http://phphttpclient.com/)
+4. [Create a PHP application without a framework](https://github.com/PatrickLouys/no-framework-tutorial)
+5. [Professional PHP: Building maintainable and secure applications](https://patricklouys.com/professional-php/)
+6. [Simple PHP Login System Using MySQL and jQuery AJAX](https://www.phpflow.com/php/simple-php-login-system-using-mysql-jquery-ajax/)
+7. [Ajax Login form with jQuery and PHP](http://www.ondeweb.in/ajax-login-form-with-jquery-and-php/)
+8. [The MVC Pattern and PHP, Part 1](https://www.sitepoint.com/the-mvc-pattern-and-php-1/)
+9. [PHP: The Right Way](http://www.phptherightway.com/)
+10. [PHP for Beginners: Building Your First Simple CMS](https://css-tricks.com/php-for-beginners-building-your-first-simple-cms/)
+11. [Step-by-Step PHP Tutorials for Beginners - Creating your PHP program FROM SCRATCH: Basic Authentication, Membership and CRUD functionalities](https://www.codeproject.com/Articles/759094/Step-by-Step-PHP-Tutorials-for-Beginners-Creating)
+12. [SECURING PHP USER AUTHENTICATION, LOGIN, AND SESSIONS](http://blackbe.lt/php-secure-sessions/)
+13. [Basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)
+14. [Creating a simple REST API in PHP](https://www.leaseweb.com/labs/2015/10/creating-a-simple-rest-api-in-php/)
+15. [A Most Simple PHP MVC Beginners Tutorial](http://requiremind.com/a-most-simple-php-mvc-beginners-tutorial/)
+
+
+## Session
+1. [JSON Web Tokens](https://jwt.io/)
+2. [Goodbye PHP Sessions, Hello JSON Web Tokens](https://coderwall.com/p/8wrxfw/goodbye-php-sessions-hello-json-web-tokens)
+3. [Session Management Cheat Sheet](https://www.owasp.org/index.php/Session_Management_Cheat_Sheet)
+4. [Where to Store Tokens](https://auth0.com/docs/security/store-tokens)
+5. [Critical vulnerabilities in JSON Web Token libraries](https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/)
+
+## Database
+1. [How do you store your mysql user credentials in a secure way?](https://teamtreehouse.com/community/how-do-you-store-your-mysql-user-credentials-in-a-secure-way)
+
+## Template
+1. [20 Best Free Bootstrap Admin Templates 2018](https://athemes.com/collections/free-bootstrap-admin-templates/)
+2. [50 Free HTML5 And CSS3 Login Forms For Your Website 2018](https://colorlib.com/wp/html5-and-css3-login-forms/)
+3. [Login and Register Modal](https://www.creative-tim.com/product/login-and-register-modal)
+
+## UI
+1. [Bootstrap](http://getbootstrap.com/docs/3.3/css/)
+2. [Font Awesome](https://fontawesome.com/v4.7.0/icons/)
+3. [Animate.css](https://daneden.github.io/animate.css/)
