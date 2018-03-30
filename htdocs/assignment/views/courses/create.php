@@ -14,11 +14,6 @@
     width: 50%;
     margin: 0 auto;
   }
-
-  #forgot {
-    text-decoration: none;
-    display: inline;
-  }
 </style>
 
 <body>

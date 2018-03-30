@@ -5,3 +5,5 @@ RewriteRule ^api/courses/?$ api/courses.php [NC,L]
 RewriteRule ^courses/edit/([A-Z]{2}[0-9]{4})/?$ views/courses/edit.php?id=$1 [NC,L]
 RewriteRule ^courses/create views/courses/create.php [NC,L]
 RewriteRule ^courses views/courses/list.php [NC,L]
+
+RewriteRule ^question/create-question views/question/createquestion.php [NC,L]
