@@ -29,28 +29,21 @@
     
 
     <div class="tab">
-      <button class="tablinks" onclick="openTab(event, 'add-account')">Add Account</button>
-      <button class="tablinks" onclick="openTab(event, 'find-user')">Find User</button>
+      <button class="tablinks" onclick="openTab(event, 'account')">Account Management</button>
+      <button class="tablinks" onclick="openTab(event, 'course')">Course Management</button>
+    </div>
+    
+    <!-- Account tab content -->
+    <div id="account" class="tabcontent">
+      <h3>Paris</h3>
+      <p>Paris is the capital of France.</p>
     </div>
 
-  <div id="add-account form-center" class="tabcontent">
-    <form id= "login-form" method= "POST" action= "">
-      <div class="form-group">
-        <label for="username">Username</label>
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i>
-          </span>
-          <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
-        </div>
-      </div>
-    </form>
-  </div>
-
-  <div id="find-user" class="tabcontent">
-    <h3>Paris</h3>
-    <p>Paris is the capital of France.</p> 
-  </div>
+    <!-- Course tab content -->
+    <div id="course" class="tabcontent">
+      <h3>Paris</h3>
+      <p>Paris is the capital of France.</p> 
+    </div>
 
     <footer>
       <?php include_once "../share/footer.php" ?>
