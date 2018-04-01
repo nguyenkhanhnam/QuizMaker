@@ -23,6 +23,11 @@
 3. [Session Management Cheat Sheet](https://www.owasp.org/index.php/Session_Management_Cheat_Sheet)
 4. [Where to Store Tokens](https://auth0.com/docs/security/store-tokens)
 5. [Critical vulnerabilities in JSON Web Token libraries](https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/)
+6. [7 Best Practices for JSON Web Tokens](https://dev.to/neilmadden/7-best-practices-for-json-web-tokens)
+7. [Stateless Session Logout in OpenAM 13](https://neilmadden.wordpress.com/2016/02/25/stateless-session-logout-in-openam-13/)
+8. [Using a JSON Web Token in PHP](http://www.phpbuilder.com/articles/application-architecture/security/using-a-json-web-token-in-php.html)
+9. [JSON Web Token (JWT) Signing Algorithms Overview](https://auth0.com/blog/json-web-token-signing-algorithms-overview/)
+10. [JSON Web Algorithms (JWA)](https://tools.ietf.org/html/rfc7518#section-3)
 
 ## Database
 1. [How do you store your mysql user credentials in a secure way?](https://teamtreehouse.com/community/how-do-you-store-your-mysql-user-credentials-in-a-secure-way)
@@ -42,3 +47,10 @@
 2. [SQLizer: Easily convert files into SQL databases](https://sqlizer.io/)
 3. [How to import .sql file in mysql database using php](https://stackoverflow.com/questions/19751354/how-to-import-sql-file-in-mysql-database-using-php)
 4. [How to swap columns in Excel](https://www.ablebits.com/office-addins-blog/2014/01/23/swap-excel-columns/)
+
+## Validator
+1. [Học Regular Expression PHP](https://freetuts.net/hoc-php/hoc-regular-expression-php)
+
+## Other
+1. [Class Constants](http://php.net/manual/en/language.oop5.constants.php)
+2. [PHP parse_ini_file() Function](https://www.w3schools.com/php/func_filesystem_parse_ini_file.asp)
