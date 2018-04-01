@@ -52,5 +52,11 @@
             }
             return false;
         }
+
+        public static function getPayload($receivedJWT){
+            $jwt_values = explode('.', $receivedJWT);
+            $receivedPayload = $jwt_values[1];
+            return $receivedPayload;
+        }
     }
 ?> 

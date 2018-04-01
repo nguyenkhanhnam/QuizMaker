@@ -2,7 +2,6 @@
     session_start();
     require_once('./jwt.php');
 ?>
-
 <?php
     $method = $_SERVER['REQUEST_METHOD'];
     $connection= mysqli_connect("localhost", "root", "", "assignment");
@@ -18,7 +17,7 @@
             $password = mysqli_real_escape_string($connection,$_POST['password']);
 
             //Checking Login Detail
-            $sql= "SELECT * FROM `users` WHERE username='$username' AND password='$password'";
+            $sql = "SELECT * FROM `users` WHERE username='$username' AND password='$password'";
             $result = mysqli_query($connection, $sql);
             $row = mysqli_fetch_assoc($result);
             $count = mysqli_num_rows($result);
@@ -27,14 +26,9 @@
                 $token = JWT::generateJWT($payload);
                 $_SESSION['token'] = $token;
                 
-                /*$_SESSION['user']= array(
-                    'username' => $row['username'],
-                    'password' => $row['password'],
-                    'role' => $row['role']
-                );
-                $role= $_SESSION['user']['role'];
+                $role = $row['role'];
                 //Redirecting User Based on Role
-                switch($role){
+                /*switch($role){
                     case 0:
                         header('location:./dashboard/admin.php');
                         break;
