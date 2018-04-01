@@ -14,6 +14,10 @@
     width: 50%;
     margin: 0 auto;
   }
+
+  tbody > tr {
+    cursor: pointer;
+  }
 </style>
 
 <body>
