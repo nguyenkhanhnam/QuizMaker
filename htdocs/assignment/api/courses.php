@@ -12,7 +12,7 @@
     }
 
     function isValidCourseName($courseName){
-        if (preg_match('/^[A-Za-z0-9]{50}$/', $courseName))
+        if (preg_match('/[A-Za-z0-9]{1,50}$/', $courseName))
             return true;
         return false;
     }
@@ -61,6 +61,11 @@
         }
         case 'PUT': {
             parse_str(file_get_contents('php://input'), $_PUT);
+
+            if(!isset($_PUT["code"]) || !isset($_PUT["name"])){
+                return var_dump(http_response_code(400));
+            }
+            
             $code = trim($_PUT["code"], " \t\n\r\0\x0B");
             $name = $_PUT["name"];
 

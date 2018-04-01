@@ -36,3 +36,9 @@
 1. [Bootstrap](http://getbootstrap.com/docs/3.3/css/)
 2. [Font Awesome](https://fontawesome.com/v4.7.0/icons/)
 3. [Animate.css](https://daneden.github.io/animate.css/)
+
+## Import Excel
+1. [How to import an excel file in to a MySQL database](https://stackoverflow.com/questions/1310166/how-to-import-an-excel-file-in-to-a-mysql-database)
+2. [SQLizer: Easily convert files into SQL databases](https://sqlizer.io/)
+3. [How to import .sql file in mysql database using php](https://stackoverflow.com/questions/19751354/how-to-import-sql-file-in-mysql-database-using-php)
+4. [How to swap columns in Excel](https://www.ablebits.com/office-addins-blog/2014/01/23/swap-excel-columns/)
