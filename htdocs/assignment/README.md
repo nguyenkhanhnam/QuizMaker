@@ -28,6 +28,7 @@
 8. [Using a JSON Web Token in PHP](http://www.phpbuilder.com/articles/application-architecture/security/using-a-json-web-token-in-php.html)
 9. [JSON Web Token (JWT) Signing Algorithms Overview](https://auth0.com/blog/json-web-token-signing-algorithms-overview/)
 10. [JSON Web Algorithms (JWA)](https://tools.ietf.org/html/rfc7518#section-3)
+11. [How to Create a JSON Web Token Using PHP](https://dev.to/robdwaller/how-to-create-a-json-web-token-using-php-3gml)
 
 ## Database
 1. [How do you store your mysql user credentials in a secure way?](https://teamtreehouse.com/community/how-do-you-store-your-mysql-user-credentials-in-a-secure-way)
@@ -54,3 +55,4 @@
 ## Other
 1. [Class Constants](http://php.net/manual/en/language.oop5.constants.php)
 2. [PHP parse_ini_file() Function](https://www.w3schools.com/php/func_filesystem_parse_ini_file.asp)
+3. [http_response_code() always returns 200, even on 404](https://stackoverflow.com/questions/28015891/http-response-code-always-returns-200-even-on-404)

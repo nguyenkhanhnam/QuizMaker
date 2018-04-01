@@ -1,9 +1,15 @@
 ﻿<?php
-    //require('dbconnect.php');
+    require_once('./checkAuth.php');
+?>
+<?php
+    if(!isLogined()){
+        http_response_code(403);
+        return var_dump(http_response_code());
+    }
     // get the HTTP method, path and body of the request
     $method = $_SERVER['REQUEST_METHOD'];
-    $data= array();
-    $connection= mysqli_connect("localhost", "root", "", "assignment");
+    $data = array();
+    $connection = mysqli_connect("localhost", "root", "", "assignment");
 
     function isValidCourseCode($courseCode){
         if (preg_match('/^[A-Z]{2}[0-9]{4}$/', $courseCode))
@@ -21,7 +27,6 @@
         case 'GET': {
             if(empty($_GET["code"])){
                 $sql =  "SELECT * FROM `courses`";
-                //    $response = array();
                 $result = mysqli_query($connection, $sql);
                 header('Content-Type: text/html; charset=utf-8');
                 while($row = mysqli_fetch_array($result)){
@@ -32,7 +37,6 @@
             }
             else {
                 $courseCode = $_GET['code'];
-
                 $sql =  "SELECT * FROM `courses` WHERE code='$courseCode' LIMIT 1";
                 $result = mysqli_query($connection, $sql);
                 if(mysqli_num_rows($result) > 0){
@@ -48,6 +52,10 @@
             }
         }
         case 'POST': {
+            if(!isAdminLogined()){
+                http_response_code(403);
+                return var_dump(http_response_code());
+            }
             $code = trim($_POST["code"], " \t\n\r\0\x0B");
             $name = $_POST["name"];
             $sql = "INSERT INTO `courses` (name, code) VALUES ('$name','$code')";
@@ -60,6 +68,10 @@
             break;
         }
         case 'PUT': {
+            if(!isAdminLogined()){
+                http_response_code(403);
+                return var_dump(http_response_code());
+            }
             parse_str(file_get_contents('php://input'), $_PUT);
 
             if(!isset($_PUT["code"]) || !isset($_PUT["name"])){
