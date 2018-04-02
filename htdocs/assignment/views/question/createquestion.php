@@ -15,8 +15,8 @@
 		margin-left:20%;
 		margin-top:10px;
 	}
-	.form-group{
-		margin-right:20%;
+	.form-control{
+
 	}
 </style>
 <body>
@@ -26,12 +26,11 @@
 		</header>
 		<div class ="button col-sm-10">
 			<button type="button" class = "btn btn-primary btm-md" data-toggle="collapse" data-target="#demo">Create Question </button>
-			<button type="button" class = "btn btn-primary btm-md">View </button>
+			<button type="button" class = "btn btn-primary btm-md" data-toggle="collapse" data-target= "#demo1">View </button>
 		</div>
-		</div>
-			<div id="demo" class="collapse col-sm-10">
+			<div id="demo" class="collapse">
 				<p style ="font-size: 80px">Create Question</p>
-				 <form class ="form-horizontal" method ="POST" action="">
+				 <form class ="form-horizontal" method ="POST" action="/question.php">
 				<div class="form-group">
 					<label for="question"> Question: </label>
 					<input type="text" class ="form-control" placeholder="Question" name="question">
@@ -73,35 +72,9 @@
 				</div>
 				</form> 
 			</div>
+		</div>
 		<footer>
 			<?php include_once "../share/footer.php" ?>
 		</footer>
 	</div>
 </body>
-<?php
-session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "assignment";
-$conn = new mysqli($servername, $username, $password, $dbname);
-$question=$_POST['question'];
-$option1= $_POST['option1'];
-$option2= $_POST['option2'];
-$option3=$_POST['option3'];
-$option4=$_POST['option4'];
-$answer=$_POST['answer'];
-$difficulty=$_POST['optradio'];
-	echo $answer;
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-$sql = "INSERT INTO questions(question,option1,option2,option3,option4,answer,difficulty)
-VALUES('$question','$option1','$option2','$option3','$option4','$answer','$difficulty')";
-if ($conn->query($sql) === TRUE) {
-   echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-$conn->close();
-?>
