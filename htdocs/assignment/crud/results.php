@@ -1,6 +1,8 @@
 <?php 
 require 'db.php';
-$sql = 'SELECT * FROM users';
+$searchKey = $_POST['search'];
+$searchKey = preg_replace("#[^0-9a-z]#i", "", $searchKey);
+$sql = "SELECT * FROM users WHERE username LIKE '%$searchKey%' ";
 $statement = $connection->prepare($sql);
 $statement->execute();
 $users = $statement->fetchAll(PDO::FETCH_OBJ);
@@ -9,16 +11,8 @@ $users = $statement->fetchAll(PDO::FETCH_OBJ);
 <?php require 'header.php'; ?>
 <div class="card">
   <div class="card-header">
-    <h2>All users</h2>
+    <h2>Search results</h2>
   </div>
-  <div align="middle">
-    <form action="results.php" method="POST" >
-      <input type="text" name="search" placeholder="Search for users...">
-      <button class="btn btn-success" type="submit"> <i class ="glyphicon glyphicon-search"></i></button> 
-    </form>
-  </div>  
-  <p></p>
-
   <div class="card-body">
     <table class="table table-bordered">
       <tr>
@@ -40,5 +34,13 @@ $users = $statement->fetchAll(PDO::FETCH_OBJ);
       <?php endforeach; ?>
     </table>
   </div>
+  <div align="middle">
+    <button onclick="goBack()">Back to search</button>
+  </div>
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
 </div>
 <?php require 'footer.php'; ?>
