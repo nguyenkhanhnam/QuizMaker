@@ -12,7 +12,8 @@
 		margin: 0 auto;
 	}
 	.collapse {
-		margin-left:20%;
+		margin-right:20%;
+		margin-left: 20%;
 		margin-top:10px;
 	}
 	.form-control{
@@ -28,6 +29,25 @@
 			<button type="button" class = "btn btn-primary btm-md" data-toggle="collapse" data-target="#demo">Create Question </button>
 			<button type="button" class = "btn btn-primary btm-md" data-toggle="collapse" data-target= "#demo1">View </button>
 		</div>
+			<div id="demo1" class="collapse">
+				<br>
+				<br>
+				<div class="alert alert-info">
+    				<strong>Please fill the code course and select the difficulty.</strong> 
+  				</div>
+				<label for="codename"> Code Course: </label>
+					<input type="text" class ="form-control" placeholder="Question" name="codename">
+					<br>
+				<label for="sel1">Difficulty </label>
+      				<select class="form-group" id="sel1">
+        				<option>0</option>
+        				<option>1</option>
+        				<option>2</option>
+     				</select>
+     			<div>
+     				<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+     			</div>
+			</div>
 			<div id="demo" class="collapse">
 				<p style ="font-size: 80px">Create Question</p>
 				 <form class ="form-horizontal" method ="POST" action="/question.php">
