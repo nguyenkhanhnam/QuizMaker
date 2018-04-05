@@ -1,5 +1,7 @@
 ﻿<?php
-    session_start();
+    $basedir = realpath(__DIR__);
+    include $basedir . '.\checkAuth.php';
+    include $basedir . '.\jwt.php';
 ?>
 
 <!DOCTYPE html>

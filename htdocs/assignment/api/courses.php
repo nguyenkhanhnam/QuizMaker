@@ -2,8 +2,15 @@
     require_once('./checkAuth.php');
 ?>
 <?php
-    if(!isLogined()){
-        http_response_code(403);
+    if(isset($_SESSION['token'])){
+        $token = $_SESSION['token'];
+        if(!isLogined($token)){
+            http_response_code(401);
+            return var_dump(http_response_code());
+        }
+    }
+    else {
+        http_response_code(401);
         return var_dump(http_response_code());
     }
     // get the HTTP method, path and body of the request

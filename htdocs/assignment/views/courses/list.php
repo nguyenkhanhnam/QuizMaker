@@ -7,6 +7,22 @@
   <title>List Course</title>
 </head>
 
+<?php
+    if(isset($_SESSION['token']) && $_SESSION['token']!=''){
+      $token = $_SESSION['token'];
+      if(isLogined($token)){
+      
+      }
+      else {
+        return header('location:/');
+      }
+    }
+    else {
+      echo "no token";
+      return header('location:/');
+    }
+?>
+
 <script src="/js/courses/list.js"></script>
 
 <style>

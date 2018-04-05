@@ -1,13 +1,11 @@
 ﻿<?php
     session_start();
-    require_once('./jwt.php');
     function isLogined($token){
         if(JWT::verifyJWT($token)){
             return true;
         }
         return false;
     }
-
     function isAdminLogined(){
         if(isset($_SESSION['token'])){
             $token = $_SESSION['token'];
