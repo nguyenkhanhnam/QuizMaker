@@ -10,7 +10,7 @@
 <?php
     if(isset($_SESSION['token']) && $_SESSION['token']!=''){
       $token = $_SESSION['token'];
-      if(isLogined($token)){
+      if(isLoggedIn($token)){
       
       }
       else {

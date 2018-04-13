@@ -4,7 +4,7 @@
 <?php
     if(isset($_SESSION['token'])){
         $token = $_SESSION['token'];
-        if(!isLogined($token)){
+        if(!isLoggedIn($token)){
             http_response_code(401);
             return var_dump(http_response_code());
         }
@@ -59,7 +59,7 @@
             }
         }
         case 'POST': {
-            if(!isAdminLogined()){
+            if(!isAdminLoggedIn($token)){
                 http_response_code(403);
                 return var_dump(http_response_code());
             }
@@ -75,7 +75,7 @@
             break;
         }
         case 'PUT': {
-            if(!isAdminLogined()){
+            if(!isAdminLoggedIn($token)){
                 http_response_code(403);
                 return var_dump(http_response_code());
             }
