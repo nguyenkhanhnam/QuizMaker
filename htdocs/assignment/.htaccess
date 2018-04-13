@@ -9,4 +9,4 @@ RewriteRule ^courses/edit/([A-Z]{2}[0-9]{4})/?$ views/courses/edit.php?id=$1 [NC
 RewriteRule ^courses/create views/courses/create.php [NC,L]
 RewriteRule ^courses views/courses/list.php [NC,L]
 
-RewriteRule ^question/createquestion views/question/createquestion.php [NC,L]
+RewriteRule ^questions/create views/questions/create.php [NC,L]
