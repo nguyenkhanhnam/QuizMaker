@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<?php include_once "share/import.php" ?>
+	<?php include_once "share/head.php" ?>
 	<title>Search for users</title>
 
 </head>

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <?php include_once "../share/import.php" ?>
+  <?php include_once "../share/head.php" ?>
   <title>Add Course</title>
 </head>
 

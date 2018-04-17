@@ -1,4 +1,4 @@
-﻿<?php include_once "./views/share/import.php" ?>
+﻿<?php include_once "./views/share/head.php" ?>
 <?php
     if(isset($_SESSION['token']) && $_SESSION['token']!=''){
       $token = $_SESSION['token'];
