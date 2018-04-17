@@ -1,6 +1,5 @@
 ﻿<?php
     session_start();
-    require_once('./jwt.php');
     function isLoggedIn($token){
         if(JWT::verifyJWT($token)){
             return true;

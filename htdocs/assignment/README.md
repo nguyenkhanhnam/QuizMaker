@@ -56,3 +56,5 @@
 1. [Class Constants](http://php.net/manual/en/language.oop5.constants.php)
 2. [PHP parse_ini_file() Function](https://www.w3schools.com/php/func_filesystem_parse_ini_file.asp)
 3. [http_response_code() always returns 200, even on 404](https://stackoverflow.com/questions/28015891/http-response-code-always-returns-200-even-on-404)
+4. [Going from a framework to no-framework](https://stackoverflow.com/a/3655245)
+5. [Building your own Custom PHP Framework: Part 1](https://medium.com/shecodeafrica/building-your-own-custom-php-framework-part-1-1d24223bab18)

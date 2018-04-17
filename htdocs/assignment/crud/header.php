@@ -7,9 +7,9 @@
     <link rel="icon" type="image/png" href="/img/favicon.png" />
 
     <!-- Bootstrap CSS -->
-    <?php include_once "../share/import.php" ?>
+    <?php include_once "../share/head.php" ?>
 
-    <title>Hello, world!</title>
+    <title>Quiz Maker</title>
   </head>
   <body>
   <div class="container">

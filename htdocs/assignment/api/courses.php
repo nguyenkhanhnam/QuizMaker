@@ -2,8 +2,15 @@
     require_once('./checkAuth.php');
 ?>
 <?php
-    if(!isLogined()){
-        http_response_code(403);
+    if(isset($_SESSION['token'])){
+        $token = $_SESSION['token'];
+        if(!isLoggedIn($token)){
+            http_response_code(401);
+            return var_dump(http_response_code());
+        }
+    }
+    else {
+        http_response_code(401);
         return var_dump(http_response_code());
     }
     // get the HTTP method, path and body of the request
@@ -52,7 +59,7 @@
             }
         }
         case 'POST': {
-            if(!isAdminLogined()){
+            if(!isAdminLoggedIn($token)){
                 http_response_code(403);
                 return var_dump(http_response_code());
             }
@@ -68,7 +75,7 @@
             break;
         }
         case 'PUT': {
-            if(!isAdminLogined()){
+            if(!isAdminLoggedIn($token)){
                 http_response_code(403);
                 return var_dump(http_response_code());
             }

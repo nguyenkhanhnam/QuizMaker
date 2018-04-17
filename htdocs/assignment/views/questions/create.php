@@ -2,10 +2,9 @@
 <meta charset="utf-8" />
 <html lang="en">
 <head>
-	<?php include_once "../share/import.php" ?>
+	<?php include_once "../share/head.php" ?>
 	<title>Create Question</title>
 </head>
-<script src="/js/courses/createquestion.js"></script>
 <style >
 	#create-form {
 		width:50%;

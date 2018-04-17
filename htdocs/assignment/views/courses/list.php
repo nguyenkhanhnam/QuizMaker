@@ -3,9 +3,25 @@
 <html lang="en">
 
 <head>
-  <?php include_once "../share/import.php" ?>
+  <?php include_once "../share/head.php" ?>
   <title>List Course</title>
 </head>
+
+<?php
+    if(isset($_SESSION['token']) && $_SESSION['token']!=''){
+      $token = $_SESSION['token'];
+      if(isLoggedIn($token)){
+      
+      }
+      else {
+        return header('location:/');
+      }
+    }
+    else {
+      echo "no token";
+      return header('location:/');
+    }
+?>
 
 <script src="/js/courses/list.js"></script>
 
