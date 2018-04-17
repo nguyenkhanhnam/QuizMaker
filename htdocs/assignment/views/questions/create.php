@@ -34,11 +34,11 @@
 				<label for="codename"> Code Course: </label>
 					<input type="text" class ="form-control" placeholder="Question" name="codename">
 					<br>
-				<label for="sel1">Difficulty </label>
-      				<select class="form-group" id="sel1">
-        				<option>0</option>
-        				<option>1</option>
-        				<option>2</option>
+				<label for="difficulty">Difficulty </label>
+      				<select class="form-group" id="difficulty">
+        				<option value="0">0</option>
+        				<option value="1">1</option>
+        				<option value="2">2</option>
         				<option>All</option>
      				</select>
      			<div>
