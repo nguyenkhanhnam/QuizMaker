@@ -6,13 +6,13 @@
         $role= $_SESSION['user']['role'];
         switch($role){
             case 0:
-                header('location:./views/dashboard/admin.php');
+                header('location:/dashboard/admin');
                 break;
             case 1:
-                header('location:./views/dashboard/user.php');
+                header('location:/dashboard/user');
                 break;
             case 2:
-                header('location:./views/dashboard/staff.php');
+                header('location:/dashboard/staff');
                 break;
             }
       }

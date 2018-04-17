@@ -6,6 +6,10 @@ RewriteRule ^logout views/logout.php [NC,L]
 RewriteRule ^api/courses/([A-Z]{2}[0-9]{4})/?$ api/courses.php?code=$1 [NC,L]
 RewriteRule ^api/courses/?$ api/courses.php [NC,L]
 
+RewriteRule ^dashboard/admin/?$ views/dashboard/admin.php [NC,L]
+RewriteRule ^dashboard/user/?$ views/dashboard/user.php [NC,L]
+RewriteRule ^dashboard/staff/?$ views/dashboard/staff.php [NC,L]
+
 RewriteRule ^courses/edit/([A-Z]{2}[0-9]{4})/?$ views/courses/edit.php?id=$1 [NC,L]
 RewriteRule ^courses/create views/courses/create.php [NC,L]
 RewriteRule ^courses views/courses/list.php [NC,L]
