@@ -10,3 +10,4 @@ RewriteRule ^courses/create views/courses/create.php [NC,L]
 RewriteRule ^courses views/courses/list.php [NC,L]
 
 RewriteRule ^question/createquestion views/question/createquestion.php [NC,L]
+RewriteRule ^question/view views/question/view.php [NC,L]

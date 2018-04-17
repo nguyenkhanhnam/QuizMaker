@@ -43,9 +43,12 @@
         				<option>0</option>
         				<option>1</option>
         				<option>2</option>
+        				<option>All</option>
      				</select>
      			<div>
+     				<a href ="view">
      				<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+     				</a>
      			</div>
 			</div>
 			<div id="demo" class="collapse">
