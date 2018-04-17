@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<meta charset="utf-8" />
-<html lang="en">
 <head>
 	<?php include_once "../share/head.php" ?>
 	<title>Create Question</title>

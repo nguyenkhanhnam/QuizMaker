@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<meta charset="utf-8" />
-<html lang="en">
-
 <head>
   <?php include_once "../share/head.php" ?>
   <title>Quiz Maker</title>
-  <link rel="icon" type="image/png" href="../img/favicon.png" />
 </head>
 
 <style>

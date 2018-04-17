@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<meta charset="utf-8" />
-<html lang="en">
 <head>
 	<?php include_once "../share/import.php" ?>
 	<title>View Question</title>
 </head>
+
 <header>
 	<?php include_once "../share/header.php" ?>
 </header>
