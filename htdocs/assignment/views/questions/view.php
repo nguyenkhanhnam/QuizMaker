@@ -5,13 +5,12 @@
 	<?php include_once "../share/import.php" ?>
 	<title>View Question</title>
 </head>
-<script src="/js/courses/createquestion.js"></script>
 <header>
 	<?php include_once "../share/header.php" ?>
 </header>
 <body>
 <div class="container">
-  <h3>Courser Name :</h3>
+  <h3>Course Name :</h3>
    <div class="table table-striped table-bordered table-hover table-condensed">          
   		<table class="table">
     		<thead>
