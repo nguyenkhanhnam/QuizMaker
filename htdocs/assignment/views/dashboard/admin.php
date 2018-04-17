@@ -1,5 +1,6 @@
 <head>
   <?php include_once "../share/head.php" ?>
+  <link href="../css/admin.css" rel="stylesheet" type="text/css">
   <title>Quiz Maker</title>
 </head>
 
@@ -16,16 +17,13 @@
 
 .sidenav {
     height: 100%;
-    /* width: 160px; */
     min-height: 100%;
     position: relative;
-    /* float: left; */
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
     overflow-x: hidden;
-    /* padding-top: 20px; */
+    border-right: 1px solid #ccc;
 }
 
 .sidenav a {
@@ -41,10 +39,40 @@
 }
 
 .main {
-    /*margin-left: 160px; /* Same as the width of the sidenav */
-    font-size: 28px; /* Increased text to enable scrolling */
-    /* padding: 0px 10px; */
+    font-size: 28px;
     height: 100%;
+    overflow: auto;
+}
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.topnav {
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+}
+.topnav .search-container {
+
+}
+.topnav input[type= text]{
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+.topnav .search-container button{
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+.topnav .search-container button:hover{
+  background: #ccc;
 }
 
 @media screen and (max-height: 450px) {
@@ -69,11 +97,14 @@
     <!-- Account tab content -->
     <div id="account" class="tabcontent row" style= "height: 500px">
       <div class="sidenav col-sm-3">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#clients">Clients</a>
-        <a href="#contact">Contact</a>
-        <div style= "clear: both; background-color: #111"> </div>
+        <div class= "topnav">
+          <div class= "search-container">
+            <form action= "search_user.php" method= "GET">
+              <input type="text" placeholder="Search.." name="search">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+        </div>
       </div>
       
       <div class="main col-sm-9">
