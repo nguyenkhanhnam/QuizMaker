@@ -113,7 +113,7 @@
             </a>
           </li>
           <li>
-            <a href="/logout.php"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Log out</a>
+            <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Log out</a>
           </li>
         </ul>
       </div>
