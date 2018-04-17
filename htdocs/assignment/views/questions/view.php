@@ -1,5 +1,5 @@
 <head>
-	<?php include_once "../share/import.php" ?>
+	<?php include_once "../share/head.php" ?>
 	<title>View Question</title>
 </head>
 
