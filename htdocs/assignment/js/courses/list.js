@@ -8,8 +8,8 @@
             if (res.status !== 200) {
                 console.log(res)
             } else {
-                var courses = res.responseJSON
-                console.log(courses)
+                var str = res.responseText.trim()
+                var courses = JSON.parse(str)
                 for (var courseIdx = 0; courseIdx < courses.length; courseIdx++) {
                     var row = '<tr>'
                     var col = '<td>' + courses[courseIdx].code + '</td>'

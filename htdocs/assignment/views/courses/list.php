@@ -18,7 +18,6 @@
       }
     }
     else {
-      echo "no token";
       return header('location:/');
     }
 ?>

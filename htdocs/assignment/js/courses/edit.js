@@ -10,12 +10,15 @@
       if (res.status !== 200) {
         return displayToastWithRedirect('error', 'No course found', '/courses')
       } else {
-        $('#code').val(res.responseJSON.code)
-        $('#name').val(res.responseJSON.name)
+        console.log(res.responseText)
+        var str = res.responseText.trim()
+        var course = JSON.parse(str)
+        $('#code').val(course.code)
+        $('#name').val(course.name)
       }
     }
   }
-  );
+  )
 
   $('#btn-save').on('click', function () {
     var $form = $('form')
@@ -49,4 +52,4 @@
       return false
     })
   })
-});
+})
