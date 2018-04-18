@@ -30,7 +30,7 @@
 			<br>
 			<br>
 			<div class="alert alert-info">
-				<strong>Please fill the code course and select the difficulty.</strong>
+				<strong>Please fill the Code Course and select the Difficulty.</strong>
 			</div>
 			<label for="codename"> Code Course: </label>
 			<input type="text" class="form-control" placeholder="Question" name="codename">
@@ -52,7 +52,7 @@
 		</div>
 		<div id="demo" class="collapse">
 			<p style="font-size: 80px">Create Question</p>
-			<form class="form-horizontal" method="POST" action="/api/">
+			<form class="form-horizontal" method="POST" action="/api/questions.php">
 				<div class="form-group">
 					<label for="question"> Question: </label>
 					<input type="text" class="form-control" placeholder="Question" name="question" required>
