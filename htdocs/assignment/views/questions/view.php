@@ -10,7 +10,16 @@
 <body>
 <div class="container">
   <h3>Course Name :</h3>
-   
+  <label for="codename"> Code Course: </label>
+    <input type="text" class="form-group" placeholder="Input the Code Course" name="codename">
+      <br>
+    <label for="difficulty">Difficulty: </label>
+      <select class="form-group" id="difficulty">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option>All</option>
+      </select>
     		<?php
 $servername = "localhost";
 $username = "root";

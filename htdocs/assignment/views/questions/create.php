@@ -33,9 +33,9 @@
 				<strong>Please fill the Code Course and select the Difficulty.</strong>
 			</div>
 			<label for="codename"> Code Course: </label>
-			<input type="text" class="form-control" placeholder="Question" name="codename">
+			<input type="text" class="form-control" placeholder="Input the Code Course" name="codename">
 			<br>
-			<label for="difficulty">Difficulty </label>
+			<label for="difficulty">Difficulty: </label>
 			<select class="form-group" id="difficulty">
 				<option value="0">0</option>
 				<option value="1">1</option>
