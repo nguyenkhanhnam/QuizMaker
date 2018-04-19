@@ -3,10 +3,10 @@
 	<title>Create Question</title>
 </head>
 <style>
-	#create-form {
+	/* #create-form {
 		width: 50%;
 		margin: 0 auto;
-	}
+	} */
 
 	.collapse {
 		margin-right: 20%;
@@ -14,7 +14,9 @@
 		margin-top: 10px;
 	}
 
-	.form-control {}
+	.select2  {
+		width: 100% !important;
+	}
 </style>
 
 <body>
@@ -52,13 +54,19 @@
 		</div>
 		<div id="demo" class="collapse">
 			<p style="font-size: 80px">Create Question</p>
-			<form class="form-horizontal" method="POST" action="/api/">
+			<form id="create-form" class="form-horizontal">
 				<div class="form-group">
-					<label for="question"> Question: </label>
+					<label for="question">Course:</label>
+					<br>
+					<select id="courses" name="code">
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="question">Question:</label>
 					<input type="text" class="form-control" placeholder="Question" name="question" required>
 				</div>
 				<div class="form-group">
-					<label for="options"> Options: </label>
+					<label for="options">Options:</label>
 				</div>
 				<div class="form-group">
 					<input for="option1" type="text" class="form-control" placeholder="Option 1" name="option1" required>
@@ -73,24 +81,24 @@
 					<input for="option4" type="text" class="form-control" placeholder="Option 4" name="option4" required>
 				</div>
 				<div class="form-group">
-					<label for="answer"> Answer: </label>
+					<label for="answer">Answer:</label>
 					<input type="text" class="form-control" placeholder="Answer" name="answer" required>
 				</div>
 				<div class="form-group">
-					<label for="difficult"> Difficulty: </label>
+					<label for="difficult">Difficulty:</label>
 					<br>
 					<label class="radio-inline">
-						<input type="radio" value="0" name="difficult" required>Easy (0)
+						<input type="radio" value="0" name="difficult" checked>Easy (0)
 					</label>
 					<label class="radio-inline">
-						<input type="radio" value="1" name="difficult" required>Normal (1)
+						<input type="radio" value="1" name="difficult">Normal (1)
 					</label>
 					<label class="radio-inline">
-						<input type="radio" value="2" name="difficult" required>Hard (2)
+						<input type="radio" value="2" name="difficult">Hard (2)
 					</label>
 				</div>
-				<div class="upload">
-					<button type="submit" class="btn btn-success">Upload</button>
+				<div class="text-right">
+					<button type="button" class="btn btn-primary" id="btn-add">Upload</button>
 				</div>
 			</form>
 		</div>
@@ -100,3 +108,7 @@
 	</footer>
 	</div>
 </body>
+
+<script src="/js/questions/create.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>

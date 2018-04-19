@@ -2,17 +2,17 @@
     require_once('./checkAuth.php');
 ?>
 <?php
-    if(isset($_SESSION['token'])){
-        $token = $_SESSION['token'];
-        if(!isLoggedIn($token)){
-            http_response_code(401);
-            return var_dump(http_response_code());
-        }
-    }
-    else {
-        http_response_code(401);
-        return var_dump(http_response_code());
-    }
+    // if(isset($_SESSION['token'])){
+    //     $token = $_SESSION['token'];
+    //     if(!isLoggedIn($token)){
+    //         http_response_code(401);
+    //         return var_dump(http_response_code());
+    //     }
+    // }
+    // else {
+    //     http_response_code(401);
+    //     return var_dump(http_response_code());
+    // }
     $method = $_SERVER['REQUEST_METHOD'];
     $data = array();
     $connection = mysqli_connect("localhost", "root", "", "assignment");
@@ -25,10 +25,10 @@
 
     switch($method){
         case 'POST': {
-            if(!isUserLoggedIn($token)){
-                http_response_code(403);
-                return var_dump(http_response_code());
-            }
+            // if(!isUserLoggedIn($token)){
+            //     http_response_code(403);
+            //     return var_dump(http_response_code());
+            // }
             $code = trim($_POST["code"], " \t\n\r\0\x0B");
             if(!isValidCourseCode($code)){
                 return var_dump(http_response_code(400));

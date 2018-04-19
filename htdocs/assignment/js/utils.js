@@ -66,3 +66,12 @@ function displayToastWithRedirect(type, text, redirect) {
     }, toast.duration);
 };
 
+function getFormData ($form) {
+    var unindexedArray = $form.serializeArray()
+    var indexedArray = {}
+    $.map(unindexedArray, function (n, i) {
+      indexedArray[n['name']] = n['value'].trim()
+    })
+    return indexedArray
+  }
+
