@@ -19,3 +19,4 @@ RewriteRule ^courses views/courses/list.php [NC,L]
 
 RewriteRule ^questions/view views/questions/view.php [NC,L]
 RewriteRule ^questions/create views/questions/create.php [NC,L]
+RewriteRule ^questions/question views/questions/questions.php [NC,L]
