@@ -37,7 +37,7 @@
                 $result = mysqli_query($connection, $sql);
                 header('Content-Type: text/html; charset=utf-8');
                 while($row = mysqli_fetch_array($result)){
-                    array_push($data, array('code' => $row["code"], 'name' => $row["name"]));
+                    array_push($data, array('id' => $row["id"], 'code' => $row["code"], 'name' => $row["name"]));
                 }
                 echo json_encode($data);
                 break;
@@ -48,7 +48,7 @@
                 $result = mysqli_query($connection, $sql);
                 if(mysqli_num_rows($result) > 0){
                     while($row = mysqli_fetch_array($result)){
-                        $data = array('code' => $row["code"], 'name' => $row["name"]);
+                        $data = array('id' => $row["id"], 'code' => $row["code"], 'name' => $row["name"]);
                     }
                     echo json_encode($data);
                 }
@@ -105,6 +105,36 @@
             } else {
                 return var_dump(http_response_code(409));
             }
+            break;
+        }
+        case 'DELETE': {
+            if(!isAdminLoggedIn($token)){
+                http_response_code(403);
+                return var_dump(http_response_code());
+            }
+            parse_str(file_get_contents('php://input'), $_DELETE);
+            if(!isset($_DELETE["code"])){
+                return var_dump(http_response_code(400));
+            }
+            
+            $code = trim($_DELETE["code"], " \t\n\r\0\x0B");
+
+            if(!isValidCourseCode($code)){
+                return var_dump(http_response_code(400));
+            }
+            $code = $_DELETE["code"];
+            $sql =  "DELETE FROM courses WHERE code = '$code'";
+            $result = mysqli_query($connection, $sql);
+            if ($connection->query($sql) === TRUE) {
+                $data = array('status' => http_response_code(200), 'message' => 'Course deleted successfully');
+                echo json_encode($data);
+                return;
+            } else {
+                $data = array('status' => http_response_code(500), 'message' => $connection->error);
+                echo json_encode($data);
+                return;
+            }
+            $connection->close();
             break;
         }
     }

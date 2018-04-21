@@ -46,6 +46,7 @@
         <tr>
           <th>Course Code</th>
           <th>Course Name</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>

@@ -1,4 +1,39 @@
 ﻿$(document).ready(function () {
+    getCourses()
+})
+
+function getCourseDetail(code){
+    window.location.href = `/courses/edit/${code}`
+}
+
+function removeCourse(code) {
+    console.log(code)
+    $.ajax({
+        url: '/api/courses/',
+        type: 'DELETE',
+        contentType: 'application/json',
+        data: {
+            code: code
+        },
+        complete: function (res) {
+            console.log(res)
+            if (res.status !== 200) {
+                if (res.status === 500) {
+                    var str = res.responseText.trim()
+                    var data = JSON.parse(str)
+                    displayToast('error', data.message)
+                }
+            } else {
+                var str = res.responseText.trim()
+                var data = JSON.parse(str)
+                displayToast('success', data.message)
+                getCourses()
+            }
+        }
+    })
+}
+
+function getCourses(){
     $.ajax({
         type: 'GET',
         url: '/api/courses',
@@ -8,22 +43,21 @@
             if (res.status !== 200) {
                 console.log(res)
             } else {
+                $('#course-table').find("tr:gt(0)").remove();
                 var str = res.responseText.trim()
                 var courses = JSON.parse(str)
-                for (var courseIdx = 0; courseIdx < courses.length; courseIdx++) {
+                console.log(courses)
+                courses.forEach(course => {
                     var row = '<tr>'
-                    var col = '<td>' + courses[courseIdx].code + '</td>'
-                    col += '<td>' + courses[courseIdx].name + '</td>'
+                    var col = '<td onClick=getCourseDetail(\"' + course.code + '\")>' + course.code + '</td>'
+                    col += '<td onClick=getCourseDetail(\"' + course.code + '\")>' + course.name + '</td>'
+                    col += '<td onClick=removeCourse(\"' + course.code + '\")><i class="material-icons">delete</i>' + '</td>'
                     row += col
                     row += '</tr>'
                     $('#course-table').append(row)
-                }
+                })
             }
         }
     }
-    );
-
-    $("table > tbody").delegate('tr', 'click', function() {
-        window.location.href = '/courses/edit/'+$(this).children('td').html();
-    });
-});
+    )
+}
