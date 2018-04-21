@@ -3,13 +3,13 @@
         type: 'error',
         background: 'red',
         color: 'white',
-        duration: 2000
+        duration: 1000
     },
     {
         type: 'success',
         background: 'black',
         color: 'white',
-        duration: 2000
+        duration: 1000
     }
 ]
 
