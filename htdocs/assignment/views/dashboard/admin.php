@@ -5,16 +5,6 @@
 </head>
 
 <style>
-  #form-center {
-    width: 50%;
-    margin: 0 auto;
-  }
-
-  #forgot {
-    text-decoration: none;
-    display: inline;
-  }
-
   .sidenav {
     height: 100%;
     min-height: 100%;
@@ -54,28 +44,8 @@
     border-bottom: 1px solid #ccc;
   }
 
-  .topnav .search-container {}
-
-  .topnav input[type=text] {
-    padding: 6px;
-    margin-top: 8px;
-    font-size: 17px;
-    border: none;
-  }
-
-  .topnav .search-container button {
-    float: right;
-    padding: 6px 10px;
-    margin-top: 8px;
-    margin-right: 16px;
-    background: #ddd;
-    font-size: 17px;
-    border: none;
-    cursor: pointer;
-  }
-
-  .topnav .search-container button:hover {
-    background: #ccc;
+  #search-form {
+    margin: 10px auto auto 0;
   }
 
   @media screen and (max-height: 450px) {
@@ -101,16 +71,18 @@
       <button class="tablinks" onclick="openTab(event, 'account')">Account Management</button>
     </div>
 
-    <!-- Account tab content -->
+    <!-- Course tab content -->
     <div id="course" class="tabcontent row" style="height: 500px">
       <div class="sidenav col-sm-3">
         <div class="topnav">
-          <div class="form-group">
-            <input type="text" class="form-control" id="search" placeholder="Search">
+          <div class="form-group" id="search-form">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" id="search" placeholder="Search">
+            </div>
           </div>
-            <?php 
-              include $basedir . '\..\courses\list.php';
-              
+          <?php 
+              include $basedir . '\..\courses\list.php'; 
             ?>
         </div>
       </div>
@@ -122,30 +94,25 @@
       </div>
     </div>
 
-    <!-- Course tab content -->
-    <div id="account" class="tabcontent">
+    <!-- Account tab content -->
+    <!-- <div id="account" class="tabcontent row" style="height: 500px">
       <div class="sidenav col-sm-3">
         <div class="topnav">
-          <div class="search-container">
-            <form action="search_user.php" method="GET">
-              <input type="text" placeholder="Search.." name="search">
-              <button type="submit">
-                <i class="fa fa-search"></i>
-              </button>
-            </form>
+          <div class="form-group">
+            <input type="text" class="form-control" id="search" placeholder="Search">
           </div>
+          <?php 
+              include $basedir . '\..\courses\list.php'; 
+            ?>
         </div>
       </div>
 
       <div class="main col-sm-9">
-        <h2>Sidebar</h2>
-        <p>This sidebar is of full height (100%) and always shown.</p>
-        <p>Scroll down the page to see the result.</p>
-        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et
-          eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae
-          nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+        <?php 
+          include $basedir . '\..\courses\detail.php';
+        ?>
       </div>
-    </div>
+    </div> -->
 
     <footer>
       <?php include_once "../share/footer.php" ?>

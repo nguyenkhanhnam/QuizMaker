@@ -1,13 +1,4 @@
-﻿<!DOCTYPE html>
-<meta charset="utf-8" />
-<html lang="en">
-
-<head>
-  <?php include_once "../share/head.php" ?>
-  <title>List Course</title>
-</head>
-
-<?php
+﻿<?php
     if(isset($_SESSION['token']) && $_SESSION['token']!=''){
       $token = $_SESSION['token'];
       if(isLoggedIn($token)){
@@ -21,26 +12,27 @@
       return header('location:/');
     }
 ?>
-  <style>
-    #course-table {
-      width: 100%;
-      margin: 0 auto;
-    }
 
-    tbody>tr {
-      cursor: pointer;
-    }
-  </style>
+<style>
+  #course-table {
+    width: 100%;
+    margin: 0 auto;
+  }
 
-  <table class="table table-striped" id="course-table">
-    <thead>
-      <tr>
-        <th>Code</th>
-        <th>Course Name</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
+  tbody>tr {
+    cursor: pointer;
+  }
+</style>
 
-  <script src="/js/courses/list.js"></script>
+<table class="table table-striped" id="course-table">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Course Name</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<script src="/js/courses/list.js"></script>
