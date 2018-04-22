@@ -9,7 +9,7 @@
       code: $('#code').val(),
       name: $('#name').val()
     }
-    $('form').submit(function () {
+    $('#edit-form').submit(function () {
       $.ajax({
         url: '/api/courses/',
         type: 'PUT',
@@ -21,13 +21,14 @@
               displayToast('error', 'Invalid data')
             }
             else if (res.status === 404) {
-              displayToastWithRedirect('error', 'Course not found', '/courses')
+              displayToast('error', 'Course not found')
             } 
             else if (res.status === 409) {
               displayToast('error', 'Course code existed')
             }
           } else {
-            displayToastWithRedirect('success', 'Course edited successfully', '/courses')
+            displayToast('success', 'Course edited successfully')
+            getCourses()
           }
         }
       })
