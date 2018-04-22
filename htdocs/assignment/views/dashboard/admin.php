@@ -110,7 +110,6 @@
           </div>
             <?php 
               include_once $basedir . '\..\courses\list.php';
-              // include_once "localhost/views/courses/list.php" 
             ?>
         </div>
       </div>

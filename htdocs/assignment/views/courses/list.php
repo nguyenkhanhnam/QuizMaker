@@ -21,31 +21,26 @@
       return header('location:/');
     }
 ?>
+  <style>
+    #course-table {
+      width: 100%;
+      margin: 0 auto;
+    }
 
-<script src="/js/courses/list.js"></script>
+    tbody>tr {
+      cursor: pointer;
+    }
+  </style>
 
-<style>
-  #course-table {
-    width: 100%;
-    margin: 0 auto;
-  }
+  <table class="table table-striped" id="course-table">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Course Name</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
 
-  tbody > tr {
-    cursor: pointer;
-  }
-</style>
-
-
-    
-
-    <table class="table table-striped" id="course-table">
-      <thead>
-        <tr>
-          <th>Code</th>
-          <th>Course Name</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-
+  <script src="/js/courses/list.js"></script>
