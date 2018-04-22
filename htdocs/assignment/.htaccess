@@ -21,3 +21,7 @@ RewriteRule ^questions/view views/questions/view.php [NC,L]
 RewriteRule ^questions/create views/questions/create.php [NC,L]
 RewriteRule ^questions/question views/questions/questions.php [NC,L]
 RewriteRule ^questions views/questions/list.php [NC,L]
+
+#RewriteRule ^users/edit/([A-Z]{2}[0-9]{4})/?$ views/courses/edit.php?id=$1 [NC,L]
+#RewriteRule ^courses/create views/courses/create.php [NC,L]
+RewriteRule ^users views/users/list.php [NC,L]
