@@ -2,33 +2,6 @@
     getCourses()
 })
 
-function removeCourse(code) {
-    console.log(code)
-    $.ajax({
-        url: '/api/courses/',
-        type: 'DELETE',
-        contentType: 'application/json',
-        data: {
-            code: code
-        },
-        complete: function (res) {
-            console.log(res)
-            if (res.status !== 200) {
-                if (res.status === 500) {
-                    var str = res.responseText.trim()
-                    var data = JSON.parse(str)
-                    displayToast('error', data.message)
-                }
-            } else {
-                var str = res.responseText.trim()
-                var data = JSON.parse(str)
-                displayToast('success', data.message)
-                getCourses()
-            }
-        }
-    })
-}
-
 var course_global = []
 
 function getCourses(){
@@ -45,6 +18,7 @@ function getCourses(){
                 var courses = JSON.parse(str)
                 course_global = courses
                 updateTable()
+                getCourse(course_global[0].code)
             }
         }
     })
@@ -56,7 +30,6 @@ function updateTable(){
         var row = '<tr>'
         var col = '<td onClick=getCourse(\"' + course.code + '\")>' + course.code + '</td>'
         col += '<td onClick=getCourse(\"' + course.code + '\")>' + course.name + '</td>'
-        //col += '<td onClick=removeCourse(\"' + course.code + '\")><i class="material-icons">delete</i>' + '</td>'
         row += col
         row += '</tr>'
         $('#course-table').append(row)
