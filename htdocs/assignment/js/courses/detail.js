@@ -2,24 +2,6 @@
   var path = window.location.href.split('/')
   var courseCode = path.pop() || path.pop()
 
-  $.ajax({
-    type: 'GET',
-    url: '/api/courses/' + courseCode,
-    dataType: 'json',
-    complete: function (res) {
-      if (res.status !== 200) {
-        return displayToastWithRedirect('error', 'No course found', '/courses')
-      } else {
-        console.log(res.responseText)
-        var str = res.responseText.trim()
-        var course = JSON.parse(str)
-        $('#code').val(course.code)
-        $('#name').val(course.name)
-      }
-    }
-  }
-  )
-
   $('#btn-save').on('click', function () {
     var $form = $('form')
     //var data = getFormData($form)
@@ -53,3 +35,23 @@
     })
   })
 })
+
+function getCourse(courseCode){
+  $.ajax({
+    type: 'GET',
+    url: '/api/courses/' + courseCode,
+    dataType: 'json',
+    complete: function (res) {
+      if (res.status !== 200) {
+        return displayToast('error', 'No course found')
+      } else {
+        console.log(res.responseText)
+        var str = res.responseText.trim()
+        var course = JSON.parse(str)
+        $('#code').val(course.code)
+        $('#name').val(course.name)
+      }
+    }
+  }
+  )
+}

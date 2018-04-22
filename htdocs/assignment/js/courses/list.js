@@ -2,10 +2,6 @@
     getCourses()
 })
 
-function getCourseDetail(code){
-    window.location.href = `/courses/detail/${code}`
-}
-
 function removeCourse(code) {
     console.log(code)
     $.ajax({
@@ -58,8 +54,8 @@ function updateTable(){
     $('#course-table').find("tr:gt(0)").remove();
     course_global.forEach(course => {
         var row = '<tr>'
-        var col = '<td onClick=getCourseDetail(\"' + course.code + '\")>' + course.code + '</td>'
-        col += '<td onClick=getCourseDetail(\"' + course.code + '\")>' + course.name + '</td>'
+        var col = '<td onClick=getCourse(\"' + course.code + '\")>' + course.code + '</td>'
+        col += '<td onClick=getCourse(\"' + course.code + '\")>' + course.name + '</td>'
         //col += '<td onClick=removeCourse(\"' + course.code + '\")><i class="material-icons">delete</i>' + '</td>'
         row += col
         row += '</tr>'
