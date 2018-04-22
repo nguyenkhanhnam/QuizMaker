@@ -7,7 +7,7 @@
   <title>Edit Course</title>
 </head>
 
-<script src="/js/courses/edit.js"></script>
+<script src="/js/courses/detail.js"></script>
 
 <style>
   #edit-form {

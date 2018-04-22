@@ -13,7 +13,7 @@ RewriteRule ^dashboard/admin/?$ views/dashboard/admin.php [NC,L]
 RewriteRule ^dashboard/user/?$ views/dashboard/user.php [NC,L]
 RewriteRule ^dashboard/staff/?$ views/dashboard/staff.php [NC,L]
 
-RewriteRule ^courses/edit/([A-Z]{2}[0-9]{4})/?$ views/courses/edit.php?id=$1 [NC,L]
+RewriteRule ^courses/detail/([A-Z]{2}[0-9]{4})/?$ views/courses/detail.php?id=$1 [NC,L]
 RewriteRule ^courses/create views/courses/create.php [NC,L]
 RewriteRule ^courses views/courses/list.php [NC,L]
 
@@ -22,6 +22,4 @@ RewriteRule ^questions/create views/questions/create.php [NC,L]
 RewriteRule ^questions/question views/questions/questions.php [NC,L]
 RewriteRule ^questions views/questions/list.php [NC,L]
 
-#RewriteRule ^users/edit/([A-Z]{2}[0-9]{4})/?$ views/courses/edit.php?id=$1 [NC,L]
-#RewriteRule ^courses/create views/courses/create.php [NC,L]
 RewriteRule ^users views/users/list.php [NC,L]

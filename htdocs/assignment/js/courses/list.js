@@ -3,7 +3,7 @@
 })
 
 function getCourseDetail(code){
-    window.location.href = `/courses/edit/${code}`
+    window.location.href = `/courses/detail/${code}`
 }
 
 function removeCourse(code) {
