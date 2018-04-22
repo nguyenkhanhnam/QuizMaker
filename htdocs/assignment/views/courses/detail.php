@@ -6,6 +6,7 @@
 
   #btn-save, #btn-delete {
     display: none;
+    width: 90px;
   }
 </style>
 
