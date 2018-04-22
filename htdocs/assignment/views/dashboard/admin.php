@@ -74,7 +74,7 @@
     <!-- Course tab content -->
     <div id="course" class="tabcontent row" style="height: 500px">
       <div class="sidenav col-sm-3">
-        <div class="topnav">
+        <div>
           <div class="form-group" id="search-form">
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>

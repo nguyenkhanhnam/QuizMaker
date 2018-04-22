@@ -12,7 +12,6 @@
       return header('location:/');
     }
 ?>
-
 <style>
   #course-table {
     width: 100%;
@@ -24,7 +23,7 @@
   }
 </style>
 
-<table class="table table-striped" id="course-table">
+<table class="table" id="course-table">
   <thead>
     <tr>
       <th>Code</th>

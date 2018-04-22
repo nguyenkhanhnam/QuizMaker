@@ -4,7 +4,7 @@
 
 var course_global = []
 
-function getCourses(){
+function getCourses() {
     $.ajax({
         type: 'GET',
         url: '/api/courses',
@@ -17,15 +17,25 @@ function getCourses(){
                 var str = res.responseText.trim()
                 var courses = JSON.parse(str)
                 course_global = courses
-                updateTable()
-                getCourse(course_global[0].code)
+                if (course_global.length > 0) {
+                    updateTable()
+                    getCourse(course_global[0].code)
+                }
+                else {
+                    $('#course-table').find("tr:gt(0)").remove()
+                    var row = '<tr>'
+                    var col = '<td colspan="2" class="text-center"><em>Empty</em></td>'
+                    row += col
+                    row += '</tr>'
+                    $('#course-table').append(row)
+                }
             }
         }
     })
 }
 
-function updateTable(){
-    $('#course-table').find("tr:gt(0)").remove();
+function updateTable() {
+    $('#course-table').find("tr:gt(0)").remove()
     course_global.forEach(course => {
         var row = '<tr>'
         var col = '<td onClick=getCourse(\"' + course.code + '\")>' + course.code + '</td>'
