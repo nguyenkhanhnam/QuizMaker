@@ -18,14 +18,6 @@
                             .text(course.name + ' (' + course.code + ')'))
                 })
                 $('#courses').select2();
-                // for (var courseIdx = 0; courseIdx < courses.length; courseIdx++) {
-                //     var row = '<tr>'
-                //     var col = '<td>' + courses[courseIdx].code + '</td>'
-                //     col += '<td>' + courses[courseIdx].name + '</td>'
-                //     row += col
-                //     row += '</tr>'
-                //     $('#course-table').append(row)
-                // }
             }
         }
     }

@@ -26,7 +26,7 @@
 
 <style>
   #course-table {
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
   }
 
@@ -35,26 +35,17 @@
   }
 </style>
 
-<body>
-  <div class="container">
-    <header>
-      <?php include_once "../share/header.php" ?>
-    </header>
+
+    
 
     <table class="table table-striped" id="course-table">
       <thead>
         <tr>
-          <th>Course Code</th>
+          <th>Code</th>
           <th>Course Name</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
       </tbody>
     </table>
 
-    <footer>
-      <?php include_once "../share/footer.php" ?>
-    </footer>
-  </div>
-</body>

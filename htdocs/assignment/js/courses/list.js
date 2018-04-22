@@ -33,6 +33,8 @@ function removeCourse(code) {
     })
 }
 
+var course_global = []
+
 function getCourses(){
     $.ajax({
         type: 'GET',
@@ -43,21 +45,24 @@ function getCourses(){
             if (res.status !== 200) {
                 console.log(res)
             } else {
-                $('#course-table').find("tr:gt(0)").remove();
                 var str = res.responseText.trim()
                 var courses = JSON.parse(str)
-                console.log(courses)
-                courses.forEach(course => {
-                    var row = '<tr>'
-                    var col = '<td onClick=getCourseDetail(\"' + course.code + '\")>' + course.code + '</td>'
-                    col += '<td onClick=getCourseDetail(\"' + course.code + '\")>' + course.name + '</td>'
-                    col += '<td onClick=removeCourse(\"' + course.code + '\")><i class="material-icons">delete</i>' + '</td>'
-                    row += col
-                    row += '</tr>'
-                    $('#course-table').append(row)
-                })
+                course_global = courses
+                updateTable()
             }
         }
-    }
-    )
+    })
+}
+
+function updateTable(){
+    $('#course-table').find("tr:gt(0)").remove();
+    course_global.forEach(course => {
+        var row = '<tr>'
+        var col = '<td onClick=getCourseDetail(\"' + course.code + '\")>' + course.code + '</td>'
+        col += '<td onClick=getCourseDetail(\"' + course.code + '\")>' + course.name + '</td>'
+        //col += '<td onClick=removeCourse(\"' + course.code + '\")><i class="material-icons">delete</i>' + '</td>'
+        row += col
+        row += '</tr>'
+        $('#course-table').append(row)
+    })
 }
