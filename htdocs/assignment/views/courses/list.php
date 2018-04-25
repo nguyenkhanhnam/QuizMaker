@@ -9,7 +9,8 @@
       }
     }
     else {
-      return header('location:/');
+      header('location:/');
+      return;
     }
 ?>
 <style>

@@ -24,7 +24,7 @@ function getCourses() {
                 else {
                     $('#course-table').find("tr:gt(0)").remove()
                     var row = '<tr>'
-                    var col = '<td colspan="2" class="text-center"><em>Empty</em></td>'
+                    var col = '<td colspan="2" class="text-center"><em style="color:grey!important">No available course</em></td>'
                     row += col
                     row += '</tr>'
                     $('#course-table').append(row)

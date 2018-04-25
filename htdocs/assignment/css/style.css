@@ -3,6 +3,14 @@
   font-family: Montserrat, sans-serif;
 }
 
+.btn-primary {
+  background: green !important;
+}
+
+.btn-primary:hover {
+  background: green !important;
+}
+
 /* The snackbar - position it at the bottom and in the middle of the screen */
 #snackbar {
   visibility: hidden; /* Hidden by default. Visible on click */
