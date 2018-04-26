@@ -62,9 +62,8 @@
 					<select id="courses" name="code">
 					</select>
 				</div>
-=======
+
 			<form class="form-horizontal" method="POST" action="/api/questions.php">
->>>>>>> 762ec091bd92c17e099c90a937868f173d24a9a3
 				<div class="form-group">
 					<label for="question">Question:</label>
 					<input type="text" class="form-control" placeholder="Question" name="question" required>
