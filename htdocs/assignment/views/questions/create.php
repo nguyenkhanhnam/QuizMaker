@@ -54,7 +54,6 @@
 		</div>
 		<div id="demo" class="collapse">
 			<p style="font-size: 80px">Create Question</p>
-<<<<<<< HEAD
 			<form id="create-form" class="form-horizontal">
 				<div class="form-group">
 					<label for="question">Course:</label>
@@ -62,8 +61,11 @@
 					<select id="courses" name="code">
 					</select>
 				</div>
+<<<<<<< HEAD
 
 			<form class="form-horizontal" method="POST" action="/api/questions.php">
+=======
+>>>>>>> dcaedf8a649685166af0f133df16bceacf4bf778
 				<div class="form-group">
 					<label for="question">Question:</label>
 					<input type="text" class="form-control" placeholder="Question" name="question" required>
@@ -91,13 +93,13 @@
 					<label for="difficult">Difficulty:</label>
 					<br>
 					<label class="radio-inline">
-						<input type="radio" value="0" name="difficult" checked>Easy (0)
+						<input type="radio" value="0" name="difficult" checked>Easy
 					</label>
 					<label class="radio-inline">
-						<input type="radio" value="1" name="difficult">Normal (1)
+						<input type="radio" value="1" name="difficult">Normal
 					</label>
 					<label class="radio-inline">
-						<input type="radio" value="2" name="difficult">Hard (2)
+						<input type="radio" value="2" name="difficult">Hard
 					</label>
 				</div>
 				<div class="text-right">

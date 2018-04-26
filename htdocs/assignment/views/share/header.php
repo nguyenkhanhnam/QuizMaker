@@ -88,11 +88,13 @@
     font-weight: bolder;
     text-align: right;
   }
+
+  #login, #logout {
+    display: none;
+  }
 </style>
 
 <div id="header">
-
-
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -101,18 +103,18 @@
           aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
         </button>
-        <a class="navbar-brand" href="#">QUIZ MAKER</a>
+        <a class="navbar-brand" href="/">QUIZ MAKER</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li class="active">
+          <li class="active" id="login">
             <a href="/"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i> Log in
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li>
+          <li id="logout">
             <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Log out</a>
           </li>
         </ul>
@@ -122,3 +124,27 @@
     <!-- /.container-fluid -->
   </nav>
 </div>
+
+<?php
+   if(isset($_SESSION['token']) && $_SESSION['token']!=''){
+    $token = $_SESSION['token'];
+    if(isLoggedIn($token)){
+      echo "<script>
+        $('#logout').show()
+        $('#login').hide()  
+      </script>";
+    }
+    else {
+      echo "<script>
+        $('#logout').hide()
+        $('#login').show()()  
+      </script>";
+    }
+  }
+  else {
+    echo "<script>
+    $('#logout').hide()
+    $('#login').show()()  
+  </script>";
+  }
+?>

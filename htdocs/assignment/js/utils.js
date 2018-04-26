@@ -3,13 +3,13 @@
         type: 'error',
         background: 'red',
         color: 'white',
-        duration: 2000
+        duration: 1000
     },
     {
         type: 'success',
         background: 'black',
         color: 'white',
-        duration: 2000
+        duration: 1000
     }
 ]
 
@@ -66,12 +66,29 @@ function displayToastWithRedirect(type, text, redirect) {
     }, toast.duration);
 };
 
-function getFormData ($form) {
+function getFormData($form) {
     var unindexedArray = $form.serializeArray()
     var indexedArray = {}
     $.map(unindexedArray, function (n, i) {
-      indexedArray[n['name']] = n['value'].trim()
+        indexedArray[n['name']] = n['value'].trim()
     })
     return indexedArray
-  }
+}
 
+function getStringDifficult(difficult) {
+    if (difficult == 0)
+        return 'Easy'
+    if (difficult == 1)
+        return 'Medium'
+    if (difficult == 2)
+        return 'Hard'
+}
+
+function getStringRole(role) {
+    if (role == 0)
+        return 'Admin'
+    if (role == 1)
+        return 'User'
+    if (role == 2)
+        return 'Staff'
+}

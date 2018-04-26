@@ -4,7 +4,7 @@
 
 <head>
   <?php include_once "../share/head.php" ?>
-  <title>List Course</title>
+  <title>List Question</title>
 </head>
 
 <?php
@@ -21,8 +21,6 @@
       return header('location:/');
     }
 ?>
-
-<script src="/js/courses/list.js"></script>
 
 <style>
   #course-table {
@@ -41,11 +39,14 @@
       <?php include_once "../share/header.php" ?>
     </header>
 
-    <table class="table table-striped" id="course-table">
+    <table class="table table-striped" id="question-table">
       <thead>
         <tr>
           <th>Course Code</th>
           <th>Course Name</th>
+          <th>Question</th>
+          <th>Difficult</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -57,3 +58,5 @@
     </footer>
   </div>
 </body>
+
+<script src="/js/questions/list.js"></script>

@@ -15,17 +15,9 @@
                     $('#courses')
                         .append($("<option></option>")
                             .attr("value", course.code)
-                            .text(course.name))
+                            .text(course.name + ' (' + course.code + ')'))
                 })
                 $('#courses').select2();
-                // for (var courseIdx = 0; courseIdx < courses.length; courseIdx++) {
-                //     var row = '<tr>'
-                //     var col = '<td>' + courses[courseIdx].code + '</td>'
-                //     col += '<td>' + courses[courseIdx].name + '</td>'
-                //     row += col
-                //     row += '</tr>'
-                //     $('#course-table').append(row)
-                // }
             }
         }
     }
@@ -62,15 +54,11 @@
                     console.log(xhr.status);
                     console.log(data);
                     if (xhr.status == 200) {
-                        return displayToast('success', 'Course added successfully');
+                        return displayToastWithRedirect('success', 'Question added successfully', '/questions');
                     }
                 },
                 error: function (xhr, textStatus, errorThrown) {
-                    console.log(xhr.status);
-
-                    if (xhr.status == 409) {
-                        return displayToast('error', 'Course code existed!');
-                    }
+                    return displayToast('error', '');
                 }
             }
             )

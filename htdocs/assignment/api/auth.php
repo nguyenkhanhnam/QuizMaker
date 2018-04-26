@@ -25,8 +25,7 @@
                 $payload = array('username' => $row['username'], 'role' => $row['role']);
                 $token = JWT::generateJWT($payload);
                 $_SESSION['token'] = $token;
-                
-                $role = $row['role'];
+                $_SESSION['role'] = $row['role'];
                 //Redirecting User Based on Role
                 /*switch($role){
                     case 0:
