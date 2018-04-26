@@ -15,11 +15,11 @@
   <form>
     <div class="form-group">
       <label for="code">Course code:</label>
-      <input type="text" class="form-control" id="code" placeholder="Course code" name="code" disabled required>
+      <input type="text" class="form-control" id="code-detail" placeholder="Course code" name="code" disabled required>
     </div>
     <div class="form-group">
       <label for="name">Course name:</label>
-      <input type="text" class="form-control" id="name" placeholder="Course name" name="name" required>
+      <input type="text" class="form-control" id="name-detail" placeholder="Course name" name="name" required>
     </div>
     <div class="pull-left">
         <button type="button" id="btn-delete" class="btn btn-danger">

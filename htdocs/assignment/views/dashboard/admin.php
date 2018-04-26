@@ -73,11 +73,6 @@
         font-size: 18px;
       }
     }
-
-    #add-course{
-      width: 100%;
-      color: white;
-    }
   </style>
 
   <body>
@@ -97,7 +92,7 @@
       <div id="course" class="tabcontent row" style="height: 500px">
         <div class="sidenav col-sm-3">
           <div>
-            <button class="btn btn-primary my-btn" id="add-course">
+            <button class="btn btn-primary my-btn" style="width:100%;" onclick="openSection('addCourse')">
               Add Course
             </button>
           </div>
@@ -117,12 +112,16 @@
         </div>
 
         <div class="main col-sm-9">
-          <?php 
-            include $basedir . '\..\courses\create.php';
-          ?>
-          <?php 
-            // include $basedir . '\..\courses\detail.php';
-          ?>
+          <div class="hide" id="add-course">
+            <?php
+              include $basedir . '\..\courses\create.php';
+            ?>
+          </div>
+          <div id="detail-course">
+            <?php 
+              include $basedir . '\..\courses\detail.php';
+            ?>
+          </div>
         </div>
       </div>
 
@@ -165,6 +164,17 @@
       }
       document.getElementById(tabName).style.display = "block";
       evt.currentTarget.className += " active";
+    }
+
+    function openSection(sectionName){
+      if (sectionName === 'addCourse'){
+        $('#add-course').removeClass('hide')
+        $('#detail-course').addClass('hide')
+      }
+      else if (sectionName === 'editCourse'){
+        $('#add-course').addClass('hide')
+        $('#detail-course').removeClass('hide')
+      }
     }
 
     $(document).ready(function () {

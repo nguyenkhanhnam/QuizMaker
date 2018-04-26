@@ -14,9 +14,10 @@ function getCourse(courseCode){
       } else {
         var str = res.responseText.trim()
         var course = JSON.parse(str)
-        $('#code').val(course.code)
-        $('#name').val(course.name)
+        $('#code-detail').val(course.code)
+        $('#name-detail').val(course.name)
         showButton()
+        openSection('editCourse')
       }
     }
   })
@@ -29,7 +30,7 @@ function removeCourse() {
       type: 'DELETE',
       contentType: 'application/json',
       data: {
-          code: $('#code').val().trim()
+          code: $('#code-detail').val().trim()
       },
       complete: function (res) {
           console.log(res)
@@ -52,8 +53,8 @@ function removeCourse() {
 function editCourse(){
   var $form = $('edit-form')
   var data = {
-    code: $('#code').val(),
-    name: $('#name').val()
+    code: $('#code-detail').val(),
+    name: $('#name-detail').val()
   }
   $('#edit-form').submit(function () {
     $.ajax({
