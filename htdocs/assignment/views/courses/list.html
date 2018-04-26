@@ -1,19 +1,4 @@
-﻿<?php
-    if(isset($_SESSION['token']) && $_SESSION['token']!=''){
-      $token = $_SESSION['token'];
-      if(isLoggedIn($token)){
-      
-      }
-      else {
-        return header('location:/');
-      }
-    }
-    else {
-      header('location:/');
-      return;
-    }
-?>
-<style>
+﻿<style>
   #course-table {
     width: 100%;
     margin: 0 auto;

@@ -106,7 +106,7 @@
               </div>
             </div>
             <?php 
-              include $basedir . '\..\courses\list.php'; 
+              include $basedir . '\..\courses\list.html'; 
             ?>
           </div>
         </div>
@@ -114,12 +114,12 @@
         <div class="main col-sm-9">
           <div class="hide" id="add-course">
             <?php
-              include $basedir . '\..\courses\create.php';
+              include $basedir . '\..\courses\create.html';
             ?>
           </div>
           <div id="detail-course">
             <?php 
-              include $basedir . '\..\courses\detail.php';
+              include $basedir . '\..\courses\detail.html';
             ?>
           </div>
         </div>
