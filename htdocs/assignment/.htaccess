@@ -20,10 +20,8 @@ RewriteRule ^courses/create views/courses/create.php [NC,L]
 RewriteRule ^questions/view views/questions/view.php [NC,L]
 RewriteRule ^questions/create views/questions/create.php [NC,L]
 RewriteRule ^questions/question views/questions/questions.php [NC,L]
-<<<<<<< HEAD
 RewriteRule ^questions/edit views/questions/edit.php [NC,L]
-=======
 RewriteRule ^questions views/questions/list.php [NC,L]
 
 RewriteRule ^users views/users/list.php [NC,L]
->>>>>>> dcaedf8a649685166af0f133df16bceacf4bf778
+
