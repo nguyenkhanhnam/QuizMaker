@@ -3,17 +3,6 @@
 	<title>Create Question</title>
 </head>
 <style>
-	/* #create-form {
-		width: 50%;
-		margin: 0 auto;
-	} */
-
-	.collapse {
-		margin-right: 20%;
-		margin-left: 20%;
-		margin-top: 10px;
-	}
-
 	.select2  {
 		width: 100% !important;
 	}
@@ -24,7 +13,7 @@
 		<header>
 			<?php include_once "../share/header.php" ?>
 		</header>
-		<div class="button col-sm-10">
+		<!-- <div class="button col-sm-10">
 			<button type="button" class="btn btn-primary btm-md" data-toggle="collapse" data-target="#demo">Create Question </button>
 			<button type="button" class="btn btn-primary btm-md" data-toggle="collapse" data-target="#demo1">View </button>
 		</div>
@@ -51,9 +40,9 @@
 					</button>
 				</a>
 			</div>
-		</div>
-		<div id="demo" class="collapse">
-			<p style="font-size: 80px">Create Question</p>
+		</div> -->
+		<h1 class="text-center">Create Question</h1>
+		<div>
 			<form id="create-form" class="form-horizontal">
 				<div class="form-group">
 					<label for="question">Course:</label>
@@ -85,7 +74,7 @@
 					<input type="text" class="form-control" placeholder="Answer" name="answer" required>
 				</div>
 				<div class="form-group">
-					<label for="difficult">Difficulty:</label>
+					<label for="difficult">Difficult:</label>
 					<br>
 					<label class="radio-inline">
 						<input type="radio" value="0" name="difficult" checked>Easy
@@ -98,7 +87,7 @@
 					</label>
 				</div>
 				<div class="text-right">
-					<button type="button" class="btn btn-primary" id="btn-add">Upload</button>
+					<button type="button" class="btn btn-primary" id="btn-add">Add</button>
 				</div>
 			</form>
 		</div>

@@ -24,27 +24,24 @@
     );
     $('#btn-add').click(function () {
         var questionObj = getFormData($('#create-form'))
-
-        // if (!courseCode) {
-        //     return displayToast('error', 'Course code is required');
-        // }
-
-        // if (courseCode.length != 6) {
-        //     return displayToast('error', 'Course code is invalid. The length must equal 6.');
-        // }
-
-        // if (!courseCode.match(/^([A-Z]{2})([0-9]{4})$/)) {
-        //     return displayToast('error', 'Course code is invalid. The format must similar to CO1009');
-        // }
-
-        // if (!courseName || courseName.trim().length == 0) {
-        //     return displayToast('error', 'Course name is required');
-        // }
-
-        // if (courseName.length > 50) {
-        //     return displayToast('error', 'Course name is invalid. The length can not exceed 50.');
-        // }
-
+        if (!questionObj.code) {
+            return displayToast('error', 'Course code is required');
+        }
+        if (!questionObj.code.match(/^([A-Z]{2})([0-9]{4})$/)) {
+            return displayToast('error', 'Course code is invalid. The format must similar to CO1009');
+        }
+        if (!questionObj.question) {
+            return displayToast('error', 'Question is required');
+        }
+        if (!questionObj.option1 || !questionObj.option2 || !questionObj.option3 || !questionObj.option4) {
+            return displayToast('error', 'Options of question is required');
+        }
+        if (!questionObj.answer) {
+            return displayToast('error', 'Answer of question is required');
+        }
+        if (!questionObj.difficult) {
+            return displayToast('error', 'Difficult of question is required');
+        }
         $.ajax
             ({
                 type: 'POST',
