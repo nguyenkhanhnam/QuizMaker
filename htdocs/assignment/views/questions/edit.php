@@ -17,7 +17,7 @@
     if(isset($_GET['edit'])){
         $id=$_GET['edit'];
         $edit_state=true;
-        $rec= mysqli_query($db,"SELECT * FROM info WHERE id= $id");
+        $rec= mysqli_query($db,"SELECT * FROM questions WHERE id= $id");
         $record = mysqli_fetch_array($rec);
         $id=$record['id'];
         $question=$record['question'];
@@ -27,7 +27,7 @@
         $option4=$record['option4'];
         $answer=$record['answer'];
         $difficult=$record['difficult'];
-    } 
+    }
 ?>
 <header>
 	<?php include_once "../share/header.php" ?>

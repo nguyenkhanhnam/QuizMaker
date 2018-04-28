@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	// initialize variables
 	$id = 0;
 	$question   = "" ;
