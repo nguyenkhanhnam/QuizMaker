@@ -8,7 +8,7 @@
 	$option3    = "" ;
 	$option4    = "" ;
 	$answer     = "" ;
-	$difficulty = 0 ;
+	$difficult = 0 ;
 	$edit_state=false;
 
 	//connect to database
@@ -23,9 +23,9 @@
 		$option3  = $_POST['option3'];
 		$option4  = $_POST['option4'];
 		$answer   = $_POST['answer'];
-		$difficulty = $_POST['difficulty'];
+		$difficult = $_POST['difficult'];
 
-		$query = "INSERT INTO questions(id,question,option1,option2,option3,option4,answer,difficulty)";
+		$query = "INSERT INTO questions(id,question,option1,option2,option3,option4,answer,difficult)";
 		mysqli_query($db,$query);
 		header('location:edit.php');
 	}
@@ -40,7 +40,7 @@
 		$option3=mysql_real_escape_string($_POST['option3']);
 		$option4=mysql_real_escape_string($_POST['option4']);
 		$answer=mysql_real_escape_string($_POST['answer']);
-		$difficulty=mysql_real_escape_string($_POST['difficulty']);
+		$difficult=mysql_real_escape_string($_POST['difficult']);
 
 		mysqli_query($db,"UPDATE info SET id='$id',question='$question',option1='$option1',option2='$option2',option3='$option3',option4='$option4',answer='$answer' WHERE id=$id");
 		header('location:edit.php');

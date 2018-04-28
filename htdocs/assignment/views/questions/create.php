@@ -21,13 +21,13 @@
 			<br>
 			<br>
 			<div class="alert alert-info">
-				<strong>Please fill the Code Course and select the Difficulty.</strong>
+				<strong>Please fill the Code Course and select the Difficult.</strong>
 			</div>
 			<label for="codename"> Code Course: </label>
 			<input type="text" class="form-control" placeholder="Input the Code Course" name="codename">
 			<br>
-			<label for="difficulty">Difficulty: </label>
-			<select class="form-group" id="difficulty">
+			<label for="difficult">Difficult: </label>
+			<select class="form-group" id="difficult">
 				<option value="0">0</option>
 				<option value="1">1</option>
 				<option value="2">2</option>

@@ -26,7 +26,7 @@
         $option3=$record['option3'];
         $option4=$record['option4'];
         $answer=$record['answer'];
-        $difficulty=$record['difficulty'];
+        $difficult=$record['difficult'];
     } 
 ?>
 <header>
@@ -71,7 +71,7 @@
           <input type="text" class="form-control" name="answer" required value="<?php echo $answer;?>">
         </div>
         <div class="form-group">
-          <label for="difficult">Difficulty:</label>
+          <label for="difficult">Difficult:</label>
           <br>
           <label class="radio-inline">
             <input type="radio" value="0" name="difficult" checked>Easy (0)

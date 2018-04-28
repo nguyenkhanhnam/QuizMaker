@@ -11,12 +11,12 @@
 // $option3=$_POST['option3'];
 // $option4=$_POST['option4'];
 // $answer=$_POST['answer'];
-// $difficulty=$_POST['difficult'];
+// $difficult=$_POST['difficult'];
 // if ($conn->connect_error) {
 //     die("Connection failed: " . $conn->connect_error);
 // }
-// $sql = "INSERT INTO `questions`(question,option1,option2,option3,option4,answer,difficulty)
-// VALUES('$question','$option1','$option2','$option3','$option4','$answer','$difficulty')";
+// $sql = "INSERT INTO `questions`(question,option1,option2,option3,option4,answer,difficult)
+// VALUES('$question','$option1','$option2','$option3','$option4','$answer','$difficult')";
 // if ($conn->query($sql) === TRUE) {
 //    echo "New record created successfully";
 // } else {
