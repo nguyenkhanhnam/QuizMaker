@@ -1,4 +1,7 @@
- 
+<head>
+	<?php include_once "../share/head.php" ?>
+	<title>View Question</title>
+</head> 
 <?php 
   include('db.php');
   if(isset($_GET['edit'])){
@@ -16,32 +19,23 @@
         $difficult=$record['difficult'];
     } 
 ?>
-<head>
-	<?php include_once "../share/head.php" ?>
-	<title>View Question</title>
-</head>
 <header>
 	<?php include_once "../share/header.php" ?>
 </header>
 <body>
   <div class="container">
-    <h3>Course Name :</h3>
-    <label for="codename"> Code Course: </label>
-    <div>
-      <input type="text" class="form-group" placeholder="Input the Code Course" name="codename">
-        <a href="view">
-          <button class="btn btn-default" type="submit">
-          <i class="glyphicon glyphicon-search"></i>
-          </button>
-        </a>
-    </div>
-      <br>
+    <div class="form-group">
+					<label for="question">Course:</label>
+					<br>
+					<select id="courses" name="code">
+					</select>
+		</div>
     <label for="difficult">Difficult: </label>
       <select class="form-group" id="difficult">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option>All</option>
+        <option value="0">Easy</option>
+        <option value="1">Medium</option>
+        <option value="2">Hard</option>
+        <option value="3" selected>All</option>
       </select>
       <table class="table table-bordered">
         <thead>
@@ -71,3 +65,8 @@
 		<?php include_once "../share/footer.php" ?>
 </footer>
 </html>
+
+<script src="/js/questions/create.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
