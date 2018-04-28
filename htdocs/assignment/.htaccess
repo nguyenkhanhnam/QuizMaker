@@ -17,7 +17,7 @@ RewriteRule ^dashboard/staff/?$ views/dashboard/staff.php [NC,L]
 RewriteRule ^courses/create views/courses/create.php [NC,L]
 #RewriteRule ^courses views/courses/list.php [NC,L]
 
-RewriteRule ^questions/view views/questions/view.php [NC,L]
+RewriteRule ^questions/view views/questions/detail.php [NC,L]
 RewriteRule ^questions/create views/questions/create.php [NC,L]
 RewriteRule ^questions/question views/questions/questions.php [NC,L]
 RewriteRule ^questions/edit views/questions/edit.php [NC,L]
