@@ -40,19 +40,19 @@
 					<div class="row">
 						<div class="col-sm-3">
 							<label for="easy">Easy:</label>
-							<input class="form-control" id="easy" type="number" name="easy_num">
+							<input class="form-control" id="easy" type="number" name="easy_num" min="0" value="0">
 						</div>
 						<div class="col-sm-3">
 							<label for="medium">Medium:</label>
-							<input class="form-control" id="medium" type="number" name="medium_num">
+							<input class="form-control" id="medium" type="number" name="medium_num" min="0" value="0">
 						</div>
 						<div class="col-sm-3">
 							<label for="hard">Hard:</label>
-							<input class="form-control" id="hard" type="number" name="hard_num">
+							<input class="form-control" id="hard" type="number" name="hard_num" min="0" value="0">
 						</div>
 						<div class="col-sm-3">
 							<label>Total:</label>
-							<input class="form-control" id="total" type="number" disabled>
+							<input class="form-control" id="total" type="number" value="0" disabled>
 						</div>
 					</div>
 				</div>
@@ -67,7 +67,7 @@
 						</div>
 						<div class="col-sm-6">
 							<label for="patch-num">Number of patch:</label>
-							<input type="number" class="form-control" name="patch_num">
+							<input type="number" class="form-control" name="patch_num" value="1" min="1">
 						</div>
 					</div>
 				</div>
