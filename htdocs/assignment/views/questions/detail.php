@@ -2,6 +2,23 @@
   <?php include_once "../share/head.php" ?>
   <title>Edit Question</title>
 </head>
+
+<?php
+    if(isset($_SESSION['token']) && $_SESSION['token']!=''){
+      $token = $_SESSION['token'];
+      if(isUserLoggedIn($token)){
+      
+      }
+      else {
+        return header('location:/');
+      }
+    }
+    else {
+      header('location:/');
+      return;
+    }
+?>
+
 <header>
   <?php include_once "../share/header.php" ?>
 </header>

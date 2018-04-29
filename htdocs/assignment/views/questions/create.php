@@ -2,6 +2,23 @@
 	<?php include_once "../share/head.php" ?>
 	<title>Create Question</title>
 </head>
+
+<?php
+    if(isset($_SESSION['token']) && $_SESSION['token']!=''){
+      $token = $_SESSION['token'];
+      if(isUserLoggedIn($token)){
+      
+      }
+      else {
+        return header('location:/');
+      }
+    }
+    else {
+      header('location:/');
+      return;
+    }
+?>
+
 <style>
 	.select2  {
 		width: 100% !important;
@@ -13,34 +30,6 @@
 		<header>
 			<?php include_once "../share/header.php" ?>
 		</header>
-		<!-- <div class="button col-sm-10">
-			<button type="button" class="btn btn-primary btm-md" data-toggle="collapse" data-target="#demo">Create Question </button>
-			<button type="button" class="btn btn-primary btm-md" data-toggle="collapse" data-target="#demo1">View </button>
-		</div>
-		<div id="demo1" class="collapse">
-			<br>
-			<br>
-			<div class="alert alert-info">
-				<strong>Please fill the Code Course and select the Difficult.</strong>
-			</div>
-			<label for="codename"> Code Course: </label>
-			<input type="text" class="form-control" placeholder="Input the Code Course" name="codename">
-			<br>
-			<label for="difficult">Difficult: </label>
-			<select class="form-group" id="difficult">
-				<option value="0">0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option>All</option>
-			</select>
-			<div>
-				<a href="view">
-					<button class="btn btn-default" type="submit">
-						<i class="glyphicon glyphicon-search"></i>
-					</button>
-				</a>
-			</div>
-		</div> -->
 		<h1 class="text-center">Create Question</h1>
 		<div>
 			<form id="create-form" class="form-horizontal">
