@@ -28,7 +28,7 @@
 })
 
 function getQuestionDetail(id){
-    window.location.href = `/questions/${id}`
+    window.location.href = `/questions/detail/${id}`
 }
 
 function removeQuestion(id) {

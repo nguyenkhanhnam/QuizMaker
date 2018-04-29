@@ -64,8 +64,11 @@
                 $result = mysqli_query($connection, $sql);
                 if(mysqli_num_rows($result) == 1){
                     while($row = mysqli_fetch_array($result)){
-                        $data = array('id' => $row['id'], 'question' => $row['question']
-                        , 'code' => $row['code'], 'name' => $row['name'], 'difficult' => $row['difficult']);
+                        $data = array('id' => $row['id'], 'question' => $row['question'],
+                        'option1' => $row['option1'], 'option2' => $row['option2'],
+                        'option3' => $row['option3'], 'option4' => $row['option4'],
+                        'answer' => $row['answer'],
+                        'code' => $row['code'], 'name' => $row['name'], 'difficult' => $row['difficult']);
                     }
                     echo json_encode($data);
                 } else {

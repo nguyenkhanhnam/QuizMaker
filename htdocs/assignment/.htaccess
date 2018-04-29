@@ -6,7 +6,7 @@ RewriteRule ^logout views/logout.php [NC,L]
 RewriteRule ^api/courses/([A-Z]{2}[0-9]{4})/?$ api/courses.php?code=$1 [NC,L]
 RewriteRule ^api/courses/?$ api/courses.php [NC,L]
 
-RewriteRule ^api/questions/([0-9]+)/?$ api/questions.php?code=$1 [NC,L]
+#RewriteRule ^api/questions/([0-9]+)/?$ api/questions.php?code=$1 [NC,L]
 RewriteRule ^api/questions/?$ api/questions.php [NC,L]
 
 RewriteRule ^dashboard/admin/?$ views/dashboard/admin.php [NC,L]
@@ -21,7 +21,8 @@ RewriteRule ^questions/view views/questions/view.php [NC,L]
 RewriteRule ^questions/create views/questions/create.php [NC,L]
 RewriteRule ^questions/question views/questions/questions.php [NC,L]
 RewriteRule ^questions/edit views/questions/edit.php [NC,L]
-RewriteRule ^questions views/questions/list.php [NC,L]
+RewriteRule ^questions/detail/([0-9]+)/?$ views/questions/detail.php?id=$1 [NC,L]
 
+RewriteRule ^questions views/questions/list.php [NC,L]
 RewriteRule ^users views/users/list.php [NC,L]
 
