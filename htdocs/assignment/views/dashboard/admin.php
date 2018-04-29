@@ -92,7 +92,7 @@
       <div id="course" class="tabcontent row" style="height: 500px">
         <div class="sidenav col-sm-3">
           <div>
-            <button class="btn btn-primary my-btn" style="width:100%;" onclick="openSection('addCourse')">
+            <button class="btn btn-primary my-btn" style="width:100%; margin-top: 5px" onclick="openSection('addCourse')">
               Add Course
             </button>
           </div>

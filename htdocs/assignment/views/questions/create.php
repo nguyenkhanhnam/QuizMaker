@@ -102,7 +102,6 @@
 				</div>
 			</form>
 		</div>
-	</div>
 	<footer>
 		<?php include_once "../share/footer.php" ?>
 	</footer>
