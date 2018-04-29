@@ -17,7 +17,7 @@
     if(isset($_GET['edit'])){
         $id=$_GET['edit'];
         $edit_state=true;
-        $rec= mysqli_query($db,"SELECT * FROM info WHERE id= $id");
+        $rec= mysqli_query($db,"SELECT * FROM questions WHERE id= $id");
         $record = mysqli_fetch_array($rec);
         $id=$record['id'];
         $question=$record['question'];
@@ -26,8 +26,8 @@
         $option3=$record['option3'];
         $option4=$record['option4'];
         $answer=$record['answer'];
-        $difficulty=$record['difficulty'];
-    } 
+        $difficult=$record['difficult'];
+    }
 ?>
 <header>
 	<?php include_once "../share/header.php" ?>
@@ -71,7 +71,7 @@
           <input type="text" class="form-control" name="answer" required value="<?php echo $answer;?>">
         </div>
         <div class="form-group">
-          <label for="difficult">Difficulty:</label>
+          <label for="difficult">Difficult:</label>
           <br>
           <label class="radio-inline">
             <input type="radio" value="0" name="difficult" checked>Easy (0)

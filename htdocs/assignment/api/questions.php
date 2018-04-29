@@ -25,11 +25,9 @@
 
     switch($method){
         case 'GET': {
-            if(empty($_GET["id"])){
-               // $sql =  "SELECT * FROM `questions`";
+            if(empty($_GET["id"]) && empty($_GET["code"])){
                 $sql = "SELECT questions.*, courses.name FROM `questions`,`courses` WHERE questions.code=courses.code ORDER BY questions.code";
                 $result = mysqli_query($connection, $sql);
-                // header('Content-Type: text/html; charset=utf-8');
                 if ($result && $result->num_rows > 0){
                     while($row = mysqli_fetch_array($result)){
                         array_push($data, array('id' => $row['id'], 'question' => $row['question']
@@ -37,37 +35,47 @@
                     }
                     echo json_encode($data);
                 } else {
-                    echo "0 results";
+                    echo json_encode([]);
                 }
                 break;
-                // if ($result && $result->num_rows > 0){
-                //     // echo '<table class="table">';
-                //     // echo '<thead><tr> <th>ID</th> <th>Name</th><th>Number</th>  <th>Country</th>  <th>Club Name</th></tr> </thead>';
-                //     //   // output data of each row
-                //     //   echo "<tbody>";
-                //     //   while($row = $result->fetch_assoc()) {
-                //     //       echo "<tr><td>" . $row["ID"]. "</td><td>" . $row["Name"]. "</td><td>" . $row["Number"]. "</td><td>" . $row["Country"]. "</td><td>" . $row["ClubName"]. "</td></tr>";
-                //     //   } 
-                //     //   echo "</tbody> </table>";
-                // } else {
-                //     echo "0 results";
-                // }
             }
-            // else {
-            //     $courseCode = $_GET['code'];
-            //     $sql =  "SELECT * FROM `courses` WHERE code='$courseCode' LIMIT 1";
-            //     $result = mysqli_query($connection, $sql);
-            //     if(mysqli_num_rows($result) > 0){
-            //         while($row = mysqli_fetch_array($result)){
-            //             $data = array('id' => $row["id"], 'code' => $row["code"], 'name' => $row["name"]);
-            //         }
-            //         echo json_encode($data);
-            //     }
-            //     else {
-            //         var_dump(http_response_code(404));
-            //     }
-            //     break;
-            // }
+            if(empty($_GET["id"]) && !empty($_GET["code"])){
+                $code = $_GET["code"];
+                if(!isValidCourseCode($code)){
+                    http_response_code(400);
+                    return var_dump(http_response_code());
+                }
+                $sql = "SELECT questions.*, courses.name FROM `questions`,`courses` WHERE questions.code='$code' AND '$code'=courses.code ORDER BY questions.id";
+                $result = mysqli_query($connection, $sql);
+                if ($result && $result->num_rows > 0){
+                    while($row = mysqli_fetch_array($result)){
+                        array_push($data, array('id' => $row['id'], 'question' => $row['question']
+                        , 'code' => $row['code'], 'name' => $row['name'], 'difficult' => $row['difficult']));
+                    }
+                    echo json_encode($data);
+                } else {
+                    echo json_encode([]);
+                }
+                break;
+            }
+            if(!empty($_GET["id"])){
+                $id = $_GET["id"];
+                $sql = "SELECT questions.*, courses.name FROM `questions`,`courses` WHERE questions.code=courses.code AND questions.id='$id' LIMIT 1";
+                $result = mysqli_query($connection, $sql);
+                if(mysqli_num_rows($result) == 1){
+                    while($row = mysqli_fetch_array($result)){
+                        $data = array('id' => $row['id'], 'question' => $row['question'],
+                        'option1' => $row['option1'], 'option2' => $row['option2'],
+                        'option3' => $row['option3'], 'option4' => $row['option4'],
+                        'answer' => $row['answer'],
+                        'code' => $row['code'], 'name' => $row['name'], 'difficult' => $row['difficult']);
+                    }
+                    echo json_encode($data);
+                } else {
+                    echo json_encode(new stdClass);
+                }
+                break;
+            }
         }
         case 'POST': {
             if(!isUserLoggedIn($token)){

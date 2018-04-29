@@ -10,7 +10,6 @@
             } else {
                 var str = res.responseText.trim()
                 var courses = JSON.parse(str)
-                console.log(courses)
                 courses.forEach(course => {
                     $('#courses')
                         .append($("<option></option>")
@@ -18,6 +17,8 @@
                             .text(course.name + ' (' + course.code + ')'))
                 })
                 $('#courses').select2()
+                var id = window.location.href.split('/').pop()
+                getQuestion(id)
             }
         }
     })
@@ -61,3 +62,30 @@
             )
     })
 })
+
+function getQuestion(id){
+    $.ajax({
+      type: 'GET',
+      url: '/api/questions',
+      data: {
+          id: id
+      },
+      dataType: 'json',
+      complete: function (res) {
+        if (res.status !== 200) {
+            console.log(res)
+        } else {
+            var str = res.responseText.trim()
+            var question = JSON.parse(str)
+            $('#courses').val(question.code).trigger('change')
+            $('#question').val(question.question)
+            $('#option1').val(question.option1)
+            $('#option2').val(question.option2)
+            $('#option3').val(question.option3)
+            $('#option4').val(question.option4)
+            $('#answer').val(question.answer)
+            $("input[value='" + question.difficult + "']").prop('checked', true)
+        }
+      }
+    })
+  }

@@ -1,24 +1,19 @@
 <head>
 	<?php include_once "../share/head.php" ?>
 	<title>View Question</title>
-</head>
-
-<?php
-    if(isset($_SESSION['token']) && $_SESSION['token']!=''){
-      $token = $_SESSION['token'];
-      if(isUserLoggedIn($token)){
-      
-      }
-      else {
-        return header('location:/');
-      }
-    }
-    else {
-      header('location:/');
-      return;
-    }
+</head> 
+<?php 
+  include('db.php');
+  function getStringDifficult($difficult) {
+    if ($difficult == 0)
+        return 'Easy';
+    if ($difficult == 1)
+        return 'Medium';
+    if ($difficult == 2)
+        return 'Hard';
+  }
 ?>
-
+<script src="/js/questions/create.js"></script>
 <header>
 	<?php include_once "../share/header.php" ?>
 </header>
@@ -37,14 +32,24 @@
         <option value="2">Hard</option>
         <option value="3" selected>All</option>
       </select>
-      <table id="question-table" class="table table-bordered">
+      <table class="table table-bordered">
         <thead>
           <tr>
             <th>Difficult</th>
             <th>Question</th>
-            <th></th>
+            <th>Action</th>
           </tr>
         </thead>
+        <tbody>
+          <?php while($row = mysqli_fetch_array($results)){ ?>
+              <tr>
+                  <td><?php echo getStringDifficult($row['difficult']);?></script></td>
+                  <td><?php echo $row['question'];?></td>
+                  <td><a href="?id=<?php echo $row['id'] ?>" class="btn btn-warning"> Edit</a>
+                  <a onclick="return confirm('Are you sure ?')" href="?edit=<?php echo $row['id'] ?>" class ="btn btn-danger">Delete</a>
+                  </td>
+          <?php } ?>
+        <tbody>  
     	</table>
   </div>		
 </body>
@@ -53,7 +58,7 @@
 </footer>
 </html>
 
-<script src="/js/questions/list.js"></script>
+<script src="/js/questions/create.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 

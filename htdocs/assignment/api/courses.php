@@ -46,7 +46,7 @@
                 $courseCode = $_GET['code'];
                 $sql =  "SELECT * FROM `courses` WHERE code='$courseCode' LIMIT 1";
                 $result = mysqli_query($connection, $sql);
-                if(mysqli_num_rows($result) > 0){
+                if(mysqli_num_rows($result) == 1){
                     while($row = mysqli_fetch_array($result)){
                         $data = array('id' => $row["id"], 'code' => $row["code"], 'name' => $row["name"]);
                     }
