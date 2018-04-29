@@ -4,21 +4,16 @@
 </head> 
 <?php 
   include('db.php');
-  if(isset($_GET['edit'])){
-        $id=$_GET['edit'];
-        $edit_state=true;
-        $rec= mysqli_query($db,"SELECT * FROM info WHERE id= $id");
-        $record = mysql_fetch_array($rec);
-        $id=$record['id'];
-        $question=$record['question'];
-        $option1=$record['option1'];
-        $option2=$record['option2'];
-        $option3=$record['option3'];
-        $option4=$record['option4'];
-        $answer=$record['answer'];
-        $difficult=$record['difficult'];
-    } 
+  function getStringDifficult($difficult) {
+    if ($difficult == 0)
+        return 'Easy';
+    if ($difficult == 1)
+        return 'Medium';
+    if ($difficult == 2)
+        return 'Hard';
+  }
 ?>
+<script src="/js/questions/create.js"></script>
 <header>
 	<?php include_once "../share/header.php" ?>
 </header>
@@ -40,7 +35,6 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>Id</th>
             <th>Difficult</th>
             <th>Question</th>
             <th>Action</th>
@@ -49,14 +43,12 @@
         <tbody>
           <?php while($row = mysqli_fetch_array($results)){ ?>
               <tr>
-                  <td><?php echo $row['id'];?></td>
-                  <td><?php echo $row['difficult'];?></td>
+                  <td><?php echo getStringDifficult($row['difficult']);?></script></td>
                   <td><?php echo $row['question'];?></td>
-                  <td><a href="edit.php?edit=<?php echo $row['id'] ?>" class="btn btn-warning"> Edit</a>
+                  <td><a href="?id=<?php echo $row['id'] ?>" class="btn btn-warning"> Edit</a>
                   <a onclick="return confirm('Are you sure ?')" href="?edit=<?php echo $row['id'] ?>" class ="btn btn-danger">Delete</a>
                   </td>
-         <?php }  
-          ?>
+          <?php } ?>
         <tbody>  
     	</table>
   </div>		
