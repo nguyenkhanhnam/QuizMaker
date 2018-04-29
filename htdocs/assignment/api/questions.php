@@ -25,7 +25,7 @@
 
     switch($method){
         case 'GET': {
-            if(empty($_GET["id"])){
+            if(empty($_GET["id"]) && empty($_GET["code"])){
                // $sql =  "SELECT * FROM `questions`";
                 $sql = "SELECT questions.*, courses.name FROM `questions`,`courses` WHERE questions.code=courses.code ORDER BY questions.code";
                 $result = mysqli_query($connection, $sql);
@@ -52,6 +52,29 @@
                 // } else {
                 //     echo "0 results";
                 // }
+            }
+            if(empty($_GET["id"]) && !empty($_GET["code"])){
+                $code = $_GET["code"];
+                if(!isValidCourseCode($code)){
+                    http_response_code(400);
+                    return var_dump(http_response_code());
+                }
+                $sql = "SELECT questions.*, courses.name FROM `questions`,`courses` WHERE questions.code='$code' AND '$code'=courses.code ORDER BY questions.id";
+                $result = mysqli_query($connection, $sql);
+                // header('Content-Type: text/html; charset=utf-8');
+                if ($result && $result->num_rows > 0){
+                    while($row = mysqli_fetch_array($result)){
+                        array_push($data, array('id' => $row['id'], 'question' => $row['question']
+                        , 'code' => $row['code'], 'name' => $row['name'], 'difficult' => $row['difficult']));
+                    }
+                    echo json_encode($data);
+                } else {
+                    echo "0 results";
+                }
+                break;
+            }
+            if(!empty($_GET["id"])){
+                break;
             }
             // else {
             //     $courseCode = $_GET['code'];

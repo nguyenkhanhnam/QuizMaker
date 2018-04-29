@@ -1,5 +1,30 @@
 ﻿$(document).ready(function () {
-    getQuestions()
+    $.ajax({
+        type: 'GET',
+        url: '/api/courses',
+        dataType: 'json',
+
+        complete: function (res) {
+            if (res.status !== 200) {
+                console.log(res)
+            } else {
+                var str = res.responseText.trim()
+                var courses = JSON.parse(str)
+                courses.forEach(course => {
+                    $('#courses')
+                        .append($("<option></option>")
+                            .attr("value", course.code)
+                            .text(course.name + ' (' + course.code + ')'))
+                })
+                $('#courses').select2()
+                getQuestionWithCode($('#courses').val())
+            }
+        }
+    })
+
+    $('#courses').on('change', function(){
+        getQuestionWithCode($('#courses').val())
+    })
 })
 
 function getQuestionDetail(id){
@@ -52,6 +77,37 @@ function getQuestions() {
                     col += '<td onClick=getQuestionDetail(\"' + question.id + '\")>' + question.name + '</td>'
                     col += '<td onClick=getQuestionDetail(\"' + question.id + '\")>' + question.question + '</td>'
                     col += '<td onClick=getQuestionDetail(\"' + question.id + '\")>' + getStringDifficult(question.difficult) + '</td>'
+                    col += '<td onClick=removeQuestion(\"' + question.id + '\")><i class="material-icons">delete</i>' + '</td>'
+                    row += col
+                    row += '</tr>'
+                    $('#question-table').append(row)
+                })
+            }
+        }
+    })
+}
+
+function getQuestionWithCode(code) {
+    console.log(code)
+    $.ajax({
+        type: 'GET',
+        url: '/api/questions',
+        data: {
+            code: code
+        },
+        dataType: 'json',
+        complete: function (res) {
+            if (res.status !== 200) {
+                console.log(res)
+            } else {
+                var str = res.responseText.trim()
+                var questions = JSON.parse(str)
+                console.log(questions)
+                $('#question-table').find("tr:gt(0)").remove();
+                questions.forEach(question => {
+                    var row = '<tr>'
+                    var col = '<td onClick=getQuestionDetail(\"' + question.id + '\")>' + getStringDifficult(question.difficult) + '</td>'
+                    col += '<td onClick=getQuestionDetail(\"' + question.id + '\")>' + question.question + '</td>'
                     col += '<td onClick=removeQuestion(\"' + question.id + '\")><i class="material-icons">delete</i>' + '</td>'
                     row += col
                     row += '</tr>'
