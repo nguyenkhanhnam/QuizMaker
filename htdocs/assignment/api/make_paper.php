@@ -27,20 +27,37 @@
 	$sql= "CALL get_paper_question('$code', $easy_num, $medium_num, $hard_num);";
 	
 	
-	
-	if (!$connection->multi_query("$sql")) {
-		echo "CALL failed: (" . $connection->errno . ") " . $connection->error;
+	$result = mysqli_query($connection, $sql);
+
+	if (mysqli_num_rows($result) > 0) {
+		// output data of each row
+		while($row = mysqli_fetch_assoc($result)) {
+			echo "id" . $row["id"] . " \tquestion: " . $row["question"] . "<br>";
+		}
+	} else {
+		echo "0 results";
 	}
 
-	do {
-		if ($res = $connection->store_result()) {
-			printf("---\n");
-			var_dump($res->fetch_all());
-			$res->free();
-		} else {
-			if ($connection->errno) {
-				echo "Store failed: (" . $connection->errno . ") " . $connection->error;
-			}
-		}
-	} while ($connection->more_results() && $connection->next_result());
+	mysqli_close($connection);
+	
+	// if (!$connection->multi_query("$sql")) {
+		// echo "CALL failed: (" . $connection->errno . ") " . $connection->error;
+	// }
+	
+	// do {
+		// if ($res = $connection->store_result()) {
+			// printf("---\n");
+			// var_dump($res->fetch_all());
+			// echo "<br>";
+			
+			// // $row= $res -> fetch_array();
+			// // echo "<br><br>" . $row[0];
+			
+			// $res->free();
+		// } else {
+			// if ($connection->errno) {
+				// echo "Store failed: (" . $connection->errno . ") " . $connection->error;
+			// }
+		// }
+	// } while ($connection->more_results() && $connection->next_result());
 ?>
