@@ -25,7 +25,7 @@
 
 <body>
   <div class="container">
-    <form class="form-horizontal">
+    <form class="form-horizontal" id="edit-form">
       <div class="form-group">
         <label for="question">Course:</label>
         <br>
@@ -69,7 +69,7 @@
         </label>
       </div>
       <div class="input-group pull-right">
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" id="btn-save" class="btn btn-primary">Save</button>
       </div>
     </form>
   </div>

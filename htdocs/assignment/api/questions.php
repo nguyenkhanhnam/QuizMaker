@@ -108,68 +108,80 @@
             }
             break;
         }
-        // case 'PUT': {
-        //     if(!isAdminLoggedIn($token)){
-        //         http_response_code(403);
-        //         return var_dump(http_response_code());
-        //     }
-        //     parse_str(file_get_contents('php://input'), $_PUT);
+        case 'PUT': {
+            if(!isUserLoggedIn($token)){
+                http_response_code(403);
+                return var_dump(http_response_code());
+            }
+            parse_str(file_get_contents('php://input'), $_PUT);
 
-        //     if(!isset($_PUT["code"]) || !isset($_PUT["name"])){
-        //         return var_dump(http_response_code(400));
-        //     }
+            if(!isset($_PUT["id"])
+            || !isset($_PUT["code"]) || !isset($_PUT["question"]) 
+            || !isset($_PUT["option1"]) || !isset($_PUT["option2"]) 
+            || !isset($_PUT["option3"]) || !isset($_PUT["option4"])
+            || !isset($_PUT["answer"]) || !isset($_PUT["difficult"])){
+                return var_dump(http_response_code(400));
+            }
             
-        //     $code = trim($_PUT["code"], " \t\n\r\0\x0B");
-        //     $name = $_PUT["name"];
+            $id = trim($_PUT["id"], " \t\n\r\0\x0B");
+            $code = trim($_PUT["code"], " \t\n\r\0\x0B");
+            $question = trim($_PUT["question"], " \t\n\r\0\x0B");
+            $option1 = trim($_PUT["option1"], " \t\n\r\0\x0B");
+            $option2 = trim($_PUT["option2"], " \t\n\r\0\x0B");
+            $option3 = trim($_PUT["option3"], " \t\n\r\0\x0B");
+            $option4 = trim($_PUT["option4"], " \t\n\r\0\x0B");
+            $answer = trim($_PUT["answer"], " \t\n\r\0\x0B");
+            $difficult = (int) trim($_PUT["difficult"], " \t\n\r\0\x0B");
 
-        //     if(!isValidCourseCode($code) || !isValidCourseName($name)){
-        //         return var_dump(http_response_code(400));
-        //     }
+            if(!isValidCourseCode($code)){
+                return var_dump(http_response_code(400));
+            }
 
-        //     $sql =  "SELECT * FROM `courses` WHERE code='$code' LIMIT 1";
-        //     $result = mysqli_query($connection, $sql);
-        //     if(mysqli_num_rows($result) <= 0) {
-        //         return var_dump(http_response_code(404));
-        //     }
+            $sql =  "SELECT * FROM `questions` WHERE id='$id' LIMIT 1";
+            $result = mysqli_query($connection, $sql);
+            if(mysqli_num_rows($result) <= 0) {
+                return var_dump(http_response_code(404));
+            }
 
-        //     $sql = "UPDATE courses SET name='$name', code='$code'  WHERE code='$code'";
+            $sql = "UPDATE questions SET code='$code', question='$question', option1='$option1',
+                    option2='$option2', option3='$option3', option4='$option4', answer='$answer',
+                    difficult='$difficult' WHERE id='$id'";
 
-        //     if ($connection->query($sql) === TRUE) {
-        //         return var_dump(http_response_code(200));
-        //     } else {
-        //         return var_dump(http_response_code(409));
-        //     }
-        //     break;
-        // }
-        // case 'DELETE': {
-        //     if(!isAdminLoggedIn($token)){
-        //         http_response_code(403);
-        //         return var_dump(http_response_code());
-        //     }
-        //     parse_str(file_get_contents('php://input'), $_DELETE);
-        //     if(!isset($_DELETE["code"])){
-        //         return var_dump(http_response_code(400));
-        //     }
+            if ($connection->query($sql) === TRUE) {
+                $data = array('status' => http_response_code(200), 'message' => 'Question edited successfully');
+                echo json_encode($data);
+                return;
+            } else {
+                $data = array('status' => http_response_code(500), 'message' => $connection->error);
+                echo json_encode($data);
+                return;
+            }
+            break;
+        }
+        case 'DELETE': {
+            if(!isUserLoggedIn($token)){
+                http_response_code(403);
+                return var_dump(http_response_code());
+            }
+            parse_str(file_get_contents('php://input'), $_DELETE);
+            if(!isset($_DELETE["id"])){
+                return var_dump(http_response_code(400));
+            }
             
-        //     $code = trim($_DELETE["code"], " \t\n\r\0\x0B");
-
-        //     if(!isValidCourseCode($code)){
-        //         return var_dump(http_response_code(400));
-        //     }
-        //     $code = $_DELETE["code"];
-        //     $sql =  "DELETE FROM courses WHERE code = '$code'";
-        //     $result = mysqli_query($connection, $sql);
-        //     if ($connection->query($sql) === TRUE) {
-        //         $data = array('status' => http_response_code(200), 'message' => 'Course deleted successfully');
-        //         echo json_encode($data);
-        //         return;
-        //     } else {
-        //         $data = array('status' => http_response_code(500), 'message' => $connection->error);
-        //         echo json_encode($data);
-        //         return;
-        //     }
-        //     $connection->close();
-        //     break;
-        // }
+            $id = trim($_DELETE["id"], " \t\n\r\0\x0B");
+            $sql =  "DELETE FROM questions WHERE id = '$id'";
+            $result = mysqli_query($connection, $sql);
+            if ($connection->query($sql) === TRUE) {
+                $data = array('status' => http_response_code(200), 'message' => 'Question deleted successfully');
+                echo json_encode($data);
+                return;
+            } else {
+                $data = array('status' => http_response_code(500), 'message' => $connection->error);
+                echo json_encode($data);
+                return;
+            }
+            $connection->close();
+            break;
+        }
     }
 ?>

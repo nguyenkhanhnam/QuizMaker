@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿var codeGlobal = ''
+$(document).ready(function () {
     $.ajax({
         type: 'GET',
         url: '/api/courses',
@@ -23,7 +24,8 @@
     })
 
     $('#courses').on('change', function(){
-        getQuestionWithCode($('#courses').val())
+        codeGlobal = $('#courses').val()
+        getQuestionWithCode(codeGlobal)
     })
 })
 
@@ -37,10 +39,9 @@ function removeQuestion(id) {
         type: 'DELETE',
         contentType: 'application/json',
         data: {
-            code: code
+            id: id
         },
         complete: function (res) {
-            console.log(res)
             if (res.status !== 200) {
                 if (res.status === 500) {
                     var str = res.responseText.trim()
@@ -51,7 +52,7 @@ function removeQuestion(id) {
                 var str = res.responseText.trim()
                 var data = JSON.parse(str)
                 displayToast('success', data.message)
-                getQuestions()
+                getQuestionWithCode(codeGlobal)
             }
         }
     })
@@ -88,7 +89,6 @@ function getQuestions() {
 }
 
 function getQuestionWithCode(code) {
-    console.log(code)
     $.ajax({
         type: 'GET',
         url: '/api/questions',
@@ -106,8 +106,8 @@ function getQuestionWithCode(code) {
                 $('#question-table').find("tr:gt(0)").remove();
                 questions.forEach(question => {
                     var row = '<tr>'
-                    var col = '<td onClick=getQuestionDetail(\"' + question.id + '\")>' + getStringDifficult(question.difficult) + '</td>'
-                    col += '<td onClick=getQuestionDetail(\"' + question.id + '\")>' + question.question + '</td>'
+                    var col = '<td onClick=getQuestionDetail(\"' + question.id + '\")>' + question.question + '</td>'
+                    col += '<td onClick=getQuestionDetail(\"' + question.id + '\")>' + getStringDifficult(question.difficult) + '</td>'
                     col += '<td onClick=removeQuestion(\"' + question.id + '\")><i class="material-icons">delete</i>' + '</td>'
                     row += col
                     row += '</tr>'

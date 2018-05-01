@@ -98,7 +98,7 @@
                 return var_dump(http_response_code(404));
             }
 
-            $sql = "UPDATE courses SET name='$name', code='$code'  WHERE code='$code'";
+            $sql = "UPDATE courses SET name='$name' WHERE code='$code'";
 
             if ($connection->query($sql) === TRUE) {
                 return var_dump(http_response_code(200));
