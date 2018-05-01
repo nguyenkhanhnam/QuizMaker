@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿var idGlobal = ''
+
+$(document).ready(function () {
     $.ajax({
         type: 'GET',
         url: '/api/courses',
@@ -18,13 +20,14 @@
                 })
                 $('#courses').select2()
                 var id = window.location.href.split('/').pop()
+                idGlobal = id
                 getQuestion(id)
             }
         }
     })
 
-    $('#btn-add').click(function () {
-        var questionObj = getFormData($('#create-form'))
+    $('#btn-save').click(function () {
+        var questionObj = getFormData($('#edit-form'))
         if (!questionObj.code) {
             return displayToast('error', 'Course code is required')
         }
@@ -43,49 +46,52 @@
         if (!questionObj.difficult) {
             return displayToast('error', 'Difficult of question is required')
         }
-        $.ajax
-            ({
-                type: 'POST',
-                url: '/api/questions/',
-                data: questionObj,
-                success: function (data, textStatus, xhr) {
-                    console.log(xhr.status)
-                    console.log(data)
-                    if (xhr.status == 200) {
-                        return displayToastWithRedirect('success', 'Question added successfully', '/questions')
+        questionObj.id = idGlobal
+        $.ajax({
+            type: 'PUT',
+            url: '/api/questions/',
+            data: questionObj,
+            complete: function (res) {
+                if (res.status !== 200) {
+                    if (res.status === 500) {
+                        var str = res.responseText.trim()
+                        var data = JSON.parse(str)
+                        displayToast('error', data.message)
                     }
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    return displayToast('error', '')
+                } else {
+                    var str = res.responseText.trim()
+                    var data = JSON.parse(str)
+                    displayToast('success', data.message)
+                    getQuestion(idGlobal)
                 }
             }
-            )
+        })
     })
 })
 
-function getQuestion(id){
+function getQuestion(id) {
     $.ajax({
-      type: 'GET',
-      url: '/api/questions',
-      data: {
-          id: id
-      },
-      dataType: 'json',
-      complete: function (res) {
-        if (res.status !== 200) {
-            console.log(res)
-        } else {
-            var str = res.responseText.trim()
-            var question = JSON.parse(str)
-            $('#courses').val(question.code).trigger('change')
-            $('#question').val(question.question)
-            $('#option1').val(question.option1)
-            $('#option2').val(question.option2)
-            $('#option3').val(question.option3)
-            $('#option4').val(question.option4)
-            $('#answer').val(question.answer)
-            $("input[value='" + question.difficult + "']").prop('checked', true)
+        type: 'GET',
+        url: '/api/questions',
+        data: {
+            id: id
+        },
+        dataType: 'json',
+        complete: function (res) {
+            if (res.status !== 200) {
+                console.log(res)
+            } else {
+                var str = res.responseText.trim()
+                var question = JSON.parse(str)
+                $('#courses').val(question.code).trigger('change')
+                $('#question').val(question.question)
+                $('#option1').val(question.option1)
+                $('#option2').val(question.option2)
+                $('#option3').val(question.option3)
+                $('#option4').val(question.option4)
+                $('#answer').val(question.answer)
+                $("input[value='" + question.difficult + "']").prop('checked', true)
+            }
         }
-      }
     })
-  }
+}
