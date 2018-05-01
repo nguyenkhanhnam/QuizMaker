@@ -88,7 +88,7 @@
 		$('#datePicker').datepicker({
 			format: 'dd/mm/yyyy',
 			startDate: '0',
-			daysOfWeekDisabled: '06',
+			daysOfWeekDisabled: '0',
 			todayHighlight: true,
 			weekStart: 1,
 			toggleActive: false,
