@@ -96,8 +96,8 @@
 		}).datepicker('setDate', new Date())
 	})
 
-	$("#esay").keyup(function () {
-		var _totla = Number(this.value) + Number($("#medium").val()) + Number($("#hard").val())
+	$("#easy").keyup(function () {
+		var _total = Number(this.value) + Number($("#medium").val()) + Number($("#hard").val())
 		$("#total").val(_total)
 	})
 
