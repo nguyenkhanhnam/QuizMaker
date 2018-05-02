@@ -68,7 +68,8 @@ if (!$conn->query("DROP PROCEDURE IF EXISTS get_paper_question") ||
     !$conn->query("
 					CREATE PROCEDURE `get_paper_question`(IN `i_code` VARCHAR(6), IN `i_easy_number` INT(32) UNSIGNED, IN `i_medium_number` INT(32) UNSIGNED, IN `i_hard_number` INT(32) UNSIGNED)
 					BEGIN
-							SET @sql_text= concat(\"(SELECT * FROM `questions`\"
+							SET @sql_text= concat(\"SELECT * FROM (\"
+													, \" (SELECT * FROM `questions`\"
 															, \" WHERE code= \'\", i_code, \"\' AND difficult= \'0\'\"
 															, \" ORDER BY RAND() LIMIT \", i_easy_number, \")\"
 												, \" UNION ALL\"
@@ -78,7 +79,7 @@ if (!$conn->query("DROP PROCEDURE IF EXISTS get_paper_question") ||
 												, \" UNION ALL\"
 												, \" (SELECT * FROM `questions`\"
 															, \" WHERE code= \'\", i_code, \"\' AND difficult= \'2\'\"
-															, \" ORDER BY RAND() LIMIT \", i_hard_number, \")\"
+															, \" ORDER BY RAND() LIMIT \", i_hard_number, \")) AS T ORDER BY RAND()\"
 												  );
 							PREPARE stmt FROM @sql_text;
 							EXECUTE stmt;

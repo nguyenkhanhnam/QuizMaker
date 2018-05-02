@@ -1,6 +1,21 @@
 <?php
     require_once('./checkAuth.php');
-	require_once('./paper_header.php'); 	
+	require_once('./paper_header.php'); 
+
+	function rrmdir($dir) { 
+	   if (is_dir($dir)) { 
+		 $objects = scandir($dir); 
+		 foreach ($objects as $object) { 
+		   if ($object != "." && $object != "..") { 
+			 if (is_dir($dir."/".$object))
+			   rrmdir($dir."/".$object);
+			 else
+			   unlink($dir."/".$object); 
+		   } 
+		 }
+		 rmdir($dir); 
+	   } 
+	}
 ?>
 
 
@@ -35,6 +50,14 @@
 	$patch_num= $_POST["patch_num"];
 	$note= $_POST['note'];
 	$duration= $_POST['duration'];
+	
+	$date_arr= explode('/', $date);
+	$date_string= implode($date_arr);
+	$outputpath = '../paper_output/' . $code . '/' . $date_string;
+	rrmdir($outputpath);
+	if (!file_exists($outputpath)) {
+		mkdir($outputpath, 0777,true);
+}
 ?>
 
 <?php
@@ -45,6 +68,9 @@
 		$paper_code_header= $paper_code;
 		
 		$pdf= new PDF();
+		
+		$pdf -> SetMargins(10, 15, 10);
+		
 		$pdf -> AddPage();
 		
 		$left_side_width= 70;
@@ -85,17 +111,19 @@
 				$pdf->SetFont('Times','',12);
 					$pdf-> InsertQuestion($row['question'], $question_no+ 1);
 					$pdf -> InsertAnswers(array($row[1], $row[2], $row[3], $row[4]));
+					//echo "<br><br>" . $pdf -> get_lasth();
 					$pdf -> ln();
 					$question_no++;
 			}
 		} else {
 			// echo "0 results";
 		}
-		
-		$savepath = './output/test' . $i . '.pdf';
+		$date_arr= explode('/', $date);
+		$date_string= implode($date_arr);
+		$savepath = $outputpath . '/' . $paper_code . '.pdf';
         $pdf->Output($savepath,'F');
-		echo "<object data=\"./output/test" . $i .".pdf\" type=\"application/pdf\" width=\"20%\" height=\"80%\">"
-			  . "<p>Alternative text - include a link <a href=\"./output/test" . $i . ".pdf\">to the PDF!</a></p>"
+		echo "<object data=" . $savepath ." type=\"application/pdf\" width=\"24.5%\" height=\"80%\">"
+			  . "<p>Alternative text - include a link <a href=" . $savepath . ">to the PDF!</a></p>"
 			. "</object>";
 		mysqli_close($connection);
 	}

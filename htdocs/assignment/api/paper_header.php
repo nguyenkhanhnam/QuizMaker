@@ -4,6 +4,7 @@
 	
 // Create PDF extend from FPDF with code name in Header
 	class PDF extends FPDF {
+		// public $content_height;
 		// Page header
 		function Header()
 		{
@@ -40,6 +41,11 @@
 			$this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
 		}
 		
+		// function Cell(){
+			// parent::Cell();
+			
+		// }
+		
 		function InsertQuestion($question, $no){
 			$this -> SetFont('Times', 'BI', 12);
 			$question_word= "Question " . $no . ": ";
@@ -53,10 +59,10 @@
 		
 		function InsertAnswers(array $answers){
 			$half_page_width= (210- 40)/ 2;
-			$op1_width= $this -> GetStringWidth($answers[0]);
-			$op2_width= $this -> GetStringWidth($answers[1]);
-			$op3_width= $this -> GetStringWidth($answers[2]);
-			$op4_width= $this -> GetStringWidth($answers[3]);
+			$op1_width= $this -> GetStringWidth(' . ' . $answers[0]);
+			$op2_width= $this -> GetStringWidth(' . ' . $answers[1]);
+			$op3_width= $this -> GetStringWidth(' . ' . $answers[2]);
+			$op4_width= $this -> GetStringWidth(' . ' . $answers[3]);
 			
 			$this -> random_array($answers); 	//change answers order
 			
@@ -111,6 +117,10 @@
 				$rand= rand($i, $length- 1);
 				$this -> swap($arr, $i, $rand);
 			}
+		}
+		
+		function get_lasth(){
+			return $this -> lasth;
 		}
 	}	
 	
