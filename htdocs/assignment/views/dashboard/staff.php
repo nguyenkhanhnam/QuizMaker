@@ -71,6 +71,19 @@
 						</div>
 					</div>
 				</div>
+				
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-3">
+							<label for="duration">Duration (minute):</label>
+							<input type="number" class="form-control" name="duration" min="0" value="0" required/>
+						</div>
+						<div class="col-sm-9">
+							<label for="note">Note:</label>
+							<input type="text" class="form-control" name="note" placeholder= "Allow book or not, ....">
+						</div>
+					</div>
+				</div>
 
 				<div class="text-right">
 					<button type="submit" class="btn btn-primary">Make exam paper</button>
