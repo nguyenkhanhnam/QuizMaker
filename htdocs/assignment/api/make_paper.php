@@ -1,6 +1,9 @@
 <?php
     require_once('./checkAuth.php');
+	ob_start();
+	require_once('./paper_header.php');
 ?>
+
 
 <?php
     if(isset($_SESSION['token'])){
@@ -16,7 +19,7 @@
     }
 	
 	$code= $_POST["code"];
-	echo $code;
+	// echo $code;
 	$easy_num= $_POST["easy_num"];
 	$medium_num= $_POST["medium_num"];
 	$hard_num= $_POST["hard_num"];
@@ -32,12 +35,25 @@
 	if (mysqli_num_rows($result) > 0) {
 		// output data of each row
 		while($row = mysqli_fetch_assoc($result)) {
-			echo "id" . $row["id"] . " \tquestion: " . $row["question"] . "<br>";
+			// echo "id" . $row["id"] . " \tquestion: " . $row["question"] . "<br>";
+			$pdf->SetFont('Arial','',12);
+			$i= 0;
+			while ($i < 4){
+				$pdf-> Cell(0, 6, $row["question"], 0, 1);
+				$pdf-> Cell(0, 6, "\t\t" . $row["option1"], 0, 1);
+				$pdf-> Cell(0, 6, "\t\t" . $row["option2"], 0, 1);
+				$pdf-> Cell(0, 6, "\t\t" . $row["option3"], 0, 1);
+				$pdf-> Cell(0, 6, "\t\t" . $row["option4"], 0, 1);
+				$pdf -> ln();
+				$i++;
+			}
 		}
 	} else {
-		echo "0 results";
+		// echo "0 results";
 	}
-
+	$pdf->Output();
+	
+	
 	mysqli_close($connection);
 	
 	// if (!$connection->multi_query("$sql")) {
