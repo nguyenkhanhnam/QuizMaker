@@ -1,0 +1,7 @@
+# Ignore everything:
+/google-api-php-client-2.2.1
+*.pdf
+*.jpg
+pdf2doc.php
+*.phar
+*.json
