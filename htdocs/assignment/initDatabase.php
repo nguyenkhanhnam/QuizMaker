@@ -64,13 +64,31 @@ if (substr(trim($line), -1, 1) == ';')
 }
 // echo "Tables imported successfully";
 
-if (!$conn->query("DROP PROCEDURE IF EXISTS p") ||
-    !$conn->query("CREATE PROCEDURE p() READS SQL DATA BEGIN SELECT id FROM test; SELECT id + 1 FROM test; END;")) {
+if (!$conn->query("DROP PROCEDURE IF EXISTS get_paper_question") ||
+    !$conn->query("
+					CREATE PROCEDURE `get_paper_question`(IN `i_code` VARCHAR(6), IN `i_easy_number` INT(32) UNSIGNED, IN `i_medium_number` INT(32) UNSIGNED, IN `i_hard_number` INT(32) UNSIGNED)
+					BEGIN
+							SET @sql_text= concat(\"(SELECT * FROM `questions`\"
+															, \" WHERE code= \'\", i_code, \"\' AND difficult= \'0\'\"
+															, \" ORDER BY RAND() LIMIT \", i_easy_number, \")\"
+												, \" UNION ALL\"
+												, \" (SELECT * FROM `questions`\"
+															, \" WHERE code= \'\", i_code, \"\' AND difficult= \'1\'\"
+															, \" ORDER BY RAND() LIMIT \", i_medium_number, \")\"
+												, \" UNION ALL\"
+												, \" (SELECT * FROM `questions`\"
+															, \" WHERE code= \'\", i_code, \"\' AND difficult= \'2\'\"
+															, \" ORDER BY RAND() LIMIT \", i_hard_number, \")\"
+												  );
+							PREPARE stmt FROM @sql_text;
+							EXECUTE stmt;
+							DEALLOCATE PREPARE stmt;
+						END")) {
     echo "Stored procedure creation failed: (" . $conn->errno . ") " . $conn->error;
 }
 
-if (!$conn->multi_query("CALL p()")) {
-    echo "CALL failed: (" . $conn->errno . ") " . $conn->error;
-}
+// if (!$conn->multi_query("CALL p()")) {
+    // echo "CALL failed: (" . $conn->errno . ") " . $conn->error;
+// }
 
 ?>
