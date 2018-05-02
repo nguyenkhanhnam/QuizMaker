@@ -8,7 +8,7 @@ $mysql_username = 'root';
 // MySQL password
 $mysql_password = '';
 // Database name
-$mysql_database = 'ass2';
+$mysql_database = 'assignment';
 
 // Create connection
 $conn = new mysqli($mysql_host, $mysql_username, $mysql_password);
@@ -44,25 +44,31 @@ $conn = mysqli_connect($mysql_host,$mysql_username,$mysql_password,$mysql_databa
 $templine = '';
 // Read in entire file
 $lines = file($filename);
+$index = 0;
 // Loop through each line
-foreach ($lines as $line)
-{
+foreach ($lines as $line){
 // Skip it if it's a comment
-if (substr($line, 0, 2) == '--' || $line == '')
-    continue;
+	if (substr($line, 0, 2) == '--' || $line == '')
+		continue;
 
-// Add this line to the current segment
-$templine .= $line;
-// If it has a semicolon at the end, it's the end of the query
-if (substr(trim($line), -1, 1) == ';')
-{
-    // Perform the query
-    mysqli_query($conn, $templine) or print('Error performing query \'<strong>' . $templine . '\': ' . mysqli_error($conn) . '<br /><br />');
-    // Reset temp variable to empty
-    $templine = '';
+	// Add this line to the current segment
+	$templine .= $line;
+
+	// If it has a semicolon at the end, it's the end of the query
+	if (substr(trim($line), -1, 1) == ';'){
+		// Perform the query
+		mysqli_query($conn, $templine) or print('Error performing query \'<strong>' . $templine . '\': ' . mysqli_error($conn) . '<br /><br />');
+		// Reset temp variable to empty
+		$templine = '';
+		if ($index == 0)
+			echo "Tables users imported successfully <br>";
+		if ($index == 1)
+			echo "Tables courses imported successfully <br>";
+		if ($index == 2)
+			echo "Tables questions imported successfully <br>";
+		$index = $index + 1;	
+	}
 }
-}
-// echo "Tables imported successfully";
 
 if (!$conn->query("DROP PROCEDURE IF EXISTS get_paper_question") ||
     !$conn->query("
@@ -87,9 +93,5 @@ if (!$conn->query("DROP PROCEDURE IF EXISTS get_paper_question") ||
 						END")) {
     echo "Stored procedure creation failed: (" . $conn->errno . ") " . $conn->error;
 }
-
-// if (!$conn->multi_query("CALL p()")) {
-    // echo "CALL failed: (" . $conn->errno . ") " . $conn->error;
-// }
 
 ?>
