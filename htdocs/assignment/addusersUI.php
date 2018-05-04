@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <?php include_once "share/import.php" ?>
+  <?php include_once "share/head.php" ?>
   <title>Add User</title>
   <link rel="icon" type="image/png" href="/img/favicon.png" />
 </head>
