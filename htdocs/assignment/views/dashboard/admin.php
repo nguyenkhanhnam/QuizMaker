@@ -144,7 +144,20 @@
               </div>
             </div>
             <?php 
-              include $basedir . '\..\courses\list.html'; 
+              include $basedir . '\..\accounts\list.html'; 
+            ?>
+          </div>
+        </div>
+		
+		<div class="main col-sm-9">
+          <div class="hide" id="add-course">
+            <?php
+              include $basedir . '\..\courses\create.html';
+            ?>
+          </div>
+          <div id="detail-course">
+            <?php 
+              include $basedir . '\..\courses\detail.html';
             ?>
           </div>
         </div>

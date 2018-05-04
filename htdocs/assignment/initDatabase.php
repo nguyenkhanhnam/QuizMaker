@@ -70,9 +70,9 @@ foreach ($lines as $line){
 	}
 }
 
-if (!$conn->query("DROP PROCEDURE IF EXISTS get_paper_question") ||
+if (!$conn->query("DROP PROCEDURE IF EXISTS sp_get_paper_question") ||
     !$conn->query("
-					CREATE PROCEDURE `get_paper_question`(IN `i_code` VARCHAR(6), IN `i_easy_number` INT(32) UNSIGNED, IN `i_medium_number` INT(32) UNSIGNED, IN `i_hard_number` INT(32) UNSIGNED)
+					CREATE PROCEDURE `sp_get_paper_question`(IN `i_code` VARCHAR(6), IN `i_easy_number` INT(32) UNSIGNED, IN `i_medium_number` INT(32) UNSIGNED, IN `i_hard_number` INT(32) UNSIGNED)
 					BEGIN
 							SET @sql_text= concat(\"SELECT * FROM (\"
 													, \" (SELECT * FROM `questions`\"
@@ -91,6 +91,52 @@ if (!$conn->query("DROP PROCEDURE IF EXISTS get_paper_question") ||
 							EXECUTE stmt;
 							DEALLOCATE PREPARE stmt;
 						END")) {
+    echo "Stored procedure creation failed: (" . $conn->errno . ") " . $conn->error;
+}
+
+if (!$conn->query("DROP FUNCTION IF EXISTS sf_get_username") ||
+    !$conn->query("CREATE FUNCTION `sf_get_username`(`i_username` VARCHAR(32)) RETURNS varchar(32)
+					BEGIN
+					SET @username= i_username;
+					SET @index= 1;
+					getunameloop: LOOP
+							SELECT COUNT(username) FROM `users` WHERE username= @username INTO @check_exist;
+							IF @check_exist <> 0
+							THEN
+								SET @username= concat(i_username, @index);
+								SET @index= @index+ 1;
+								ITERATE getunameloop;
+							END IF;
+							LEAVE getunameloop;
+					END LOOP getunameloop;
+					 
+					RETURN @username;
+					END")) {
+    echo "Stored function creation failed: (" . $conn->errno . ") " . $conn->error;
+}
+
+if (!$conn->query("DROP PROCEDURE IF EXISTS sp_set_account_info") ||
+    !$conn->query("CREATE PROCEDURE `sp_set_account_info`(IN `i_role` VARCHAR(1), IN `i_fname` VARCHAR(16), IN `i_lname` VARCHAR(16), IN `i_mname` VARCHAR(20), IN `i_date_of_birth` VARCHAR(16), IN `i_address` VARCHAR(64), IN `i_phone` VARCHAR(16), IN `i_mail` VARCHAR(64), OUT `o_username` VARCHAR(20), OUT `o_password` VARCHAR(8))
+				BEGIN
+					SET @d_date_of_birth := STR_TO_DATE(i_date_of_birth, \"%d/%m/%Y\");
+					SET @username= concat(substr(i_lname, 1, 1), substr(i_mname, 1, 1), i_fname);
+					SET @username= sp_get_username(@username);
+					SET @password= UNIX_TIMESTAMP()% 9000+ 1000;
+					  
+					SET @sql_text= concat(\"INSERT INTO users (username, password, role, firstname, lastname, middlename, dateofbirth, address, phone, mail) VALUES (\'\", @username, \"\', \'\", @password
+																		, \"\', \'\", i_role, \"\', \'\", i_fname
+																		, \"\', \'\", i_lname, \"\', \'\", i_mname
+																		, \"\', \'\", @d_date_of_birth, \"\', \'\", i_address
+																		, \"\', \'\", i_phone, \"\', \'\", i_mail
+																		,\"\');\");
+					PREPARE stmt FROM @sql_text;
+					EXECUTE stmt;
+					DEALLOCATE PREPARE stmt;
+					
+					SET o_username= @username;
+					SET o_password= @password;
+
+				END")) {
     echo "Stored procedure creation failed: (" . $conn->errno . ") " . $conn->error;
 }
 
