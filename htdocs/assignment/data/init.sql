@@ -3,6 +3,13 @@ CREATE TABLE users (
   username varchar(50) NOT NULL COMMENT "Username",
   password varchar(50) NOT NULL COMMENT "Password",
   role ENUM('0', '1', '2') NOT NULL DEFAULT '2' COMMENT "Role of user: '0'-Admin, '1'-User, '2'-Staff",
+  firstname varchar(16) NOT NULL,
+  lastname varchar(16),
+  middlename varchar(20),
+  dateofbirth date NOT NULL COMMENT "date of birth",
+  address varchar(64),
+  phone varchar(16),
+  mail varchar(64),
   CONSTRAINT username UNIQUE (username)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 

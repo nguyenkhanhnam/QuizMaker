@@ -61,7 +61,7 @@
       border-bottom: 1px solid #ccc;
     }
 
-    #search-form {
+    .search-form {
       margin: 10px auto auto 0;
     }
 
@@ -97,7 +97,7 @@
             </button>
           </div>
           <div>
-            <div class="form-group" id="search-form">
+            <div class="form-group search-form">
               <div class="input-group">
                 <span class="input-group-addon">
                   <i class="fa fa-search" aria-hidden="true"></i>
@@ -126,24 +126,42 @@
       </div>
 
       <!-- Account tab content -->
-      <!-- <div id="account" class="tabcontent row" style="height: 500px">
-      <div class="sidenav col-sm-3">
-        <div class="topnav">
-          <div class="form-group">
-            <input type="text" class="form-control" id="search" placeholder="Search">
+      <!-- Course tab content -->
+    <div id="account" class="tabcontent row" style="height: 500px">
+        <div class="sidenav col-sm-3">
+          <div>
+            <button class="btn btn-primary my-btn" style="width:100%; margin-top: 5px" onclick="openSection('addAccount')">
+              Add Account
+            </button>
           </div>
-          <?php 
-              include $basedir . '\..\courses\list.php'; 
+          <div>
+            <div class="form-group search-form">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+                <input type="text" class="form-control" id="account-search" placeholder="Search">
+              </div>
+            </div>
+            <?php 
+              include $basedir . '\..\accounts\list.html'; 
             ?>
+          </div>
         </div>
-      </div>
-
-      <div class="main col-sm-9">
-        <?php 
-          include $basedir . '\..\courses\detail.php';
-        ?>
-      </div>
-    </div> -->
+		
+		<div class="main col-sm-9">
+          <div class="hide" id="add-course">
+            <?php
+              include $basedir . '\..\courses\create.html';
+            ?>
+          </div>
+          <div id="detail-course">
+            <?php 
+              include $basedir . '\..\courses\detail.html';
+            ?>
+          </div>
+        </div>
+	</div>
 
       <footer>
         <?php include_once "../share/footer.php" ?>

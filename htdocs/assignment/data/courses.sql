@@ -43,3 +43,7 @@ INSERT INTO courses (name, code) VALUES ('Natural Language Processing','CO4021')
 INSERT INTO courses (name, code) VALUES ('Advance Cryptography and Coding Theory','CO3083');
 INSERT INTO courses (name, code) VALUES ('Machine Learning','CO4027');
 INSERT INTO courses (name, code) VALUES ('Information and Social Networks','CO4025');
+
+INSERT INTO users (username, password, role, firstname, dateofbirth) VALUES ('admin', 'admin', '0', 'admin', '1/1/2018');
+INSERT INTO users (username, password, role, firstname, dateofbirth) VALUES ('user', 'user', '1', 'user', '1/1/2018');
+INSERT INTO users (username, password, role, firstname, dateofbirth) VALUES ('staff', 'staff', '2', 'staff', '1/1/2018');
