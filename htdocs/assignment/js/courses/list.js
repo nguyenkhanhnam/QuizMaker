@@ -18,7 +18,7 @@ function getCourses() {
                 var courses = JSON.parse(str)
                 course_global = courses
                 if (course_global.length > 0) {
-                    updateTable()
+                    updateTableCourse()
                     getCourse(course_global[0].code)
                 }
                 else {
@@ -34,7 +34,7 @@ function getCourses() {
     })
 }
 
-function updateTable() {
+function updateTableCourse() {
     $('#course-table').find("tr:gt(0)").remove()
     course_global.forEach(course => {
         var row = '<tr>'

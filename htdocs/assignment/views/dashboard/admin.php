@@ -45,11 +45,17 @@
       color: #f1f1f1;
     }
 
-    .main {
+    #main-course {
       font-size: 28px;
       height: 100%;
       overflow: auto;
     }
+	
+	#main-account {
+		font-size: 18px;
+		height: 100%;
+		overflow: auto;
+	}
 
     .row {
       margin-right: 0px;
@@ -79,13 +85,14 @@
     <div class="container">
       <header>
         <?php include_once "../share/header.php" ?>
+		
         <h1 class="dashboard-name">Admin Dashboard</h1>
       </header>
 
 
       <div class="tab">
         <button id="course-tab" class="tablinks" onclick="openTab(event, 'course')">Course Management</button>
-        <button class="tablinks" onclick="openTab(event, 'account')">Account Management</button>
+        <button id= "account-tab" class="tablinks" onclick="openTab(event, 'account')">Account Management</button>
       </div>
 
       <!-- Course tab content -->
@@ -102,7 +109,7 @@
                 <span class="input-group-addon">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </span>
-                <input type="text" class="form-control" id="search" placeholder="Search">
+                <input type="text" class="form-control" id="search-course" placeholder="Search">
               </div>
             </div>
             <?php 
@@ -111,7 +118,7 @@
           </div>
         </div>
 
-        <div class="main col-sm-9">
+        <div class="col-sm-9" id= "main-course">
           <div class="hide" id="add-course">
             <?php
               include $basedir . '\..\courses\create.html';
@@ -140,7 +147,7 @@
                 <span class="input-group-addon">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </span>
-                <input type="text" class="form-control" id="account-search" placeholder="Search">
+                <input type="text" class="form-control" id="search-account" placeholder="Search">
               </div>
             </div>
             <?php 
@@ -149,15 +156,15 @@
           </div>
         </div>
 		
-		<div class="main col-sm-9">
-          <div class="hide" id="add-course">
+		<div class="col-sm-9" id= "main-account">
+          <div class="hide" id="add-account">
             <?php
-              include $basedir . '\..\courses\create.html';
+              include $basedir . '\..\accounts\create.html';
             ?>
           </div>
-          <div id="detail-course">
+          <div id="detail-account">
             <?php 
-              include $basedir . '\..\courses\detail.html';
+              include $basedir . '\..\accounts\detail.html';
             ?>
           </div>
         </div>
@@ -193,21 +200,49 @@
         $('#add-course').addClass('hide')
         $('#detail-course').removeClass('hide')
       }
+	  else if (sectionName === 'addAccount'){
+        $('#add-account').removeClass('hide')
+        $('#detail-account').addClass('hide')
+      }
+	  else if (sectionName === 'editAccount'){
+        $('#add-account').addClass('hide')
+        $('#detail-account').removeClass('hide')
+      }
     }
 
     $(document).ready(function () {
-      $('#search').on('input', function () {
+      $('#search-course').on('input', function () {
         if ($(this).val() === '') {
           getCourses()
         } else {
-          var searchPattern = new RegExp($('#search').val(), "i");
+          var searchPattern = new RegExp($('#search-course').val(), "i");
           for (var i = course_global.length - 1; i >= 0; i--) {
             if (course_global[i].name.search(searchPattern) == -1) {
               course_global.splice(i, 1)
-              updateTable()
+              updateTableCourse()
+            }
+          }
+        }
+      })
+    })
+	
+	$(document).ready(function () {
+      $('#search-account').on('input', function () {
+        if ($(this).val() === '') {
+          getCourses()
+        } else {
+          var searchPattern = new RegExp($('#search-account').val(), "i");
+          for (var i = course_global.length - 1; i >= 0; i--) {
+            if (course_global[i].name.search(searchPattern) == -1) {
+              course_global.splice(i, 1)
+              updateTableAccount()
             }
           }
         }
       })
     })
   </script>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
