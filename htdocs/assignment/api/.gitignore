@@ -5,3 +5,9 @@
 pdf2doc.php
 *.phar
 *.json
+/lib
+/PHPWord
+drive.php
+phpword.php
+*.docx
+quickstart.php
