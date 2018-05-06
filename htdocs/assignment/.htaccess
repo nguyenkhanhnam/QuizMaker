@@ -1,5 +1,7 @@
 RewriteEngine On # Turn on the rewriting engine
 
+Options -Indexes
+
 RewriteRule ^api/auth/?$ api/auth.php [NC,L]
 RewriteRule ^login$ views/login.php [NC,L]
 RewriteRule ^logout$ views/logout.php [NC,L]
