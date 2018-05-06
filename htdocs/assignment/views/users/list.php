@@ -1,3 +1,7 @@
+<?php include_once "../share/head.php" ?>
+<header>
+  <?php include_once "../share/header.php" ?>
+</header>
 <?php 
 require 'db.php';
 $sql = 'SELECT * FROM users';
@@ -6,9 +10,10 @@ $statement->execute();
 $users = $statement->fetchAll(PDO::FETCH_OBJ);
 ?>
 
-<?php require 'header.php'; ?>
-<div class="card">
-  <div class="card-header">
+
+
+<div>
+  <div>
     <h2>All users</h2>
   </div>
   <div align="middle">
@@ -41,4 +46,4 @@ $users = $statement->fetchAll(PDO::FETCH_OBJ);
     </table>
   </div>
 </div>
-<?php require 'footer.php'; ?>
+<?php include_once "../share/footer.php" ?>
