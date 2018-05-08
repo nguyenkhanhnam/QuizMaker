@@ -9,6 +9,9 @@ RewriteRule ^logout$ views/logout.php [NC,L]
 RewriteRule ^api/courses/([A-Z]{2}[0-9]{4})/?$ api/courses.php?code=$1 [NC,L]
 RewriteRule ^api/courses/?$ api/courses.php [NC,L]
 
+RewriteRule ^api/accounts/([A-Za-z0-9]+)/?$ api/accounts.php?username=$1 [NC,L]
+RewriteRule ^api/accounts/?$ api/accounts.php [NC,L]
+
 #RewriteRule ^api/questions/([0-9]+)/?$ api/questions.php?code=$1 [NC,L]
 RewriteRule ^api/questions/?$ api/questions.php [NC,L]
 

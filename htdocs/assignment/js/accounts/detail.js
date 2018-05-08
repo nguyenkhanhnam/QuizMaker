@@ -1,29 +1,35 @@
 ﻿$(document).ready(function () {
-  $('#btn-save-course').on('click', editCourse)
-  $('#btn-delete-course').on('click', removeCourse)
+  $('#btn-save-account').on('click', editAccount)
+  $('#btn-delete-account').on('click', removeAccount)
 })
 
-function getCourse(courseCode){
+function getAccount(accountUsername){
   $.ajax({
     type: 'GET',
-    url: '/api/courses/' + courseCode,
+    url: '/api/accounts/' + accountUsername,
     dataType: 'json',
     complete: function (res) {
       if (res.status !== 200) {
-        return displayToast('error', 'No course found')
+        return displayToast('error', 'No account found')
       } else {
         var str = res.responseText.trim()
-        var course = JSON.parse(str)
-        $('#code-detail').val(course.code)
-        $('#name-detail').val(course.name)
-        showButtonCourse()
-        openSection('editCourse')
+        var account = JSON.parse(str)
+		$('#firstname-detail').val(account.firstname)
+		$('#lastname-detail').val(account.lastname)
+		$('#middlename-detail').val(account.middlename)
+		$('#role-detail').val(account.role)
+		$('#datePicker-account-detail').val(account.dateofbirth)
+		$('#address-detail').val(account.address)
+		$('#phone-detail').val(account.phone)
+		$('#mail-detail').val(account.mail)
+        showButtonAccount()
+        openSection('editAccount')
       }
     }
   })
 }
 
-function removeCourse() {
+function removeAccount() {
   console.log($('#code').val().trim())
   $.ajax({
       url: '/api/courses/',
@@ -50,13 +56,13 @@ function removeCourse() {
   })
 }
 
-function editCourse(){
-  var $form = $('edit-form-course')
+function editAccount(){
+  var $form = $('edit-form')
   var data = {
     code: $('#code-detail').val(),
     name: $('#name-detail').val()
   }
-  $form.submit(function () {
+  $('#edit-form').submit(function () {
     $.ajax({
       url: '/api/courses/',
       type: 'PUT',
@@ -73,9 +79,6 @@ function editCourse(){
           else if (res.status === 409) {
             displayToast('error', 'Course code existed')
           }
-		  else{
-			displayToast('error', 'khong biet cai gi dang xay ra')
-		  }
         } else {
           displayToast('success', 'Course edited successfully')
           getCourses()
@@ -86,7 +89,7 @@ function editCourse(){
   })
 }
 
-function showButtonCourse(){
-  $('#btn-save-course').show()
-  $('#btn-delete-course').show()
+function showButtonAccount(){
+	$('#btn-save-account').show()
+	$('#btn-delete-account').show()
 }
