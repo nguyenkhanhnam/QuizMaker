@@ -53,14 +53,13 @@ function removeCourse() {
 function editCourse() { // TODO: Khong lay course code tu input nua
   var $form = $('#edit-form-course')
   var data = getFormData($form)
-  data.code = $('#code').val().trim()
+  data.code = $('#code-detail').val().trim()
   $.ajax({
     url: '/api/courses/',
     type: 'PUT',
     contentType: 'application/json',
     data: data,
     complete: function (res) {
-      console.log(res)
       if (res.status !== 200) {
         if (res.status === 400) {
           displayToast('error', 'Invalid data')
