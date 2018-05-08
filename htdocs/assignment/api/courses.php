@@ -1,22 +1,22 @@
 ﻿<?php
     require_once('./checkAuth.php');
+    require_once('./dbconnect.php');
 ?>
 <?php
     if(isset($_SESSION['token'])){
         $token = $_SESSION['token'];
         if(!isLoggedIn($token)){
             http_response_code(401);
-            return var_dump(http_response_code());
+            return;
         }
     }
     else {
         http_response_code(401);
-        return var_dump(http_response_code());
+        return;
     }
     // get the HTTP method, path and body of the request
     $method = $_SERVER['REQUEST_METHOD'];
     $data = array();
-    $connection = mysqli_connect("localhost", "root", "", "assignment");
 
     function isValidCourseCode($courseCode){
         if (preg_match('/^[A-Z]{2}[0-9]{4}$/', $courseCode))

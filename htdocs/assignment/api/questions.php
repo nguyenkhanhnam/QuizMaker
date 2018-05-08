@@ -1,5 +1,6 @@
 ﻿<?php
     require_once('./checkAuth.php');
+    require_once('./dbconnect.php');
 ?>
 <?php
     if(isset($_SESSION['token'])){
