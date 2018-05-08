@@ -30,8 +30,8 @@
         // return false;
     // }
 	
-	function isValidMail($mail){
-		if(preg_match('/^[A-Za-z0-9]+[A-Za-z0-9_]*@{1}[A-Za-z]+[A-Za-z0-9]*(.[A-Za-z0-9]+)+$/', $mail))
+	function isValidMail($email){
+		if(preg_match('/^[A-Za-z0-9]+[A-Za-z0-9_]*@{1}[A-Za-z]+[A-Za-z0-9]*(.[A-Za-z0-9]+)+$/', $email))
 			return true;
 		return false;
 	}
@@ -58,7 +58,7 @@
 											, 'dateofbirth' => $row["dateofbirth"]
 											, 'address' => $row["address"]
 											, 'phone' => $row["phone"]
-											, 'mail' => $row["mail"]));
+											, 'email' => $row["email"]));
                 }
                 echo json_encode($data);
                 break;
@@ -78,7 +78,7 @@
 											, 'dateofbirth' => $row["dateofbirth"]
 											, 'address' => $row["address"]
 											, 'phone' => $row["phone"]
-											, 'mail' => $row["mail"]);
+											, 'email' => $row["email"]);
                     }
                     echo json_encode($data);
                 }

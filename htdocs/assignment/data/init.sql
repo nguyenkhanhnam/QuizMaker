@@ -9,7 +9,7 @@ CREATE TABLE users (
   dateofbirth date NOT NULL COMMENT "date of birth",
   address varchar(64),
   phone varchar(16),
-  mail varchar(64),
+  email varchar(64),
   CONSTRAINT username UNIQUE (username)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 

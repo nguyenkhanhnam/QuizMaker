@@ -21,7 +21,7 @@ function getAccount(accountUsername){
 		$('#datePicker-account-detail').val(account.dateofbirth)
 		$('#address-detail').val(account.address)
 		$('#phone-detail').val(account.phone)
-		$('#mail-detail').val(account.mail)
+		$('#email-detail').val(account.email)
         showButtonAccount()
         openSection('editAccount')
       }
