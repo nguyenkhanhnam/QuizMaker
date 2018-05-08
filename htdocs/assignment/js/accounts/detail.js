@@ -30,9 +30,8 @@ function getAccount(accountUsername){
 }
 
 function removeAccount() {
-  console.log($('#code').val().trim())
   $.ajax({
-      url: '/api/courses/',
+      url: '/api/accounts/',
       type: 'DELETE',
       contentType: 'application/json',
       data: {
@@ -64,7 +63,7 @@ function editAccount(){
   }
   $('#edit-form').submit(function () {
     $.ajax({
-      url: '/api/courses/',
+      url: '/api/accounts/',
       type: 'PUT',
       contentType: 'application/json',
       data: data,

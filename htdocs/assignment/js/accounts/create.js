@@ -30,7 +30,7 @@
         $.ajax
             ({
                 type: 'POST',
-                url: '/api/courses/',
+                url: '/api/accounts/',
                 data: courseData,
                 success: function (data, textStatus, xhr) {
                     console.log(xhr.status)
@@ -47,7 +47,6 @@
                         return displayToast('error', 'Course code existed!')
                     }
                 }
-            }
-            )
+            })
     })
 })
