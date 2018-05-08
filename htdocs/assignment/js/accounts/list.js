@@ -39,7 +39,7 @@ function updateTableAccount() {
     account_global.forEach(account => {
         var row = '<tr>'
         var col = '<td onClick=getAccount(\"' + account.username + '\")>' + account.username + '</td>'
-        col += '<td onClick=getAccount(\"' + account.username + '\")>' + account.role + '</td>'
+        col += '<td onClick=getAccount(\"' + account.username + '\")>' + getStringRole(parseInt(account.role)) + '</td>'
         row += col
         row += '</tr>'
         $('#account-table').append(row)
