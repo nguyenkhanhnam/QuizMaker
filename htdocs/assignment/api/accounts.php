@@ -17,20 +17,8 @@
     $method = $_SERVER['REQUEST_METHOD'];
     $data = array();
     $connection = mysqli_connect("localhost", "root", "", "assignment");
-
-    // function isValidCourseCode($courseCode){
-        // if (preg_match('/^[A-Z]{2}[0-9]{4}$/', $courseCode))
-            // return true;
-        // return false;
-    // }
-
-    // function isValidCourseName($courseName){
-        // if (preg_match('/[A-Za-z0-9]{1,50}$/', $courseName))
-            // return true;
-        // return false;
-    // }
 	
-	function isValidMail($email){
+	function isValidEmail($email){
 		if(preg_match('/^[A-Za-z0-9]+[A-Za-z0-9_]*@{1}[A-Za-z]+[A-Za-z0-9]*(.[A-Za-z0-9]+)+$/', $email))
 			return true;
 		return false;
