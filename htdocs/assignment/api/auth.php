@@ -1,5 +1,7 @@
 ﻿<?php
     session_start();
+    require_once('./checkAuth.php');
+    require_once('./dbconnect.php');
     require_once('./jwt.php');
 ?>
 <?php
