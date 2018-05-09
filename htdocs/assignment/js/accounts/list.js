@@ -3,6 +3,7 @@
 })
 
 var account_global = []
+var current_username
 
 function getAccounts() {
     $.ajax({
@@ -19,6 +20,7 @@ function getAccounts() {
                 account_global = accounts
                 if (account_global.length > 0) {
                     updateTableAccount()
+                    current_username= account_global[0].username
                     getAccount(account_global[0].username)
                 }
                 else {

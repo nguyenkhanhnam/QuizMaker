@@ -1,9 +1,10 @@
 ﻿$(document).ready(function () {
-  $('#btn-save-account').on('click', editAccount)
-  $('#btn-delete-account').on('click', removeAccount)
+  $('#btn-save-account').on('click', function(){editAccount(current_username);})
+  $('#btn-delete-account').on('click', function(){removeAccount(current_username);})
 })
 
 function getAccount(accountUsername){
+  current_username= accountUsername
   $.ajax({
     type: 'GET',
     url: '/api/accounts/' + accountUsername,
@@ -55,13 +56,19 @@ function removeAccount() {
   })
 }
 
-function editAccount(){
-  var $form = $('edit-form')
+function editAccount(_username){
   var data = {
-    code: $('#code-detail').val(),
-    name: $('#name-detail').val()
+    username: _username,
+    firstname: $('#firstname-detail').val(),
+    lastname: $('#lastname-detail').val(),
+    middlename: $('#middlename-detail').val(),
+    role: $('#role-detail').val(),
+    dateofbirth: $('#datePicker-account-detail').val(),
+    address: $('#address-detail').val(),
+    email: $('#email-detail').val(),
+    phone: $('#phone-detail').val()
   }
-  $('#edit-form').submit(function () {
+
     $.ajax({
       url: '/api/accounts/',
       type: 'PUT',
@@ -73,19 +80,17 @@ function editAccount(){
             displayToast('error', 'Invalid data')
           }
           else if (res.status === 404) {
-            displayToast('error', 'Course not found')
+            displayToast('error', 'Account not found')
           } 
           else if (res.status === 409) {
-            displayToast('error', 'Course code existed')
+            displayToast('error', 'Username existed')
           }
         } else {
-          displayToast('success', 'Course edited successfully')
+          displayToast('success', 'Account edited successfully')
           getCourses()
         }
       }
     })
-    return false
-  })
 }
 
 function showButtonAccount(){

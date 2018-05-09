@@ -19,13 +19,13 @@
     $connection = mysqli_connect("localhost", "root", "", "assignment");
 	
 	function isValidEmail($email){
-		if(preg_match('/^[A-Za-z0-9]+[A-Za-z0-9_]*@{1}[A-Za-z]+[A-Za-z0-9]*(.[A-Za-z0-9]+)+$/', $email))
+		if(preg_match('/^([A-Za-z0-9]+[A-Za-z0-9_]*(@){1}[A-Za-z0-9]+(.[A-Za-z0-9]+)+)?$/', $email))
 			return true;
 		return false;
 	}
 	
 	function isValidPhone($phone){
-		if(preg_match('/^[0-9]{8-12}$/', $phone))
+		if(preg_match('/^([0-9]{8, 12})?$/', $phone))
 			return true;
 		return false;
 	}
@@ -98,25 +98,18 @@
                 return var_dump(http_response_code());
             }
             parse_str(file_get_contents('php://input'), $_PUT);
-
-            if(!isset($_PUT["code"]) || !isset($_PUT["name"])){
-                return var_dump(http_response_code(400));
-            }
             
-            $code = trim($_PUT["code"], " \t\n\r\0\x0B");
-            $name = $_PUT["name"];
+            $username= $_PUT["username"];
+            $role= $_PUT["role"];
+            $address= $_PUT["address"];
+            $email= $_PUT["email"];
+            $phone= $_PUT["phone"];
 
-            if(!isValidCourseCode($code) || !isValidCourseName($name)){
-                return var_dump(http_response_code(400));
-            }
+            // if(!isValidPhone($phone)){
+            //     return var_dump(http_response_code(400));
+            // }
 
-            $sql =  "SELECT * FROM `courses` WHERE code='$code' LIMIT 1";
-            $result = mysqli_query($connection, $sql);
-            if(mysqli_num_rows($result) <= 0) {
-                return var_dump(http_response_code(404));
-            }
-
-            $sql = "UPDATE courses SET name='$name' WHERE code='$code'";
+            $sql = "UPDATE `users` SET role='$role', address= '$address', email= '$email', phone= '$phone' WHERE username='$username'";
 
             if ($connection->query($sql) === TRUE) {
                 return var_dump(http_response_code(200));
