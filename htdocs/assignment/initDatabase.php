@@ -120,7 +120,7 @@ if (!$conn->query("DROP PROCEDURE IF EXISTS sp_set_account_info") ||
 				BEGIN
 					SET @d_date_of_birth := STR_TO_DATE(i_date_of_birth, \"%d/%m/%Y\");
 					SET @username= concat(substr(i_lname, 1, 1), substr(i_mname, 1, 1), i_fname);
-					SET @username= sp_get_username(@username);
+					SET @username= sf_get_username(@username);
 					SET @password= UNIX_TIMESTAMP()% 9000+ 1000;
 					  
 					SET @sql_text= concat(\"INSERT INTO users (username, password, role, firstname, lastname, middlename, dateofbirth, address, phone, email) VALUES (\'\", @username, \"\', \'\", @password

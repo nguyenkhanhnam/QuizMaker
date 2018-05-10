@@ -30,13 +30,13 @@ function getAccount(accountUsername){
   })
 }
 
-function removeAccount() {
+function removeAccount(_username) {
   $.ajax({
       url: '/api/accounts/',
       type: 'DELETE',
       contentType: 'application/json',
       data: {
-          code: $('#code-detail').val().trim()
+          username: _username
       },
       complete: function (res) {
           console.log(res)
@@ -50,7 +50,7 @@ function removeAccount() {
               var str = res.responseText.trim()
               var data = JSON.parse(str)
               displayToast('success', data.message)
-              getCourses()
+              getAccounts()
           }
       }
   })
@@ -87,7 +87,7 @@ function editAccount(_username){
           }
         } else {
           displayToast('success', 'Account edited successfully')
-          getCourses()
+          getAccounts()
         }
       }
     })
