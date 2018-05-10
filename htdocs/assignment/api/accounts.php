@@ -24,11 +24,11 @@
 		return false;
 	}
 	
-	function isValidPhone($phone){
-		if(preg_match('/^([0-9]{8, 12})?$/', $phone))
-			return true;
-		return false;
-	}
+    function isValidPhone($phone){
+        if (preg_match('/^[0-9]{10,11}$/', $phone))
+            return true;
+        return false;
+    }
 
     switch($method){
         case 'GET': {
@@ -123,15 +123,15 @@
             }
             parse_str(file_get_contents('php://input'), $_PUT);
             
-            $username= $_PUT["username"];
-            $role= $_PUT["role"];
-            $address= $_PUT["address"];
-            $email= $_PUT["email"];
-            $phone= $_PUT["phone"];
+            $username = $_PUT["username"];
+            $role = $_PUT["role"];
+            $address = $_PUT["address"];
+            $email = $_PUT["email"];
+            $phone = $_PUT["phone"];
 
-            // if(!isValidPhone($phone)){
-            //     return var_dump(http_response_code(400));
-            // }
+            if(!isValidPhone($phone)){
+                return var_dump(http_response_code(400));
+            }
 
             $sql = "UPDATE `users` SET role='$role', address= '$address', email= '$email', phone= '$phone' WHERE username='$username'";
 
