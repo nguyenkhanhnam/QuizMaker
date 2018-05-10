@@ -81,11 +81,35 @@
                 http_response_code(403);
                 return var_dump(http_response_code());
             }
-            $code = trim($_POST["code"], " \t\n\r\0\x0B");
-            $name = $_POST["name"];
-            $sql = "INSERT INTO `courses` (name, code) VALUES ('$name','$code')";
+
+            $firstname = $_POST["firstname"];
+            $lastname = $_POST["lastname"];
+            $middlename = $_POST["middlename"];
+            $role= $_POST["role"];
+            $dateofbirth= $_POST["dateofbirth"];
+            $address= $_POST["address"];
+            $email= $_POST["email"];
+            $phone= $_POST["phone"];
+            $username= '';
+            $password= '';
+
+            $sql= "CALL sp_set_account_info('$role', '$firstname', '$lastname', '$middlename', '$dateofbirth', '$address', '$email', '$phone', @username, @password);";
            
             if ($connection->query($sql) === TRUE) {
+                $sql= "SELECT @username, @password;";
+                $result = mysqli_query($connection, $sql);
+
+                if(mysqli_num_rows($result) == 1){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $username= $row["@username"];
+                        $password= $row["@password"];
+                    }
+                }
+
+                //TODO: Send username and password to email here
+
+                //
+                
                 return var_dump(http_response_code(200));
             } else {
                 return var_dump(http_response_code(409));
@@ -124,17 +148,10 @@
                 return var_dump(http_response_code());
             }
             parse_str(file_get_contents('php://input'), $_DELETE);
-            if(!isset($_DELETE["code"])){
-                return var_dump(http_response_code(400));
-            }
             
-            $code = trim($_DELETE["code"], " \t\n\r\0\x0B");
+            $username= $_DELETE["username"];
 
-            if(!isValidCourseCode($code)){
-                return var_dump(http_response_code(400));
-            }
-            $code = $_DELETE["code"];
-            $sql =  "DELETE FROM courses WHERE code = '$code'";
+            $sql =  "DELETE FROM `users` WHERE username = '$username'";
             $result = mysqli_query($connection, $sql);
             if ($connection->query($sql) === TRUE) {
                 $data = array('status' => http_response_code(200), 'message' => 'Course deleted successfully');
