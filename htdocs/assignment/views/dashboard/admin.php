@@ -227,20 +227,21 @@
     })
 	
 	$(document).ready(function () {
-      $('#search-account').on('input', function () {
-        if ($(this).val() === '') {
-          getCourses()
-        } else {
-          var searchPattern = new RegExp($('#search-account').val(), "i");
-          for (var i = course_global.length - 1; i >= 0; i--) {
-            if (course_global[i].name.search(searchPattern) == -1) {
-              course_global.splice(i, 1)
+    $('#course-tab').click()
+    $('#search-account').on('input', function () {
+      if ($(this).val() === '') {
+        getCourses()
+      } else {
+        var searchPattern = new RegExp($('#search-account').val(), "i");
+        for (var i = course_global.length - 1; i >= 0; i--) {
+          if (course_global[i].name.search(searchPattern) == -1) {
+            course_global.splice(i, 1)
               updateTableAccount()
-            }
           }
         }
-      })
+      }
     })
+  })
   </script>
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
