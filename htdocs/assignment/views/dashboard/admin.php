@@ -225,7 +225,6 @@
     })
 
     $(document).ready(function () {
-      $('#course-tab').click()
       $('#search-account').on('input', function () {
         if ($(this).val() === '') {
           getCourses()
