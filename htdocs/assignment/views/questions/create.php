@@ -60,7 +60,12 @@
 				</div>
 				<div class="form-group">
 					<label for="answer">Answer:</label>
-					<input type="text" class="form-control" placeholder="Answer" name="answer" required>
+					<select class="form-control" name="answer">
+						<option value="option1">Option 1</option>
+						<option value="option2">Option 2</option>
+						<option value="option3">Option 3</option>
+						<option value="option4">Option 4</option>
+					</select>
 				</div>
 				<div class="form-group">
 					<label for="difficult">Difficult:</label>
