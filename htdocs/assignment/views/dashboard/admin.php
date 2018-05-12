@@ -50,12 +50,12 @@
       height: 100%;
       overflow: auto;
     }
-	
-	#main-account {
-		font-size: 18px;
-		height: 100%;
-		overflow: auto;
-	}
+
+    #main-account {
+      font-size: 18px;
+      height: 100%;
+      overflow: auto;
+    }
 
     .row {
       margin-right: 0px;
@@ -85,14 +85,14 @@
     <div class="container">
       <header>
         <?php include_once "../share/header.php" ?>
-		
+
         <h1 class="dashboard-name">Admin Dashboard</h1>
       </header>
 
 
       <div class="tab">
         <button id="course-tab" class="tablinks" onclick="openTab(event, 'course')">Course Management</button>
-        <button id= "account-tab" class="tablinks" onclick="openTab(event, 'account')">Account Management</button>
+        <button id="account-tab" class="tablinks" onclick="openTab(event, 'account')">Account Management</button>
       </div>
 
       <!-- Course tab content -->
@@ -103,22 +103,20 @@
               Add Course
             </button>
           </div>
-          <div>
-            <div class="form-group search-form">
-              <div class="input-group">
-                <span class="input-group-addon">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </span>
-                <input type="text" class="form-control" id="search-course" placeholder="Search">
-              </div>
+          <div class="form-group search-form">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </span>
+              <input type="text" class="form-control" id="search-course" placeholder="Search">
             </div>
-            <?php 
+          </div>
+          <?php 
               include $basedir . '\..\courses\list.html'; 
             ?>
-          </div>
         </div>
 
-        <div class="col-sm-9" id= "main-course">
+        <div class="col-sm-9" id="main-course">
           <div class="hide" id="add-course">
             <?php
               include $basedir . '\..\courses\create.html';
@@ -134,7 +132,7 @@
 
       <!-- Account tab content -->
       <!-- Course tab content -->
-    <div id="account" class="tabcontent row" style="height: 500px">
+      <div id="account" class="tabcontent row" style="height: 500px">
         <div class="sidenav col-sm-3">
           <div>
             <button class="btn btn-primary my-btn" style="width:100%; margin-top: 5px" onclick="openSection('addAccount')">
@@ -155,8 +153,8 @@
             ?>
           </div>
         </div>
-		
-		<div class="col-sm-9" id= "main-account">
+
+        <div class="col-sm-9" id="main-account">
           <div class="hide" id="add-account">
             <?php
               include $basedir . '\..\accounts\create.html';
@@ -168,7 +166,7 @@
             ?>
           </div>
         </div>
-	</div>
+      </div>
 
       <footer>
         <?php include_once "../share/footer.php" ?>
@@ -191,20 +189,20 @@
       evt.currentTarget.className += " active";
     }
 
-    function openSection(sectionName){
-      if (sectionName === 'addCourse'){
+    function openSection(sectionName) {
+      if (sectionName === 'addCourse') {
         $('#add-course').removeClass('hide')
         $('#detail-course').addClass('hide')
       }
-      else if (sectionName === 'editCourse'){
+      else if (sectionName === 'editCourse') {
         $('#add-course').addClass('hide')
         $('#detail-course').removeClass('hide')
       }
-	  else if (sectionName === 'addAccount'){
+      else if (sectionName === 'addAccount') {
         $('#add-account').removeClass('hide')
         $('#detail-account').addClass('hide')
       }
-	  else if (sectionName === 'editAccount'){
+      else if (sectionName === 'editAccount') {
         $('#add-account').addClass('hide')
         $('#detail-account').removeClass('hide')
       }
@@ -225,25 +223,24 @@
         }
       })
     })
-	
-	$(document).ready(function () {
-    $('#course-tab').click()
-    $('#search-account').on('input', function () {
-      if ($(this).val() === '') {
-        getCourses()
-      } else {
-        var searchPattern = new RegExp($('#search-account').val(), "i");
-        for (var i = course_global.length - 1; i >= 0; i--) {
-          if (course_global[i].name.search(searchPattern) == -1) {
-            course_global.splice(i, 1)
+
+    $(document).ready(function () {
+      $('#search-account').on('input', function () {
+        if ($(this).val() === '') {
+          getCourses()
+        } else {
+          var searchPattern = new RegExp($('#search-account').val(), "i");
+          for (var i = course_global.length - 1; i >= 0; i--) {
+            if (course_global[i].name.search(searchPattern) == -1) {
+              course_global.splice(i, 1)
               updateTableAccount()
+            }
           }
         }
-      }
+      })
     })
-  })
   </script>
 
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>

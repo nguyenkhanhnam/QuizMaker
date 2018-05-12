@@ -27,11 +27,15 @@
 		return false;
 	}
 	
+<<<<<<< HEAD
 	function isValidPhone($phone){
 		if(preg_match('/^([0-9]{10,11})?$/', $phone))
 			return true;
 		return false;
 	}
+=======
+   
+>>>>>>> dev
 
     switch($method){
         case 'GET': {
@@ -124,13 +128,16 @@
             }
             parse_str(file_get_contents('php://input'), $_PUT);
             
-            $username= $_PUT["username"];
-            $role= $_PUT["role"];
-            $address= $_PUT["address"];
-            $email= $_PUT["email"];
-            $phone= $_PUT["phone"];
+            $username = $_PUT["username"];
+            $role = $_PUT["role"];
+            $address = $_PUT["address"];
+            $email = $_PUT["email"];
+            $phone = $_PUT["phone"];
 
+<<<<<<< HEAD
             if(!isValidPhone($phone) || !isValidEmail($email)){
+======
+>>>>>>> dev
                 return var_dump(http_response_code(400));
             }
 
