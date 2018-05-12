@@ -22,13 +22,14 @@ CREATE TABLE courses (
 
 CREATE TABLE questions (
   id int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT "Question ID",
-  question varchar(100) NOT NULL COMMENT "Question",
-  option1 varchar(100) NOT NULL COMMENT "Option 1",
-  option2 varchar(100) NOT NULL COMMENT "Option 2",
-  option3 varchar(100) NOT NULL COMMENT "Option 3",
-  option4 varchar(100) NOT NULL COMMENT "Option 4",
-  answer varchar(100) NOT NULL COMMENT "Answer",
+  question varchar(1000) NOT NULL COMMENT "Question",
+  option1 varchar(1000) NOT NULL COMMENT "Option 1",
+  option2 varchar(1000) NOT NULL COMMENT "Option 2",
+  option3 varchar(1000) NOT NULL COMMENT "Option 3",
+  option4 varchar(1000) NOT NULL COMMENT "Option 4",
+  answer varchar(1000) NOT NULL COMMENT "Answer",
   difficult ENUM('0', '1', '2') NOT NULL DEFAULT '2' COMMENT "Difficult of question: '0'-Easy, '1'-Medium, '2'-Hard",
   code varchar(6) NOT NULL COMMENT "Course code (e.g CO3069)",
+  image varchar(1000) COMMENT "image name",
   FOREIGN KEY (code) REFERENCES Courses(code)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
