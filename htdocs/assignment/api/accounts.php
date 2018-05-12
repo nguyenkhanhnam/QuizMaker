@@ -19,13 +19,16 @@
     $connection = mysqli_connect("localhost", "root", "", "assignment");
 	
 	function isValidEmail($email){
-		if(preg_match('/^([A-Za-z0-9]+[A-Za-z0-9_]*(@){1}[A-Za-z0-9]+(.[A-Za-z0-9]+)+)?$/', $email))
-			return true;
+		// if(preg_match('/^([A-Za-z0-9]+[A-Za-z0-9_]*@[A-Za-z0-9]+((.){1}[A-Za-z0-9]+)+)?$/', $email))
+        // 	return true;
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return true;
+          }
 		return false;
 	}
 	
 	function isValidPhone($phone){
-		if(preg_match('/^([0-9]{8, 12})?$/', $phone))
+		if(preg_match('/^([0-9]{10,11})?$/', $phone))
 			return true;
 		return false;
 	}
@@ -90,8 +93,6 @@
             $address= $_POST["address"];
             $email= $_POST["email"];
             $phone= $_POST["phone"];
-            $username= '';
-            $password= '';
 
             $sql= "CALL sp_set_account_info('$role', '$firstname', '$lastname', '$middlename', '$dateofbirth', '$address', '$email', '$phone', @username, @password);";
            
@@ -129,9 +130,9 @@
             $email= $_PUT["email"];
             $phone= $_PUT["phone"];
 
-            // if(!isValidPhone($phone)){
-            //     return var_dump(http_response_code(400));
-            // }
+            if(!isValidPhone($phone) || !isValidEmail($email)){
+                return var_dump(http_response_code(400));
+            }
 
             $sql = "UPDATE `users` SET role='$role', address= '$address', email= '$email', phone= '$phone' WHERE username='$username'";
 

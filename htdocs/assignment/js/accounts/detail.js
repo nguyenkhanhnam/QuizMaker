@@ -69,6 +69,8 @@ function editAccount(_username){
     phone: $('#phone-detail').val()
   }
 
+  console.log(data)
+
     $.ajax({
       url: '/api/accounts/',
       type: 'PUT',
