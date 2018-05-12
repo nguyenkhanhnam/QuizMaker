@@ -93,8 +93,14 @@
             $address= $_POST["address"];
             $email= $_POST["email"];
             $phone= $_POST["phone"];
+            $username= '';
+            $password= '';
 
-            $sql= "CALL sp_set_account_info('$role', '$firstname', '$lastname', '$middlename', '$dateofbirth', '$address', '$email', '$phone', @username, @password);";
+            if(!isValidPhone($phone) || !isValidEmail($email)){
+                return var_dump(http_response_code(400));
+            }
+
+            $sql= "CALL sp_set_account_info('$role', '$firstname', '$lastname', '$middlename', '$dateofbirth', '$address', '$phone', '$email', @username, @password);";
            
             if ($connection->query($sql) === TRUE) {
                 $sql= "SELECT @username, @password;";
@@ -108,7 +114,16 @@
                 }
 
                 //TODO: Send username and password to email here
+                // the message
+                $msg = "Your username is: " . $username . '/nYour password is: ' . $password;
 
+                // use wordwrap() if lines are longer than 70 characters
+                $msg = wordwrap($msg, 70);
+                $headers = "From: zueskei4@gmail.com";
+                // send email
+                
+                if(mail('zueskei4@gmail.com', 'Account information', $msg, $headers))
+                    return var_dump(http_response_code(123));
                 //
                 
                 return var_dump(http_response_code(200));
