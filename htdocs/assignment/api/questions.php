@@ -79,6 +79,10 @@
             }
         }
         case 'POST': {
+            if(!isUserLoggedIn($token)){
+                http_response_code(403);
+                return var_dump(http_response_code());
+            }
             $image_name = '';
             if(isset($_FILES['fileToUpload']) && $_FILES['fileToUpload']['size'] > 0){
                 $image_name = $_POST["question"] . $_FILES["fileToUpload"]["name"];
@@ -126,37 +130,60 @@
                         echo $message;
                     }
                 }
-            }
 
-            if(!isUserLoggedIn($token)){
-                http_response_code(403);
-                return var_dump(http_response_code());
+                if(!isset($_POST["code"]) || !isset($_POST["question"]) 
+                || !isset($_POST["option1"]) || !isset($_POST["option2"]) 
+                || !isset($_POST["option3"]) || !isset($_POST["option4"])
+                || !isset($_POST["answer"]) || !isset($_POST["difficult"])){
+                    return var_dump(http_response_code(400));
+                }
+                $code = trim($_POST["code"], " \t\n\r\0\x0B");
+                if(!isValidCourseCode($code)){
+                    return var_dump(http_response_code(400));
+                }
+                $question = $_POST["question"];
+                $option1 = $_POST["option1"];
+                $option2 = $_POST["option2"];
+                $option3 = $_POST["option3"];
+                $option4 = $_POST["option4"];
+                $answer = $_POST["answer"];
+                $difficult = $_POST["difficult"];
+                $sql = "INSERT INTO `questions` (code, question, option1, option2, option3, option4, answer, difficult, image) VALUES ('$code','$question','$option1','$option2','$option3','$option4','$answer','$difficult','$image_name')";
+               
+                if ($connection->query($sql) === TRUE) {
+                    return var_dump(http_response_code(200));
+                } else {
+                    return var_dump(http_response_code(409));
+                }
             }
-            if(!isset($_POST["code"]) || !isset($_POST["question"]) 
-            || !isset($_POST["option1"]) || !isset($_POST["option2"]) 
-            || !isset($_POST["option3"]) || !isset($_POST["option4"])
-            || !isset($_POST["answer"]) || !isset($_POST["difficult"])){
-                return var_dump(http_response_code(400));
-            }
-            $code = trim($_POST["code"], " \t\n\r\0\x0B");
-            if(!isValidCourseCode($code)){
-                return var_dump(http_response_code(400));
-            }
-            $question = $_POST["question"];
-            $option1 = $_POST["option1"];
-            $option2 = $_POST["option2"];
-            $option3 = $_POST["option3"];
-            $option4 = $_POST["option4"];
-            $answer = $_POST["answer"];
-            $difficult = $_POST["difficult"];
-            $sql = "INSERT INTO `questions` (code, question, option1, option2, option3, option4, answer, difficult, image) VALUES ('$code','$question','$option1','$option2','$option3','$option4','$answer','$difficult','$image_name')";
-           
-            if ($connection->query($sql) === TRUE) {
-                return var_dump(http_response_code(200));
-            } else {
-                return var_dump(http_response_code(409));
+            else {
+                if(!isset($_POST["code"]) || !isset($_POST["question"]) 
+                || !isset($_POST["option1"]) || !isset($_POST["option2"]) 
+                || !isset($_POST["option3"]) || !isset($_POST["option4"])
+                || !isset($_POST["answer"]) || !isset($_POST["difficult"])){
+                    return var_dump(http_response_code(400));
+                }
+                $code = trim($_POST["code"], " \t\n\r\0\x0B");
+                if(!isValidCourseCode($code)){
+                    return var_dump(http_response_code(400));
+                }
+                $question = $_POST["question"];
+                $option1 = $_POST["option1"];
+                $option2 = $_POST["option2"];
+                $option3 = $_POST["option3"];
+                $option4 = $_POST["option4"];
+                $answer = $_POST["answer"];
+                $difficult = $_POST["difficult"];
+                $sql = "INSERT INTO `questions` (code, question, option1, option2, option3, option4, answer, difficult, image) VALUES ('$code','$question','$option1','$option2','$option3','$option4','$answer','$difficult','$image_name')";
+               
+                if ($connection->query($sql) === TRUE) {
+                    return var_dump(http_response_code(200));
+                } else {
+                    return var_dump(http_response_code(409));
+                }
             }
             break;
+           
         }
         case 'PUT': {
             if(!isUserLoggedIn($token)){
