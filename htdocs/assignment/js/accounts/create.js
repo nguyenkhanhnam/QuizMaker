@@ -18,7 +18,6 @@
                 data: accountData,
                 success: function (data, textStatus, xhr) {
                     console.log(xhr.status)
-                    console.log(data)
                     if (xhr.status == 200) {
                         getAccounts()
                         return displayToast('success', 'Account added successfully')
@@ -26,10 +25,12 @@
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log(xhr.status)
-
-                    // if (xhr.status == 409) {
-                    //     returndisplayToast('error', 'Course code existed!') 
-                    // }
+                    if (xhr.status == 409) {
+                        return displayToast('error', 'Something wrong!') 
+                    }
+                    else if (xhr.status == 400) {
+                        return displayToast('error', 'Invalid input!') 
+                    }
                 }
             })
     })
