@@ -22,42 +22,60 @@
         }
     })
 
-    $('#btn-add').click(function () {
-        var questionObj = getFormData($('#create-form'))
-        if (!questionObj.code) {
-            return displayToast('error', 'Course code is required')
-        }
-        if (!questionObj.code.match(/^([A-Z]{2})([0-9]{4})$/)) {
-            return displayToast('error', 'Course code is invalid. The format must similar to CO1009')
-        }
-        if (!questionObj.question) {
-            return displayToast('error', 'Question is required')
-        }
-        if (!questionObj.option1 || !questionObj.option2 || !questionObj.option3 || !questionObj.option4) {
-            return displayToast('error', 'Options of question is required')
-        }
-        if (!questionObj.answer) {
-            return displayToast('error', 'Answer of question is required')
-        }
-        if (!questionObj.difficult) {
-            return displayToast('error', 'Difficult of question is required')
-        }
-        $.ajax
-            ({
-                type: 'POST',
-                url: '/api/questions/',
-                data: questionObj,
-                success: function (data, textStatus, xhr) {
-                    console.log(xhr.status)
-                    console.log(data)
-                    if (xhr.status == 200) {
-                        return displayToastWithRedirect('success', 'Question added successfully', '/questions')
-                    }
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    return displayToast('error', '')
-                }
+    $(document).on('submit', '#create-form', function(e){
+        e.preventDefault();
+      
+        var form_data = new FormData($('#create-form')[0]);
+        $.ajax({
+            type:'POST',
+            url:'/api/questions/',
+            processData: false,
+            contentType: false,
+            async: false,
+            cache: false,
+            data : form_data,
+            success: function(response){
+                console.log(response)
             }
-            )
-    })
+        });
+      });
+
+    // $('#btn-add').click(function () {
+    //     var questionObj = getFormData($('#create-form'))
+    //     if (!questionObj.code) {
+    //         return displayToast('error', 'Course code is required')
+    //     }
+    //     if (!questionObj.code.match(/^([A-Z]{2})([0-9]{4})$/)) {
+    //         return displayToast('error', 'Course code is invalid. The format must similar to CO1009')
+    //     }
+    //     if (!questionObj.question) {
+    //         return displayToast('error', 'Question is required')
+    //     }
+    //     if (!questionObj.option1 || !questionObj.option2 || !questionObj.option3 || !questionObj.option4) {
+    //         return displayToast('error', 'Options of question is required')
+    //     }
+    //     if (!questionObj.answer) {
+    //         return displayToast('error', 'Answer of question is required')
+    //     }
+    //     if (!questionObj.difficult) {
+    //         return displayToast('error', 'Difficult of question is required')
+    //     }
+    //     $.ajax
+    //         ({
+    //             type: 'POST',
+    //             url: '/api/questions/',
+    //             data: questionObj,
+    //             success: function (data, textStatus, xhr) {
+    //                 console.log(xhr.status)
+    //                 console.log(data)
+    //                 if (xhr.status == 200) {
+    //                     return displayToastWithRedirect('success', 'Question added successfully', '/questions')
+    //                 }
+    //             },
+    //             error: function (xhr, textStatus, errorThrown) {
+    //                 return displayToast('error', '')
+    //             }
+    //         }
+    //         )
+    // })
 })

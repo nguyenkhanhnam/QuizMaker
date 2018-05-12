@@ -80,9 +80,8 @@
 						<input type="radio" value="2" name="difficult">Hard
 					</label>
 				</div>
-				<input type="file" name="fileToUpload" id="fileToUpload">
 				<div class="text-right">
-					<button type="submit" class="btn btn-primary" id="btn-add">Add</button>
+					<button type="button" class="btn btn-primary" id="btn-add">Add</button>
 				</div>
 			</form>
 		</div>
