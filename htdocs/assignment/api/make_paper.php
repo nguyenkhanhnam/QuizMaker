@@ -75,6 +75,7 @@
 		
 		$left_side_width= 70;
 		$right_side_width= 120;
+		$pdf -> SetAutoPageBreak('true', 15);
 		
 		$pdf -> SetFont('Times', '', 16);
 		
@@ -100,7 +101,7 @@
 		$pdf -> Ln(10);
 		
 		$connection = mysqli_connect("localhost", "root", "", "assignment");
-		$sql= "CALL get_paper_question('$code', $easy_num, $medium_num, $hard_num);";
+		$sql= "CALL sp_get_paper_question('$code', $easy_num, $medium_num, $hard_num);";
 		$result = mysqli_query($connection, $sql);
 		$question_no= 0;
 
@@ -109,7 +110,7 @@
 			while($row = mysqli_fetch_array($result, MYSQLI_BOTH)) {
 				// echo "id" . $row["id"] . " \tquestion: " . $row["question"] . "<br>";
 				$pdf->SetFont('Times','',12);
-					$pdf-> InsertQuestion($row['question'], $question_no+ 1);
+					$pdf-> InsertQuestion($row['question'], $question_no+ 1, $row['image']);
 					$pdf -> InsertAnswers(array($row[1], $row[2], $row[3], $row[4]));
 					//echo "<br><br>" . $pdf -> get_lasth();
 					$pdf -> ln();

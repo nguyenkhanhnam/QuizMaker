@@ -6,6 +6,9 @@
 	class PDF extends FPDF {
 		// public $content_height;
 		// Page header
+		const MM_IN_INCH = 25.4;
+		const DPI = 96;
+
 		function Header()
 		{
 			global $code_header, $name_header, $paper_code_header;
@@ -45,14 +48,48 @@
 			// parent::Cell();
 			
 		// }
-		
-		function InsertQuestion($question, $no){
+		function pixelsToMM($val) {
+			return $val * self::MM_IN_INCH / self::DPI;
+		}
+
+		function InsertQuestion($question, $no, $image){
 			$this -> SetFont('Times', 'BI', 12);
 			$question_word= "Question " . $no . ": ";
 			$question_word_width= $this -> GetStringWidth($question_word)+ 4;
 			$this -> Cell($question_word_width, 5, $question_word, 0, 0, 'C');
 			$this -> SetFont('', '', 12);
 			$this -> MultiCell(0, 5, $question);
+			if($image !== ''){
+				// $this -> SetAutoPageBreak('false', 15);
+				list($img_width_px, $img_height_px) = getimagesize('../images/' . $image);
+
+				$img_ratio= $img_width_px/ $img_height_px;
+				$img_width= $this -> pixelsToMM($img_width_px);
+				$img_height= $this -> pixelsToMM($img_height_px);
+
+				if($img_ratio < 1.2){
+					if($img_width < 210* 0.4){
+						$this -> Image('../images/' . $image, (210- $img_width)/ 2, null, $img_width, $img_height);
+						$this -> setY($this -> getY()+  5);
+					}
+					else {
+						$this -> Image('../images/' . $image, 210* 0.6/ 2, null, 210* 0.4, (1/ $img_ratio)* 210* 0.4);
+						$this -> setY($this -> getY()+ 5);
+					}
+				}
+				else {
+					if($img_width < 210* 0.6){
+						$this -> Image('../images/' . $image, (210- $img_width)/ 2, null, $img_width, $img_height);
+						$this -> setY($this -> getY()+ 5);
+					}
+					else {
+						$this -> Image('../images/' . $image, 210* 0.4/ 2, null, 210* 0.6, (1/ $img_ratio)* 210* 0.6);
+						$this -> setY($this -> getY()+ 5);
+					}
+				}
+				// $this -> SetAutoPageBreak('true', 15);
+			}
+			
 			// $this -> SetX(20);
 			// $this -> Cell(0, 5, $this -> GetX());
 		}

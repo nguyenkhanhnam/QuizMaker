@@ -32,7 +32,7 @@
                 if ($result && $result->num_rows > 0){
                     while($row = mysqli_fetch_array($result)){
                         array_push($data, array('id' => $row['id'], 'question' => $row['question']
-                        , 'code' => $row['code'], 'name' => $row['name'], 'difficult' => $row['difficult']));
+                        , 'code' => $row['code'], 'name' => $row['name'], 'difficult' => $row['difficult'], 'image' => $row['image']));
                     }
                     echo json_encode($data);
                 } else {
@@ -51,7 +51,7 @@
                 if ($result && $result->num_rows > 0){
                     while($row = mysqli_fetch_array($result)){
                         array_push($data, array('id' => $row['id'], 'question' => $row['question']
-                        , 'code' => $row['code'], 'name' => $row['name'], 'difficult' => $row['difficult']));
+                        , 'code' => $row['code'], 'name' => $row['name'], 'difficult' => $row['difficult'], 'image' => $row['image']));
                     }
                     echo json_encode($data);
                 } else {

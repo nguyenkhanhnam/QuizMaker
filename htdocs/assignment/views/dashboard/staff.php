@@ -28,7 +28,7 @@
 		</header>
 		<div class="ques">
 			<p style="font-size: 80px">Create Question</p>
-			<form id="create-form" class="form-horizontal" method="POST" action="../../api/make_paper.php">
+			<form id="create-form" class="form-horizontal" method="POST" action="/api/make_paper.php">
 				<div class="form-group">
 					<label for="courses">Course:</label>
 					<br>
@@ -98,6 +98,29 @@
 
 <script>
 	$(document).ready(function () {
+		$.ajax({
+        type: 'GET',
+        url: '/api/courses',
+        dataType: 'json',
+
+        complete: function (res) {
+            if (res.status !== 200) {
+                console.log(res)
+            } else {
+                var str = res.responseText.trim()
+                var courses = JSON.parse(str)
+                console.log(courses)
+                courses.forEach(course => {
+                    $('#courses')
+                        .append($("<option></option>")
+                            .attr("value", course.code)
+                            .text(course.name + ' (' + course.code + ')'))
+                })
+                $('#courses').select2()
+            }
+        }
+    })
+
 		$('#datePicker').datepicker({
 			format: 'dd/mm/yyyy',
 			startDate: '0',
@@ -125,7 +148,6 @@
 	})
 </script>
 
-<script src="/js/questions/create.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
