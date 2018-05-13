@@ -31,6 +31,9 @@
                     else if (xhr.status == 400) {
                         return displayToast('error', 'Invalid input!') 
                     }
+                    else if (xhr.status == 405) {
+                        return displayToast('error', 'Cannot send email!') 
+                    }
                 }
             })
     })
