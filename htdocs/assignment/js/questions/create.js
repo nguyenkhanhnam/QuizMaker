@@ -45,6 +45,7 @@
         //     return displayToast('error', 'Course name is invalid. The length can not exceed 50.');
         // }
 
+
         $.ajax
             ({
                 type: 'POST',

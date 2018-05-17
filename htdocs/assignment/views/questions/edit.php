@@ -51,19 +51,21 @@
           <label for="question">Question:</label>
           <input type="text" class="form-control" name="question" value="<?php echo $question;?>">
         </div>
+        
         <div class="form-group">
-          <label for="options">Options:</label>
-        </div>
-        <div class="form-group">
+          <label for="options">Options 1:</label>
           <input for="option1" type="text" class="form-control" name="option1" required value="<?php echo $option1;?>">
         </div>
         <div class="form-group">
+          <label for="options">Options 2:</label>
           <input for="option2" type="text" class="form-control" name="option2" required value="<?php echo $option2;?>">
         </div>
         <div class="form-group">
+          <label for="options">Options 3:</label>
           <input for="option3" type="text" class="form-control" name="option3" required value="<?php echo $option3;?>">
         </div>
         <div class="form-group">
+          <label for="options">Options 4:</label>
           <input for="option4" type="text" class="form-control" name="option4" required value="<?php echo $option4;?>">
         </div>
         <div class="form-group">
