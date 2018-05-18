@@ -137,14 +137,14 @@
     else {
       echo "<script>
         $('#logout').hide()
-        $('#login').show()()  
+        $('#login').show() 
       </script>";
     }
   }
   else {
     echo "<script>
     $('#logout').hide()
-    $('#login').show()()  
+    $('#login').show() 
   </script>";
   }
 ?>

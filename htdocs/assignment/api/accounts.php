@@ -81,8 +81,9 @@
         }
         case 'POST': {
             if(!isAdminLoggedIn($token)){
-                http_response_code(403);
-                return var_dump(http_response_code());
+                $data = array('status' => http_response_code(403), 'message' => 'Invalid request');
+                echo json_encode($data);
+                return;
             }
 
             $firstname = $_POST["firstname"];
@@ -134,8 +135,9 @@
         }
         case 'PUT': {
             if(!isAdminLoggedIn($token)){
-                http_response_code(403);
-                return var_dump(http_response_code());
+                $data = array('status' => http_response_code(403), 'message' => 'Invalid request');
+                echo json_encode($data);
+                return;
             }
             parse_str(file_get_contents('php://input'), $_PUT);
             
@@ -157,21 +159,24 @@
                 return;
             }
 
-            $sql = "UPDATE `users` SET role='$role', address= '$address', email= '$email', phone= '$phone' WHERE username='$username'";
+            $sql = "UPDATE `users` SET role='$role', address='$address', email='$email', phone='$phone' WHERE username='$username'";
 
             if ($connection->query($sql) === TRUE) {
                 $data = array('status' => http_response_code(200), 'message' => 'Account edited successfully');
                 echo json_encode($data);
                 return;
             } else {
-                return var_dump(http_response_code(409));
+                $data = array('status' => http_response_code(500), 'message' => 'Account edited failed. Please try again later.');
+                echo json_encode($data);
+                return;
             }
             break;
         }
         case 'DELETE': {
             if(!isAdminLoggedIn($token)){
-                http_response_code(403);
-                return var_dump(http_response_code());
+                $data = array('status' => http_response_code(403), 'message' => 'Invalid request');
+                echo json_encode($data);
+                return;
             }
             parse_str(file_get_contents('php://input'), $_DELETE);
             
@@ -180,7 +185,7 @@
             $sql =  "DELETE FROM `users` WHERE username = '$username'";
             $result = mysqli_query($connection, $sql);
             if ($connection->query($sql) === TRUE) {
-                $data = array('status' => http_response_code(200), 'message' => 'Course deleted successfully');
+                $data = array('status' => http_response_code(200), 'message' => 'Account deleted successfully');
                 echo json_encode($data);
                 return;
             } else {
