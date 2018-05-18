@@ -145,14 +145,24 @@
             $email = $_PUT["email"];
             $phone = $_PUT["phone"];
 
-            if(!isValidPhone($phone) || !isValidEmail($email)){
-                return var_dump(http_response_code(400));
+            if(!isValidPhone($phone)){
+                $data = array('status' => http_response_code(400), 'message' => 'Invalid phone number');
+                echo json_encode($data);
+                return;
+            }
+
+            if(!isValidEmail($email)){
+                $data = array('status' => http_response_code(400), 'message' => 'Invalid email address');
+                echo json_encode($data);
+                return;
             }
 
             $sql = "UPDATE `users` SET role='$role', address= '$address', email= '$email', phone= '$phone' WHERE username='$username'";
 
             if ($connection->query($sql) === TRUE) {
-                return var_dump(http_response_code(200));
+                $data = array('status' => http_response_code(200), 'message' => 'Account edited successfully');
+                echo json_encode($data);
+                return;
             } else {
                 return var_dump(http_response_code(409));
             }

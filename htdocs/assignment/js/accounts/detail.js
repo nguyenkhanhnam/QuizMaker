@@ -81,17 +81,11 @@ function editAccount(_username) {
     complete: function (res) {
       console.log(res)
       if (res.status !== 200) {
-        if (res.status === 400) {
-          displayToast('error', 'Invalid data')
-        }
-        else if (res.status === 404) {
-          displayToast('error', 'Account not found')
-        }
-        else if (res.status === 409) {
-          displayToast('error', 'Username existed')
-        }
+        const message = JSON.parse(res.responseText.trim()).message
+        displayToast('error', message)
       } else {
-        displayToast('success', 'Account edited successfully')
+        const message = JSON.parse(res.responseText.trim()).message
+        displayToast('success', message)
         getAccounts()
       }
     }
