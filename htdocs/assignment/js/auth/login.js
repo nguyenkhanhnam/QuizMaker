@@ -9,7 +9,7 @@
         if (!loginData.password) {
             return displayToast('error', 'Password is required')
         }
-        
+
         $.ajax({
             type: 'POST',
             url: '/api/auth',
@@ -17,14 +17,18 @@
             complete: function (res) {
                 const message = JSON.parse(res.responseText.trim()).message
                 if (res.status === 200){
-                    return displayToastWithRedirect('success', message, '/')
+                    window.location.reload()
                 }
                 else {
-                    return displayToast('error', message)
+                    $('#login-modal').removeClass('fadeIn')
+                    $('#login-modal').addClass('shake')
+                    $('input[type=password]').val('')
+                    setTimeout(function(){
+                        $('#login-modal').removeClass('shake')
+                    }, 1000)
                 }
             }
         })
     })
-}
-)
+})
 
