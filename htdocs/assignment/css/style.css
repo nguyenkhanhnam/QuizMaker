@@ -1,6 +1,6 @@
 ﻿* {
   box-sizing: border-box;
-  font-family: Montserrat, sans-serif;
+  font-family: Montserrat, sans-serif !important;
 }
 
 .btn-primary {
@@ -56,4 +56,8 @@ However, delay the fade out process for 2.5 seconds */
 @keyframes fadeout {
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
+}
+
+a {
+  text-decoration: none !important;
 }

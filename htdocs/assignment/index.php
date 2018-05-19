@@ -1,4 +1,8 @@
-﻿<?php include_once "./views/share/head.php" ?>
+﻿<?php
+    include_once "./views/share/head.php";
+    include_once "./views/login.html";  
+?>
+
 <?php
     if(isset($_SESSION['token']) && $_SESSION['token']!=''){
       $token = $_SESSION['token'];
@@ -17,11 +21,22 @@
             }
       }
       else {
-        return header('location:/login');
+        echo "<script>$('#login-modal').modal('show')</script>";
       }
     }
     else {
-      echo "no token";
-      return header('location:/login');
+        echo "<script>$('#login-modal').modal('show')</script>";
     }
 ?>
+
+<title>QuizMaker</title>
+
+<header>
+    <?php include_once "./views/share/header.php" ?>
+</header>
+
+<?php include_once "./views/about.html" ?>
+
+<footer>
+    <?php include_once "./views/share/footer.php" ?>
+</footer>
