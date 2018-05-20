@@ -23,7 +23,7 @@
     <?php include_once "./views/share/header.php" ?>
 </header>
 
-<?php include_once "./views/accounts/detail.html" ?>
+<?php include_once "./views/profile.html" ?>
 
 <footer>
     <?php include_once "./views/share/footer.php" ?>
