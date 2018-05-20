@@ -89,7 +89,8 @@
     text-align: right;
   }
 
-  #login, #logout {
+  #login,
+  #user-dropdown {
     display: none;
   }
 </style>
@@ -99,52 +100,82 @@
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-          aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-        </button>
         <a class="navbar-brand" href="/">QUIZ MAKER</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active" id="login">
-            <a href="/"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i> Log in
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li id="logout">
-            <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Log out</a>
-          </li>
-        </ul>
-      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li id="login">
+          <a data-toggle="modal" data-target="#login-modal" href="#">
+            <i class="fa fa-sign-in fa-lg" aria-hidden="true"></i> Log in
+          </a>
+        </li>
+        <li class="hide" id="logout">
+          <a href="/logout">
+            <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Log out</a>
+        </li>
+        <li id="user-dropdown" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Hello, <?php echo $_SESSION['username']; ?>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="/profile.php"><i class="fa fa-user" aria-hidden="true"></i> My profile</a>
+            </li>
+            <li>
+              <a data-toggle="modal" data-target="#change-password-modal" href="#"><i class="fa fa-key" aria-hidden="true"></i> Change password</a>
+            </li>
+            <li>
+              <a data-toggle="modal" data-target="#logout-modal" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="/about.php">
+            <i class="fa fa-info-circle" aria-hidden="true"></i> About</a>
+        </li>
+        <li>
+          <a href="#" onclick="downloadGuide()">
+            <i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
+        </li>
+      </ul>
       <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
   </nav>
 </div>
 
+<script>
+  function downloadGuide(){
+    window.open('http://localhost/QuizMakerGuide.docx', '_blank')
+  }
+</script>
+
 <?php
-   if(isset($_SESSION['token']) && $_SESSION['token']!=''){
+  include $basedir . '\..\login.html';
+  include $basedir . '\..\logout.html';
+  include $basedir . '\..\change-password.html';
+  include $basedir . '\..\forgot-password.html';
+
+  if(isset($_SESSION['token']) && $_SESSION['token']!=''){
     $token = $_SESSION['token'];
     if(isLoggedIn($token)){
       echo "<script>
-        $('#logout').show()
+        $('#user-dropdown').show()
         $('#login').hide()  
       </script>";
     }
     else {
       echo "<script>
-        $('#logout').hide()
-        $('#login').show()()  
+        $('#user-dropdown').hide()
+        $('#login').show() 
       </script>";
     }
   }
   else {
     echo "<script>
-    $('#logout').hide()
-    $('#login').show()()  
-  </script>";
+      $('#user-dropdown').hide()
+      $('#login').show() 
+    </script>";
   }
 ?>

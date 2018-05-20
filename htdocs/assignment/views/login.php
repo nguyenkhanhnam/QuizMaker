@@ -1,20 +1,17 @@
-﻿<!DOCTYPE html>
-<meta charset="utf-8" />
-<html lang="en">
-
-<head>
+﻿<head>
   <?php include_once "share/head.php" ?>
   <title>Quiz Maker</title>
 </head>
 
-<script src="js/auth/login.js"></script>
-
 <style>
+<<<<<<< HEAD
   #form-center {
     width: 50%;
     margin: 0 auto;
   }
 
+=======
+>>>>>>> dev-nam
   #forgot {
     text-decoration: none;
     display: inline;
@@ -26,6 +23,7 @@
     <header>
       <?php include_once "share/header.php" ?>
     </header>
+<<<<<<< HEAD
     
     <div id="form-center">
       <form id="login-form">
@@ -45,6 +43,36 @@
               <i class="fa fa-key fa-lg" aria-hidden="true"></i>
             </span>
             <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+=======
+
+    <div class="row">
+      <div class="col-xs-12">
+        <form>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i>
+              </span>
+              <input type="text" class="form-control" placeholder="Username" name="username">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-key fa-lg" aria-hidden="true"></i>
+              </span>
+              <input type="password" class="form-control" placeholder="Password" name="password" required>
+            </div>
+          </div>
+          <div class="pull-left">
+            <a id="forgot" href="#">Forgot password?</a>
+          </div>
+          <div class="text-right">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-sign-in" aria-hidden="true"></i> Log In</button>
+>>>>>>> dev-nam
           </div>
         </div>
         <div class="pull-left">
@@ -62,3 +90,5 @@
     </footer>
   </div>
 </body>
+
+<script src="js/auth/login.js"></script>

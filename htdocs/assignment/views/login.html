@@ -1,0 +1,102 @@
+﻿<div id="login-modal" class="modal animated fadeIn" role="dialog">
+  <section class="col-md-3 col-centered">
+    <span></span>
+    <h1>Login</h1>
+    <form id="login-form">
+      <input placeholder="Username" name="username" type="text">
+      <input placeholder="Password" name="password" type="password">
+      <button type="submit" class="btn btn-primary">
+        <i class="fa fa-sign-in" aria-hidden="true"></i> LOGIN</button>
+    </form>
+    <h2>
+      <a data-toggle="modal" data-target="#forgot-password-modal" href="#" data-dismiss="modal">Forgot Password?</a>
+    </h2>
+  </section>
+</div>
+
+<style>
+  #login-modal section {
+    background: #ecf0f1;
+    padding: 0 30px 30px 30px;
+    margin: 60px auto;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  .col-centered {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #login-modal span {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    top: -40px;
+    height: 80px;
+    width: 80px;
+    background: url("../favicon.ico") center center no-repeat, #fff;
+    background-size: 50px 50px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
+  }
+
+  #login-modal h1 {
+    font-weight: 100;
+    margin-bottom: 30px;
+  }
+
+  #login-modal input {
+    width: 100%;
+    background: #bdc3c7;
+    border: none;
+    height: 30px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 24px;
+    color: #7f8c8d;
+  }
+
+  #login-modal input:focus {
+    outline: none;
+  }
+
+  #login-modal button {
+    width: 100%;
+    height: 30px;
+    border: none;
+    background: #3498db;
+    color: #ecf0f1;
+    font-weight: 100;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    transition: all ease-in-out .2s;
+    border-bottom: 3px solid #2980b9;
+  }
+
+  #login-modal button:focus {
+    outline: none;
+  }
+
+  #login-modal button:hover {
+    background: #2980b9;
+  }
+
+  #login-modal h2 {
+    font-size: 1.25em;
+  }
+
+  #login-modal a {
+    color: #e74c3c;
+    text-decoration: none;
+    transition: all ease-in-out .2s;
+  }
+
+  #login-modal a:hover {
+    color: #c0392b;
+  }
+</style>
+
+<script src="/js/auth/login.js"></script>
