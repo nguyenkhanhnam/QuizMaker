@@ -147,7 +147,7 @@
 
 <script>
   function downloadGuide(){
-    window.open('QuizMakerGuide.docx', '_blank')
+    window.open('http://localhost/QuizMakerGuide.docx', '_blank')
   }
 </script>
 
