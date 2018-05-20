@@ -31,7 +31,3 @@
         })
     })
 })
-
-function closeLoginModal() {
-    $('#login-modal').modal('hide')
-}
