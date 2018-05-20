@@ -120,10 +120,13 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a href="/profile.php">My Profile</a>
+              <a href="/profile.php"><i class="fa fa-user" aria-hidden="true"></i> My profile</a>
             </li>
             <li>
-              <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Log out</a>
+              <a data-toggle="modal" data-target="#change-password-modal" href="#"><i class="fa fa-key" aria-hidden="true"></i> Change password</a>
+            </li>
+            <li>
+              <a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
             </li>
           </ul>
         </li>
@@ -136,6 +139,7 @@
 
 <?php
   include $basedir . '\..\login.html';
+  include $basedir . '\..\change-password.html';
    if(isset($_SESSION['token']) && $_SESSION['token']!=''){
     $token = $_SESSION['token'];
     if(isLoggedIn($token)){
