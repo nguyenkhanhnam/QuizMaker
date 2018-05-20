@@ -130,12 +130,26 @@
             </li>
           </ul>
         </li>
+        <li>
+          <a href="/about.php">
+            <i class="fa fa-info-circle" aria-hidden="true"></i> About</a>
+        </li>
+        <li>
+          <a href="#" onclick="downloadGuide()">
+            <i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
+        </li>
       </ul>
       <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
   </nav>
 </div>
+
+<script>
+  function downloadGuide(){
+    window.open('QuizMakerGuide.docx', '_blank')
+  }
+</script>
 
 <?php
   include $basedir . '\..\login.html';
