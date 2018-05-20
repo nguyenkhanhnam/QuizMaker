@@ -1,33 +1,43 @@
 ﻿$(document).ready(function () {
-    $('#login-form').on('submit', function (e) {
-        e.preventDefault()
-        const loginData = getFormData($('#login-form'))
-        if (!loginData.username) {
-            return displayToast('error', 'Username is required')
+    $('#btn-login').on('click', function () {
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var loginData = {
+            username: username,
+            password: password
+        };
+
+        if (!username) {
+            return displayToast('error', 'Username is required');
+        }
+        
+        if (!password) {
+            return displayToast('error', 'Password is required');
         }
 
-        if (!loginData.password) {
-            return displayToast('error', 'Password is required')
-        }
-
-        $.ajax({
-            type: 'POST',
-            url: '/api/auth',
-            data: loginData,
-            complete: function (res) {
-                const message = JSON.parse(res.responseText.trim()).message
-                if (res.status === 200) {
-                    window.location.href = '/'
-                }
-                else {
-                    $('#login-modal').removeClass('fadeIn')
-                    $('#login-modal').addClass('shake')
-                    $('input[type=password]').val('')
-                    setTimeout(function () {
-                        $('#login-modal').removeClass('shake')
-                    }, 1000)
-                }
-            }
+        $('#login-form').submit(function(e){
+            e.preventDefault();
+            $.ajax
+                ({
+                    type: 'POST',
+                    url: '/api/auth',
+                    data: loginData,
+                    success: function (data, textStatus, xhr) {
+                        console.log(xhr.status);
+                        if (xhr.status == 200) {
+                            console.log(data)
+                            displayToastWithRedirect('success', 'Sign in successfully', '/');
+                        }
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log(xhr.status);
+                        if (xhr.status == 401) {
+                            displayToast('error', 'Wrong email or password');
+                        }
+                    }
+                })
+            })
         })
-    })
-})
+    }
+)
+           

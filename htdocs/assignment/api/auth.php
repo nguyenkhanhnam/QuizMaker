@@ -1,10 +1,5 @@
 ﻿<?php
-<<<<<<< HEAD
     session_start();
-=======
-    require_once('./checkAuth.php');
-    require_once('./dbconnect.php');
->>>>>>> dev-nam
     require_once('./jwt.php');
 ?>
 <?php
@@ -31,15 +26,22 @@
                 $token = JWT::generateJWT($payload);
                 $_SESSION['token'] = $token;
                 $_SESSION['role'] = $row['role'];
-                $_SESSION['username'] = $row['username'];
-                $data = array('status' => http_response_code(200), 'message' => 'Logged in successfully');
-                echo json_encode($data);
-                return;
+                //Redirecting User Based on Role
+                /*switch($role){
+                    case 0:
+                        header('location:./dashboard/admin.php');
+                        break;
+                    case 1:
+                        header('location:./dashboard/user.php');
+                        break;
+                    case 2:
+                        header('location:./dashboard/staff.php');
+                        break;
+                }*/
+                return var_dump(http_response_code(200));
             }
             else {
-                $data = array('status' => http_response_code(401), 'message' => 'Wrong username or password');
-                echo json_encode($data);
-                return;
+                return var_dump(http_response_code(401));
             }
         }
     }
