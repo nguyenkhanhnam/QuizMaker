@@ -17,7 +17,7 @@
             complete: function (res) {
                 const message = JSON.parse(res.responseText.trim()).message
                 if (res.status === 200){
-                    window.location.reload()
+                    window.location.href = '/'
                 }
                 else {
                     $('#login-modal').removeClass('fadeIn')

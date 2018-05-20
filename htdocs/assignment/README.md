@@ -63,3 +63,6 @@
 ## EMAIL: quizmaker.no.reply@gmail.com 
 ## PASSWORD: Xk52mBYgEpLprekT
 ## DOB: 13/05/2000
+
+https://codepen.io/andytran/pen/BKOOQy
+https://codepen.io/rickyeckhardt/pen/xrLCm

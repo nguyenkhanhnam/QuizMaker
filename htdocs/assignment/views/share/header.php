@@ -89,7 +89,8 @@
     text-align: right;
   }
 
-  #login, #logout {
+  #login,
+  #user-dropdown {
     display: none;
   }
 </style>
@@ -99,26 +100,34 @@
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-          aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-        </button>
         <a class="navbar-brand" href="/">QUIZ MAKER</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active" id="login">
-            <a data-toggle="modal" data-target="#login-modal" href="#"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i> Log in
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li id="logout">
-            <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Log out</a>
-          </li>
-        </ul>
-      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li id="login">
+          <a data-toggle="modal" data-target="#login-modal" href="#">
+            <i class="fa fa-sign-in fa-lg" aria-hidden="true"></i> Log in
+          </a>
+        </li>
+        <li class="hide" id="logout">
+          <a href="/logout">
+            <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Log out</a>
+        </li>
+        <li id="user-dropdown" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Hello, <?php echo $_SESSION['username']; ?>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="/profile.php">My Profile</a>
+            </li>
+            <li>
+              <a href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Log out</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
       <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
@@ -126,25 +135,26 @@
 </div>
 
 <?php
+  include $basedir . '\..\login.html';
    if(isset($_SESSION['token']) && $_SESSION['token']!=''){
     $token = $_SESSION['token'];
     if(isLoggedIn($token)){
       echo "<script>
-        $('#logout').show()
+        $('#user-dropdown').show()
         $('#login').hide()  
       </script>";
     }
     else {
       echo "<script>
-        $('#logout').hide()
+        $('#user-dropdown').hide()
         $('#login').show() 
       </script>";
     }
   }
   else {
     echo "<script>
-    $('#logout').hide()
-    $('#login').show() 
-  </script>";
+      $('#user-dropdown').hide()
+      $('#login').show() 
+    </script>";
   }
 ?>

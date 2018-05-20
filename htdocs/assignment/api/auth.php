@@ -27,6 +27,7 @@
                 $token = JWT::generateJWT($payload);
                 $_SESSION['token'] = $token;
                 $_SESSION['role'] = $row['role'];
+                $_SESSION['username'] = $row['username'];
                 $data = array('status' => http_response_code(200), 'message' => 'Logged in successfully');
                 echo json_encode($data);
                 return;

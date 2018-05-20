@@ -1,6 +1,5 @@
 ﻿<?php
     include_once "./views/share/head.php";
-    include_once "./views/login.html";  
 ?>
 
 <?php
