@@ -15,6 +15,8 @@ RewriteRule ^api/accounts/?$ api/accounts.php [NC,L]
 #RewriteRule ^api/questions/([0-9]+)/?$ api/questions.php?code=$1 [NC,L]
 RewriteRule ^api/questions/?$ api/questions.php [NC,L]
 
+RewriteRule ^api/profile/?$ api/profile.php [NC,L]
+
 RewriteRule ^dashboard/admin/?$ views/dashboard/admin.php [NC,L]
 RewriteRule ^dashboard/user/?$ views/dashboard/user.php [NC,L]
 RewriteRule ^dashboard/staff/?$ views/dashboard/staff.php [NC,L]
