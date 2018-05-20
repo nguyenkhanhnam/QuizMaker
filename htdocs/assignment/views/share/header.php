@@ -140,7 +140,9 @@
 <?php
   include $basedir . '\..\login.html';
   include $basedir . '\..\change-password.html';
-   if(isset($_SESSION['token']) && $_SESSION['token']!=''){
+  include $basedir . '\..\forgot-password.html';
+
+  if(isset($_SESSION['token']) && $_SESSION['token']!=''){
     $token = $_SESSION['token'];
     if(isLoggedIn($token)){
       echo "<script>

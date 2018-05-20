@@ -16,14 +16,14 @@
             data: loginData,
             complete: function (res) {
                 const message = JSON.parse(res.responseText.trim()).message
-                if (res.status === 200){
+                if (res.status === 200) {
                     window.location.href = '/'
                 }
                 else {
                     $('#login-modal').removeClass('fadeIn')
                     $('#login-modal').addClass('shake')
                     $('input[type=password]').val('')
-                    setTimeout(function(){
+                    setTimeout(function () {
                         $('#login-modal').removeClass('shake')
                     }, 1000)
                 }
@@ -32,3 +32,6 @@
     })
 })
 
+function closeLoginModal() {
+    $('#login-modal').modal('hide')
+}

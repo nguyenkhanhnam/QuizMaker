@@ -2,6 +2,18 @@
     include_once "./views/share/head.php";
 ?>
 
+<title>QuizMaker</title>
+
+<header>
+    <?php include_once "./views/share/header.php" ?>
+</header>
+
+<?php include_once "./views/about.html" ?>
+
+<footer>
+    <?php include_once "./views/share/footer.php" ?>
+</footer>
+
 <?php
     if(isset($_SESSION['token']) && $_SESSION['token']!=''){
       $token = $_SESSION['token'];
@@ -27,15 +39,3 @@
         echo "<script>$('#login-modal').modal('show')</script>";
     }
 ?>
-
-<title>QuizMaker</title>
-
-<header>
-    <?php include_once "./views/share/header.php" ?>
-</header>
-
-<?php include_once "./views/about.html" ?>
-
-<footer>
-    <?php include_once "./views/share/footer.php" ?>
-</footer>
