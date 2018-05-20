@@ -1,0 +1,12 @@
+/google-api-php-client-2.2.1
+/lib
+/PHPWord
+*.json
+*.phar
+drive.php
+*.jpg
+phpword.php
+quickstart.php
+*.docx
+*.pdf
+pdf2doc.php
