@@ -213,9 +213,9 @@
         if ($(this).val() === '') {
           getCourses()
         } else {
-          var searchPattern = new RegExp($('#search-course').val(), "i");
+          var searchPattern_course = new RegExp($('#search-course').val(), "i");
           for (var i = course_global.length - 1; i >= 0; i--) {
-            if (course_global[i].name.search(searchPattern) == -1) {
+            if (course_global[i].name.search(searchPattern_course) == -1) {
               course_global.splice(i, 1)
               updateTableCourse()
             }
@@ -227,12 +227,12 @@
     $(document).ready(function () {
       $('#search-account').on('input', function () {
         if ($(this).val() === '') {
-          getCourses()
+          getAccounts()
         } else {
-          var searchPattern = new RegExp($('#search-account').val(), "i");
-          for (var i = course_global.length - 1; i >= 0; i--) {
-            if (course_global[i].name.search(searchPattern) == -1) {
-              course_global.splice(i, 1)
+          var searchPattern_account = new RegExp($('#search-account').val(), "i");
+          for (var i = account_global.length - 1; i >= 0; i--) {
+            if (account_global[i].username.search(searchPattern_account) == -1) {
+              account_global.splice(i, 1)
               updateTableAccount()
             }
           }
