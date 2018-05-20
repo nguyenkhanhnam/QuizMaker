@@ -126,7 +126,7 @@
               <a data-toggle="modal" data-target="#change-password-modal" href="#"><i class="fa fa-key" aria-hidden="true"></i> Change password</a>
             </li>
             <li>
-              <a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
+              <a data-toggle="modal" data-target="#logout-modal" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
             </li>
           </ul>
         </li>
@@ -153,6 +153,7 @@
 
 <?php
   include $basedir . '\..\login.html';
+  include $basedir . '\..\logout.html';
   include $basedir . '\..\change-password.html';
   include $basedir . '\..\forgot-password.html';
 
