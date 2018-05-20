@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
-    $('form').on('submit', function (e) {
+    $('#login-form').on('submit', function (e) {
         e.preventDefault()
-        const loginData = getFormData($('form'))
+        const loginData = getFormData($('#login-form'))
         if (!loginData.username) {
             return displayToast('error', 'Username is required')
         }
