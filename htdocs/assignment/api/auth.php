@@ -135,7 +135,7 @@
             $mail->isHTML(true); 
             $mail->Username = "quizmaker.no.reply@gmail.com"; 
             $mail->Password = "Xk52mBYgEpLprekT"; 
-            $mail->setFrom('from@example.com', 'Mailer'); 
+            $mail->setFrom('quizmaker.no.reply@gmail.com', 'QuizMaker'); 
             $mail->Subject = "Verify Code"; 
             $mail->Body = $content; 
             $mail->addAddress($row["email"]); 
