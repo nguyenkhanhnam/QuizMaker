@@ -21,7 +21,7 @@
 
         $.ajax({
             type: 'CHANGE',
-            url: '/api/password.php',
+            url: '/api/auth',
             data: changePasswordData,
             complete: function (res) {
                 if (res.status === 200){

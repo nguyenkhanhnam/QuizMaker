@@ -15,7 +15,7 @@
             url: '/api/auth',
             data: loginData,
             complete: function (res) {
-                const message = JSON.parse(res.responseText.trim()).message
+                //const message = JSON.parse(res.responseText.trim()).message
                 if (res.status === 200) {
                     window.location.href = '/'
                 }

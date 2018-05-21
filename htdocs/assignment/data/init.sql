@@ -33,3 +33,10 @@ CREATE TABLE questions (
   image varchar(1000) COMMENT "image name",
   FOREIGN KEY (code) REFERENCES Courses(code)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+
+CREATE TABLE verify_code_forget_password (
+  username varchar(50) NOT NULL,
+  verify_code varchar(32) NOT NULL,
+  send_time bigint NOT NULL,
+  expiration_time bigint NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;

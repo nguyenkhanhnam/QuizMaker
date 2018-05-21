@@ -1,4 +1,10 @@
 <?php
+    use PHPMailer\PHPMailer\PHPMailer; 
+    use PHPMailer\PHPMailer\Exception; 
+
+    require_once('./PHPMailer/src/Exception.php'); 
+    require_once('./PHPMailer/src/PHPMailer.php'); 
+    require_once('./PHPMailer/src/SMTP.php'); 
     require_once('./checkAuth.php');
 ?>
 <?php
@@ -19,7 +25,7 @@
     $connection = mysqli_connect("localhost", "root", "", "assignment");
 	
 	function isValidEmail($email){
-		if(preg_match('/^([A-Za-z0-9]+[A-Za-z0-9\_]*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)+)?$/', $email))
+		if(preg_match('/^[A-Za-z0-9]+[A-Za-z0-9\_]*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)+$/', $email))
         	return true;
         // if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         //     return true;
@@ -28,7 +34,7 @@
 	}
 	
 	function isValidPhone($phone){
-		if(preg_match('/^([0-9]{10,11})?$/', $phone))
+		if(preg_match('/^[0-9]{10,11}?$/', $phone))
 			return true;
 		return false;
 	}
@@ -114,19 +120,26 @@
                     }
                 }
 
-                //TODO: Send username and password to email here
-                // the message
-                $msg = "Your username is: " . $username . '/nYour password is: ' . $password;
+                $mail = new PHPMailer(); // create a new object 
+                $mail->isSMTP(); // enable SMTP 
+                $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only 
+                $mail->SMTPAuth = true; // authentication enabled 
+                $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail 
+                $mail->Host = "smtp.gmail.com"; 
+                $mail->Port = 465; // or 587 
+                $mail->isHTML(true); 
+                $mail->Username = "quizmaker.no.reply@gmail.com"; 
+                $mail->Password = "Xk52mBYgEpLprekT"; 
+                $mail->setFrom('from@example.com', 'Mailer'); 
+                $mail->Subject = "Account information"; 
+                $mail->Body = "Your username is: " . $username . '<br>Your password is: ' . $password; 
+                $mail->addAddress($email); 
+ 
+                if(!$mail->send()) { 
+                    return var_dump(http_response_code(405)); 
+                } 
 
-                // use wordwrap() if lines are longer than 70 characters
-                $msg = wordwrap($msg, 70);
-                $headers = "From: zueskei4@gmail.com";
-                // send email
-                
-                if(mail('zueskei4@gmail.com', 'Account information', $msg, $headers))
-                    return var_dump(http_response_code(123));
-                //
-                
+
                 return var_dump(http_response_code(200));
             } else {
                 return var_dump(http_response_code(409));
