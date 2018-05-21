@@ -5,6 +5,7 @@ Options -Indexes
 RewriteRule ^api/auth/?$ api/auth.php [NC,L]
 RewriteRule ^login$ views/login.php [NC,L]
 RewriteRule ^logout$ views/logout.php [NC,L]
+RewriteRule ^api/password/?$ api/password.php [NC,L]
 
 RewriteRule ^api/courses/([A-Z]{2}[0-9]{4})/?$ api/courses.php?code=$1 [NC,L]
 RewriteRule ^api/courses/?$ api/courses.php [NC,L]

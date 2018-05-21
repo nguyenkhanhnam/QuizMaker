@@ -15,24 +15,22 @@
             return displayToast('error', 'Confirm Password doesn\'t match new password')
         }
 
-        delete changePasswordData.confirmPassword
+        //delete changePasswordData.confirmPassword
+        console.log(changePasswordData.password)
+        console.log(changePasswordData.currentPassword)
 
         $.ajax({
-            type: 'POST',
-            url: '/api/auth',
+            type: 'CHANGE',
+            url: '/api/password.php',
             data: changePasswordData,
             complete: function (res) {
-                const message = JSON.parse(res.responseText.trim()).message
                 if (res.status === 200){
-                    window.location.href = '/'
+                    const message = JSON.parse(res.responseText.trim()).message
+                    return displayToast('success', message)
                 }
                 else {
-                    // $('#login-modal').removeClass('fadeIn')
-                    // $('#login-modal').addClass('shake')
-                    // $('input[type=password]').val('')
-                    // setTimeout(function(){
-                    //     $('#login-modal').removeClass('shake')
-                    // }, 1000)
+                    const message = JSON.parse(res.responseText.trim()).message
+                    return displayToast('error', message)
                 }
             }
         })

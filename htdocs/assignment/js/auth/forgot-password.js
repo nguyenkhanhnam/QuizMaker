@@ -5,7 +5,7 @@
             email: $('#email').val().trim()
         }
         $.ajax({
-            type: 'POST',
+            type: 'FORGET',
             url: '/api/auth',
             data: data,
             complete: function (res) {
