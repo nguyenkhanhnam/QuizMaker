@@ -15,11 +15,12 @@
             url: '/api/auth',
             data: loginData,
             complete: function (res) {
-                //const message = JSON.parse(res.responseText.trim()).message
                 if (res.status === 200) {
                     window.location.href = '/'
                 }
                 else {
+                    const message = JSON.parse(res.responseText.trim()).message
+                    $('#error').text(message)
                     $('#login-modal').removeClass('fadeIn')
                     $('#login-modal').addClass('shake')
                     $('input[type=password]').val('')
