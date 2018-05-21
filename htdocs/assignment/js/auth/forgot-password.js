@@ -22,7 +22,7 @@
                 }
                 else {
                     const message = JSON.parse(res.responseText.trim()).message
-                    return displayToast('error', message)
+                    $('#forgot-password-modal #error').text(message)
                 }
             }
         })

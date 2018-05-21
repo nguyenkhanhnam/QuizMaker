@@ -20,7 +20,7 @@
                 }
                 else {
                     const message = JSON.parse(res.responseText.trim()).message
-                    $('#error').text(message)
+                    $('#login-modal #error').text(message)
                     $('#login-modal').removeClass('fadeIn')
                     $('#login-modal').addClass('shake')
                     $('input[type=password]').val('')
