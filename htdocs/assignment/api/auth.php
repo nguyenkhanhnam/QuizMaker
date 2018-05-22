@@ -119,7 +119,8 @@
             // Generate verify code by hash username and timestamp in md5 algo
             $verify_code= md5($username . $now);
 
-            $sql= "INSERT INTO `verify_code_forget_password` VALUES ('$username', '$verify_code', $now, $now+ 300);";
+            $sql= "INSERT INTO `verify_code_forget_password` VALUES ('$username', '$verify_code', $now, $now+ 300)"
+                                . "ON DUPLICATE KEY UPDATE verify_code= '$verify_code', send_time= $now, expiration_time= $now+ 300;";
 
             if($connection->query($sql) !== TRUE){
                 $data= array('status' => http_response_code(500), 'message' => 'Something wrong! I have no idea.');
@@ -127,7 +128,7 @@
                 return;
             }
 
-            $content= $verify_code . ':' . $now;
+            // $content= $verify_code . ':' . $now;
             $mail = new PHPMailer(); // create a new object 
             $mail->isSMTP(); // enable SMTP 
             $mail->SMTPDebug = 0; // debugging: 1 = errors and messages, 2 = messages only 
@@ -140,7 +141,7 @@
             $mail->Password = "Xk52mBYgEpLprekT"; 
             $mail->setFrom('quizmaker.no.reply@gmail.com', 'QuizMaker'); 
             $mail->Subject = "Verify Code"; 
-            $mail->Body = $content; 
+            $mail->Body = $verify_code; 
             $mail->addAddress($row["email"]); 
  
             if(!$mail->send()) { 
@@ -162,22 +163,22 @@
             $username= $_VERIFY["username"];
             $vcode= $_VERIFY["vcode"];
 
-            $code_parse= explode(':', $vcode);
-            $code= $code_parse[0];
-            $send_time= (int)$code_parse[1];
-            $sql= "SELECT * FROM `verify_code_forget_password` WHERE username= '$username' AND send_time= $send_time;";
+            // $code_parse= explode(':', $vcode);
+            // $code= $code_parse[0];
+            // $send_time= (int)$code_parse[1];
+            $sql= "SELECT * FROM `verify_code_forget_password` WHERE username= '$username';";
 
             $result= mysqli_query($connection, $sql);
             // $count= mysqli_num_rows($result);
 
-            if(mysqli_num_rows($result) < 1){
+            if(mysqli_num_rows($result) != 1){
                 $data= array('status' => http_response_code(400), 'message' => "Invalid verification code");
                 echo json_encode($data);
                 return;
             }
             
-            while($row= mysqli_fetch_assoc($result)){
-                if(($row["verify_code"] == $code) && ($row["expiration_time"] >= $current_time)){
+            $row= mysqli_fetch_assoc($result);
+                if(($row["verify_code"] == $vcode) && ($row["expiration_time"] >= $current_time)){
                 // if(strcmp($row["verify_code"], $code) && (int)$row["expiration_time"] >= (int)$current_time){
                     $new_password = rand(1000, 9999);
                     $hash_new_password = md5($new_password);
@@ -227,7 +228,7 @@
                     echo json_encode($data);
                     return;
                 }
-            }
+            
 
             $data= array('status' => http_response_code(400), 'message' => 'Invalid verification code or code expired.');
             echo json_encode($data);
