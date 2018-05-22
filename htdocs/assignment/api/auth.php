@@ -140,8 +140,14 @@
             $mail->Username = "quizmaker.no.reply@gmail.com"; 
             $mail->Password = "Xk52mBYgEpLprekT"; 
             $mail->setFrom('quizmaker.no.reply@gmail.com', 'QuizMaker'); 
-            $mail->Subject = "Verify Code"; 
-            $mail->Body = $verify_code; 
+            $mail->Subject = "Verify Code From Quiz Maker"; 
+            $mail->Body =  "<h1 style='color:green; text-align:center;'>Quiz Maker</h1>
+                            <h2>Hi, ".$username."!</h2>
+                            <h3>There was a request to change your password.</h3>
+                            <p>If you did not make this request, just ignore this email. Otherwise, please use the code below to change your password.</p>
+                            <p style='text-align:center;'><strong>".$verify_code."</strong></p>
+                            <p>LOVE,</p>
+                            <p>Quiz Maker</p>"; 
             $mail->addAddress($row["email"]); 
  
             if(!$mail->send()) { 
