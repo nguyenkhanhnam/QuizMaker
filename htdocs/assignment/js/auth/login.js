@@ -33,4 +33,8 @@
             }
         })
     })
+
+    $('#login-modal').on('shown.bs.modal', function () {
+        $('#login-modal #error').text('')
+    })
 })
