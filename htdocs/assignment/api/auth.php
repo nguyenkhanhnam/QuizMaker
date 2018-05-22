@@ -220,8 +220,13 @@
                     $mail->Username = "quizmaker.no.reply@gmail.com"; 
                     $mail->Password = "Xk52mBYgEpLprekT"; 
                     $mail->setFrom('quizmaker.no.reply@gmail.com', 'QuizMaker'); 
-                    $mail->Subject = "Reset Password"; 
-                    $mail->Body = "Your password was reset to: <b>" . $new_password . "</b>";
+                    $mail->Subject = "Reset Password From Quiz Maker"; 
+                    $mail->Body =   "<h1 style='color:green; text-align:center;'>Quiz Maker</h1>
+                                    <h2>Hi, ".$username."!</h2>
+                                    <p>Use your new password below to sign in.</p>
+                                    <p style='text-align:center;'><strong>".$new_password."</strong></p>
+                                    <p>LOVE,</p>
+                                    <p>Quiz Maker</p>";
                     $mail->addAddress($email); 
         
                     if(!$mail->send()) { 

@@ -131,8 +131,14 @@
                 $mail->Username = "quizmaker.no.reply@gmail.com"; 
                 $mail->Password = "Xk52mBYgEpLprekT"; 
                 $mail->setFrom('quizmaker.no.reply@gmail.com', 'QuizMaker'); 
-                $mail->Subject = "Account information"; 
-                $mail->Body = "Your username is: " . $username . '<br>Your password is: ' . $password; 
+                $mail->Subject = "Account Information From Quiz Maker"; 
+                $mail->Body =   "<h1 style='color:green; text-align:center;'>Quiz Maker</h1>
+                                <h2>Hi,</h2>
+                                <h3>Congratulations! Your account has been created successfully and is ready to use.</h3>
+                                <p>Your username is: ".$username."</p>
+                                <p>Your password is: ".$password."</p>
+                                <p>LOVE,</p>
+                                <p>Quiz Maker</p>"; 
                 $mail->addAddress($email); 
  
                 if(!$mail->send()) { 
