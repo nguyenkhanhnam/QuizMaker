@@ -27,7 +27,7 @@
 			<?php include_once "../share/header.php" ?>
 		</header>
 		<div class="ques">
-			<p style="font-size: 80px">Create exam</p>
+			<p class="text-center" style="font-size: 80px">Create exam</p>
 			<form id="create-form" class="form-horizontal" method="POST" action="/api/make_paper.php">
 				<div class="form-group">
 					<label for="courses">Course:</label>
