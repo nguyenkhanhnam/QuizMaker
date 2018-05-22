@@ -20,7 +20,8 @@
                     $('#forgot-password-modal #error').text('')
                     $('#forgot-password-modal #success').text(message)
                     $('#forgot-password-form button').hide()
-                    $('#forgot-password-form #username').prop('readonly', true);
+                    $('#forgot-password-form #username').prop('readonly', true)
+                    $('#forgot-password-form #username').css({'background-color':'#ecf0f1'})
                 }
                 else {
                     const message = JSON.parse(res.responseText.trim()).message
@@ -59,6 +60,17 @@
                 }
             }
         })
+    })
+
+    $('#forgot-password-modal').on('shown.bs.modal', function () {
+        $('#forgot-password-modal #error').text('')
+        $('#forgot-password-modal #success').text('')
+        $('#forgot-password-modal input').val('')
+        $('#forgot-password-form #username').css({'background-color':'#bdc3c7'})
+        $('#forgot-password-form #username').prop('readonly', false)
+        $('#auth-code').addClass('hide')
+        $('#forgot-password-form button').show()
+        $('#forgot-password-form button').prop('disabled', false)
     })
 })
 
