@@ -15,9 +15,7 @@
             return displayToast('error', 'Confirm Password doesn\'t match new password')
         }
 
-        //delete changePasswordData.confirmPassword
-        console.log(changePasswordData.password)
-        console.log(changePasswordData.currentPassword)
+        delete changePasswordData.confirmPassword
 
         $.ajax({
             type: 'CHANGE',
@@ -25,6 +23,7 @@
             data: changePasswordData,
             complete: function (res) {
                 if (res.status === 200){
+                    $('#change-password-modal').modal('hide')
                     const message = JSON.parse(res.responseText.trim()).message
                     return displayToast('success', message)
                 }
