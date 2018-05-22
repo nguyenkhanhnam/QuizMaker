@@ -34,17 +34,17 @@
 		<div>
 			<form id="create-form" class="form-horizontal">
 				<div class="form-group">
-					<label for="question">Course:</label>
+					<label for="question">Course<span class="star">*</span></label>
 					<br>
 					<select id="courses" name="code">
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="question">Question:</label>
+					<label for="question">Question<span class="star">*</span></label>
 					<input type="text" class="form-control" placeholder="Question" name="question" required>
 				</div>
 				<div class="form-group">
-					<label for="options">Options:</label>
+					<label for="options">Options<span class="star">*</span></label>
 				</div>
 				<div class="form-group">
 					<input for="option1" type="text" class="form-control" placeholder="Option 1" name="option1" required>
@@ -59,7 +59,7 @@
 					<input for="option4" type="text" class="form-control" placeholder="Option 4" name="option4" required>
 				</div>
 				<div class="form-group">
-					<label for="answer">Answer:</label>
+					<label for="answer">Answer<span class="star">*</span></label>
 					<select class="form-control" name="answer">
 						<option value="option1">Option 1</option>
 						<option value="option2">Option 2</option>
@@ -68,7 +68,7 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="difficult">Difficult:</label>
+					<label for="difficult">Difficult<span class="star">*</span></label>
 					<br>
 					<label class="radio-inline">
 						<input type="radio" value="0" name="difficult" checked>Easy

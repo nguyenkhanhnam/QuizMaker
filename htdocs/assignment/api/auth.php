@@ -213,7 +213,7 @@
                     $mail->isHTML(true); 
                     $mail->Username = "quizmaker.no.reply@gmail.com"; 
                     $mail->Password = "Xk52mBYgEpLprekT"; 
-                    $mail->setFrom('from@example.com', 'Mailer'); 
+                    $mail->setFrom('quizmaker.no.reply@gmail.com', 'QuizMaker'); 
                     $mail->Subject = "Reset Password"; 
                     $mail->Body = "Your password was reset to: <b>" . $new_password . "</b>";
                     $mail->addAddress($email); 
