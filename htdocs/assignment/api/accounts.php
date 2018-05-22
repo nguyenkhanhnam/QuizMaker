@@ -130,7 +130,7 @@
                 $mail->isHTML(true); 
                 $mail->Username = "quizmaker.no.reply@gmail.com"; 
                 $mail->Password = "Xk52mBYgEpLprekT"; 
-                $mail->setFrom('from@example.com', 'Mailer'); 
+                $mail->setFrom('quizmaker.no.reply@gmail.com', 'QuizMaker'); 
                 $mail->Subject = "Account information"; 
                 $mail->Body = "Your username is: " . $username . '<br>Your password is: ' . $password; 
                 $mail->addAddress($email); 
