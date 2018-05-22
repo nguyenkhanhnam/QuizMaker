@@ -35,7 +35,7 @@ CREATE TABLE questions (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE verify_code_forget_password (
-  username varchar(50) NOT NULL,
+  username varchar(50) NOT NULL PRIMARY KEY,
   verify_code varchar(32) NOT NULL,
   send_time bigint NOT NULL,
   expiration_time bigint NOT NULL
