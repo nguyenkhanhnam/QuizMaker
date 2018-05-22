@@ -3,11 +3,13 @@
         e.preventDefault()
         const loginData = getFormData($('#login-form'))
         if (!loginData.username) {
-            return displayToast('error', 'Username is required')
+            $('#login-modal #error').text('Username is required')
+            return
         }
 
         if (!loginData.password) {
-            return displayToast('error', 'Password is required')
+            $('#login-modal #error').text('Password is required')
+            return
         }
 
         $.ajax({
