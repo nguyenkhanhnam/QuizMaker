@@ -43,7 +43,7 @@
                 break;
             }
             else {
-                $courseCode = $_GET['code'];
+                $courseCode = mysqli_real_escape_string($connection, $_GET['code']);
                 $sql =  "SELECT * FROM `courses` WHERE code='$courseCode' LIMIT 1";
                 $result = mysqli_query($connection, $sql);
                 if(mysqli_num_rows($result) == 1){

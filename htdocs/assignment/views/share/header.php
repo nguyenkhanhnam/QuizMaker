@@ -115,7 +115,7 @@
             <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Log out</a>
         </li>
         <li id="user-dropdown" class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Hello, <?php echo $_SESSION['username']; ?>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user" aria-hidden="true"></i> Hello, <?php echo $_SESSION['username']; ?>
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">

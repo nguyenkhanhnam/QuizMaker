@@ -3,16 +3,22 @@
         e.preventDefault()
         const changePasswordData = getFormData($('#change-password-form'))
         if (!changePasswordData.currentPassword) {
-            return displayToast('error', 'Current password is required')
+            $('#change-password-modal #error').text('Current password is required')
+            return
         }
         if (!changePasswordData.password) {
-            return displayToast('error', 'Password is required')
+            $('#change-password-modal #error').text('Password is required')
+            return
         }
         if (!changePasswordData.confirmPassword) {
-            return displayToast('error', 'Confirm Password is required')
+            $('#change-password-modal #error').text('Confirm password is required')
+            return
         }
         if (changePasswordData.confirmPassword !== changePasswordData.password) {
-            return displayToast('error', 'Confirm Password doesn\'t match new password')
+            $('#change-password-modal #error').text('Confirm password doesn\'t match new password')
+            $('#password').val('')
+            $('#confirm-password').val('')
+            return
         }
 
         delete changePasswordData.confirmPassword
@@ -24,15 +30,22 @@
             complete: function (res) {
                 if (res.status === 200){
                     $('#change-password-modal').modal('hide')
+                    $('#change-password-modal #error').text('')
                     const message = JSON.parse(res.responseText.trim()).message
                     return displayToast('success', message)
                 }
                 else {
                     const message = JSON.parse(res.responseText.trim()).message
-                    return displayToast('error', message)
+                    $('#change-password-modal #error').text(message)
+                    $('input[type=password]').val('')
                 }
             }
         })
+    })
+
+    $('#change-password-modal').on('shown.bs.modal', function () {
+        $('#change-password-modal #error').text('')
+        $('#change-password-modal input[type=password]').val('')
     })
 })
 
