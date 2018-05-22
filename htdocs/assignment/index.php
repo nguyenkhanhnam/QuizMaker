@@ -6,18 +6,15 @@
     if(isset($_SESSION['token']) && $_SESSION['token']!=''){
       $token = $_SESSION['token'];
       if(isLoggedIn($token)){
-        $role = $_SESSION['role'];
-        switch($role){
-            case 0:
-                header('location:/dashboard/admin');
-                break;
-            case 1:
-                header('location:/dashboard/user');
-                break;
-            case 2:
-                header('location:/dashboard/staff');
-                break;
-            }
+        if(isAdminLoggedIn($token)){
+            header('location:/dashboard/admin');
+        }
+        if(isUserLoggedIn($token)){
+            header('location:/dashboard/user');
+        }
+        if(isStaffLoggedIn($token)){
+            header('location:/dashboard/staff');
+        }
       }
       else {
         echo "<script>$('#login-modal').modal('show')</script>";
