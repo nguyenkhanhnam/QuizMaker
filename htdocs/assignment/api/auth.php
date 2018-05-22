@@ -224,7 +224,7 @@
                         return;
                     }
 
-                    $data= array('status' => http_response_code(200), 'message' => 'Reset password successfully.');
+                    $data= array('status' => http_response_code(200), 'message' => 'Please check your email for new password.');
                     echo json_encode($data);
                     return;
                 }

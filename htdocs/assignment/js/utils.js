@@ -9,7 +9,7 @@
         type: 'success',
         background: 'black',
         color: 'white',
-        duration: 1000
+        duration: 2000
     }
 ]
 
