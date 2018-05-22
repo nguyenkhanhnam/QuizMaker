@@ -119,7 +119,7 @@ if (!$conn->query("DROP PROCEDURE IF EXISTS sp_set_account_info") ||
     !$conn->query("CREATE PROCEDURE `sp_set_account_info`(IN `i_role` VARCHAR(1), IN `i_fname` VARCHAR(16), IN `i_lname` VARCHAR(16), IN `i_mname` VARCHAR(20), IN `i_date_of_birth` VARCHAR(16), IN `i_address` VARCHAR(64), IN `i_phone` VARCHAR(16), IN `i_email` VARCHAR(64), OUT `o_username` VARCHAR(20), OUT `o_password` VARCHAR(8))
 				BEGIN
 					SET @d_date_of_birth := STR_TO_DATE(i_date_of_birth, \"%d/%m/%Y\");
-					SET @username= concat(substr(i_lname, 1, 1), substr(i_mname, 1, 1), i_fname);
+					SET @username= concat(LOWER(substr(i_lname, 1, 1)), LOWER(substr(i_mname, 1, 1)), LOWER(i_fname));
 					SET @username= sf_get_username(@username);
 					SET @password= UNIX_TIMESTAMP()% 9000+ 1000;
 					  
