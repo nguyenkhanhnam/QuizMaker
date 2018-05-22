@@ -61,3 +61,7 @@ However, delay the fade out process for 2.5 seconds */
 a {
   text-decoration: none !important;
 }
+
+.star {
+  color: red;
+} 
