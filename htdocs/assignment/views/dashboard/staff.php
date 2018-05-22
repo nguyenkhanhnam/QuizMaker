@@ -3,6 +3,22 @@
 	<title>Quiz Maker</title>
 </head>
 
+<?php
+    if(isset($_SESSION['token']) && $_SESSION['token']!=''){
+      $token = $_SESSION['token'];
+      if(isStaffLoggedIn($token)){
+      
+      }
+      else {
+        return header('location:/');
+      }
+    }
+    else {
+      header('location:/');
+      return;
+    }
+?>
+
 <style>
 	#form-center {
 		width: 50%;

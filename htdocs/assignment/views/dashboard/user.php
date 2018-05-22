@@ -1,5 +1,22 @@
+<?php include_once "../share/head.php" ?>
+
+<?php
+    if(isset($_SESSION['token']) && $_SESSION['token']!=''){
+      $token = $_SESSION['token'];
+      if(isStaffLoggedIn($token)){
+      
+      }
+      else {
+        return header('location:/');
+      }
+    }
+    else {
+      header('location:/');
+      return;
+    }
+?>
+
 <head>
-  <?php include_once "../share/head.php" ?>
   <title>Quiz Maker</title>
 </head>
 
