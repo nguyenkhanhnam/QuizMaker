@@ -168,7 +168,7 @@
             // $count= mysqli_num_rows($result);
 
             if(mysqli_num_rows($result) < 1){
-                $data= array('status' => http_response_code(404), 'message' => 'Invalid data.');
+                $data= array('status' => http_response_code(400), 'message' => "Invalid verification code");
                 echo json_encode($data);
                 return;
             }
