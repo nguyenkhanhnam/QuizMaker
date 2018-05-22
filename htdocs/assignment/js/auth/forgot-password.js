@@ -18,11 +18,12 @@
                 if (res.status === 200){
                     const message = JSON.parse(res.responseText.trim()).message
                     $('#auth-code').removeClass('hide')
-                    return displayToast('success', message)
+                    $('#forgot-password-modal #error').text('')
+                    $('#forgot-password-modal #success').text(message)
                 }
                 else {
                     const message = JSON.parse(res.responseText.trim()).message
-                    return displayToast('error', message)
+                    $('#forgot-password-modal #error').text(message)
                 }
             }
         })
@@ -45,12 +46,13 @@
             complete: function(res){
                 if(res.status === 200){
                     const message= JSON.parse(res.responseText.trim()).message
+                    $('#forgot-password-modal #error').text('')
                     $('#notification').text("Please check your email for new password.")
                     return displayToast('success', message)
                 }
                 else{
                     const message= JSON.parse(res.responseText.trim()).message
-                    return displayToast('error', message)
+                    $('#forgot-password-modal #error').text(message)
                 }
             }
         })
