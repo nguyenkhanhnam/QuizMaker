@@ -44,6 +44,6 @@ INSERT INTO courses (name, code) VALUES ('Advance Cryptography and Coding Theory
 INSERT INTO courses (name, code) VALUES ('Machine Learning','CO4027');
 INSERT INTO courses (name, code) VALUES ('Information and Social Networks','CO4025');
 
-INSERT INTO users (username, password, role, firstname, dateofbirth) VALUES ('admin', 'admin', '0', 'admin', '1/1/2018');
-INSERT INTO users (username, password, role, firstname, dateofbirth) VALUES ('user', 'user', '1', 'user', '1/1/2018');
-INSERT INTO users (username, password, role, firstname, dateofbirth) VALUES ('staff', 'staff', '2', 'staff', '1/1/2018');
+INSERT INTO users (username, password, role, firstname, dateofbirth) VALUES ('admin', '21232f297a57a5a743894a0e4a801fc3', '0', 'admin', '1/1/2018');
+INSERT INTO users (username, password, role, firstname, dateofbirth) VALUES ('user', 'ee11cbb19052e40b07aac0ca060c23ee', '1', 'user', '1/1/2018');
+INSERT INTO users (username, password, role, firstname, dateofbirth) VALUES ('staff', '1253208465b1efa876f982d8a9e73eef', '2', 'staff', '1/1/2018');
