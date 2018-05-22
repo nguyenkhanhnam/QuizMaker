@@ -27,7 +27,7 @@
 			<?php include_once "../share/header.php" ?>
 		</header>
 		<div class="ques">
-			<p style="font-size: 80px">Create A Test</p>
+			<p style="font-size: 80px">Create exam</p>
 			<form id="create-form" class="form-horizontal" method="POST" action="/api/make_paper.php">
 				<div class="form-group">
 					<label for="courses">Course:</label>
@@ -132,19 +132,9 @@
 		}).datepicker('setDate', new Date())
 	})
 
-	$("#easy").keyup(function () {
-		var _total = Number(this.value) + Number($("#medium").val()) + Number($("#hard").val())
-		$("#total").val(_total)
-	})
-
-	$("#medium").keyup(function () {
-		var _total = Number(this.value) + Number($("#easy").val()) + Number($("#hard").val())
-		$("#total").val(_total)
-	})
-
-	$("#hard").keyup(function () {
-		var _total = Number(this.value) + Number($("#easy").val()) + Number($("#medium").val())
-		$("#total").val(_total)
+	$("#easy, #medium, #hard").bind("change paste keyup click", function() {
+		var total = Number($("#easy").val()) + Number($("#medium").val()) + Number($("#hard").val())
+		$("#total").val(total)
 	})
 </script>
 
