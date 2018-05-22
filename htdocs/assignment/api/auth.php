@@ -22,9 +22,10 @@
             //Getting Input value
             $username = mysqli_real_escape_string($connection,$_POST['username']);
             $password = mysqli_real_escape_string($connection,$_POST['password']);
+            $hash_password = md5($password);
 
             //Checking Login Detail
-            $sql = "SELECT * FROM `users` WHERE username='$username' AND password='$password'";
+            $sql = "SELECT * FROM `users` WHERE username='$username' AND password='$hash_password'";
             $result = mysqli_query($connection, $sql);
             $row = mysqli_fetch_assoc($result);
             $count = mysqli_num_rows($result);
@@ -69,14 +70,16 @@
             $username= $_SESSION["username"];
             $password = mysqli_real_escape_string($connection,$_CHANGE['password']);
             $current_password = mysqli_real_escape_string($connection,$_CHANGE['currentPassword']);
+            $current_hash_password = md5($current_password);
+            $hash_password = md5($password);
 
-            $sql = "SELECT * FROM `users` WHERE username='$username' AND `password`='$current_password';";
+            $sql = "SELECT * FROM `users` WHERE username='$username' AND `password`='$current_hash_password';";
             $result = mysqli_query($connection, $sql);
             $row = mysqli_fetch_assoc($result);
             $count = mysqli_num_rows($result);
 
             if($count == 1){
-                $sql= "UPDATE `users` SET `password`= '$password' WHERE username= '$username';";
+                $sql= "UPDATE `users` SET `password`= '$hash_password' WHERE username= '$username';";
 
                 if ($connection->query($sql) === TRUE) {
                     $data = array('status' => http_response_code(200), 'message' => 'Password changed successfully');
@@ -176,10 +179,10 @@
             while($row= mysqli_fetch_assoc($result)){
                 if(($row["verify_code"] == $code) && ($row["expiration_time"] >= $current_time)){
                 // if(strcmp($row["verify_code"], $code) && (int)$row["expiration_time"] >= (int)$current_time){
-                    $new_password= rand(1000,9999);
-
+                    $new_password = rand(1000, 9999);
+                    $hash_new_password = md5($new_password);
                     //Set new email
-                    $sql= "UPDATE `users` SET `password`= '$new_password' WHERE username= '$username';";
+                    $sql= "UPDATE `users` SET `password`= '$hash_new_password' WHERE username= '$username';";
                     if($connection->query($sql) !== TRUE){
                         $data= array('status' => http_response_code(500), 'message' => 'Something wrong! I have no idea.');
                         echo json_encode($data);
