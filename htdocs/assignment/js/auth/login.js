@@ -12,6 +12,8 @@
             return
         }
 
+        loginData.username = loginData.username.toLowerCase()
+
         $.ajax({
             type: 'POST',
             url: '/api/auth',
