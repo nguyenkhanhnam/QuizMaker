@@ -42,6 +42,11 @@
     switch($method){
         case 'GET': {
             if(empty($_GET["username"])){
+                if(!isAdminLoggedIn($token)){
+                    $data = array('status' => http_response_code(403), 'message' => 'Invalid request');
+                    echo json_encode($data);
+                    return;
+                }
                 $sql =  "SELECT * FROM `users`";
                 $result = mysqli_query($connection, $sql);
                 header('Content-Type: text/html; charset=utf-8');

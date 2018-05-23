@@ -1,7 +1,7 @@
 ﻿<?php
     $basedir = realpath(__DIR__);
-    include $basedir . '.\checkAuth.php';
-    include $basedir . '.\jwt.php';
+    include $basedir . '\..\..\api\checkAuth.php';
+    // include $basedir . '\..\..\api\jwt.php';
 ?>
 
 <!DOCTYPE html>
