@@ -52,8 +52,13 @@
         <input for="option4" type="text" class="form-control" name="option4" id="option4" required>
       </div>
       <div class="form-group">
-        <label for="answer">Answer:</label>
-        <input type="text" class="form-control" name="answer" id="answer" required>
+        <label for="answer">Answer: </label>
+        <select id="answer" name= "answer" required>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+          <option value= "4">Option 4</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="difficult">Difficult:</label>

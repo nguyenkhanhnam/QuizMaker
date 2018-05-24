@@ -54,7 +54,7 @@
             data : questionForm,
             success: function (data, textStatus, xhr) {
                 if (xhr.status == 200) {
-                    return displayToastWithRedirect('success', 'Question added successfully', '/questions')
+                    return displayToastWithRedirect('success', 'Question added successfully', '/questions/create.php')
                 }
             },
             error: function (xhr, textStatus, errorThrown) {

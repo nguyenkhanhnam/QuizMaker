@@ -106,7 +106,8 @@ function getQuestionWithCode(code) {
                 $('#question-table').find("tr:gt(0)").remove();
                 questions.forEach(question => {
                     var row = '<tr>'
-                    var col = '<td onClick=getQuestionDetail(\"' + question.id + '\")>' + question.question + '</td>'
+                    var col= '<td onClick=getQuestionDetail(\"' + question.id + '\")>' + question.code + '</td>'
+                    col += '<td onClick=getQuestionDetail(\"' + question.id + '\")>' + question.question + '</td>'
                     col += '<td onClick=getQuestionDetail(\"' + question.id + '\")>' + getStringDifficult(question.difficult) + '</td>'
                     col += '<td onClick=removeQuestion(\"' + question.id + '\")><i class="material-icons">delete</i>' + '</td>'
                     row += col

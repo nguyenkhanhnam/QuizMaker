@@ -61,8 +61,8 @@ $(document).ready(function () {
                 } else {
                     var str = res.responseText.trim()
                     var data = JSON.parse(str)
-                    displayToast('success', data.message)
                     getQuestion(idGlobal)
+                    return displayToastWithRedirect('success', 'Question saved successfully', '/')
                 }
             }
         })
@@ -90,6 +90,7 @@ function getQuestion(id) {
                 $('#option3').val(question.option3)
                 $('#option4').val(question.option4)
                 $('#answer').val(question.answer)
+                console.log(question.answer)
                 $("input[value='" + question.difficult + "']").prop('checked', true)
             }
         }

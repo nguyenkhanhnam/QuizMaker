@@ -27,7 +27,7 @@ CREATE TABLE questions (
   option2 varchar(1000) NOT NULL COMMENT "Option 2",
   option3 varchar(1000) NOT NULL COMMENT "Option 3",
   option4 varchar(1000) NOT NULL COMMENT "Option 4",
-  answer varchar(1000) NOT NULL COMMENT "Answer",
+  answer  enum('1', '2', '3', '4') NOT NULL,
   difficult ENUM('0', '1', '2') NOT NULL DEFAULT '2' COMMENT "Difficult of question: '0'-Easy, '1'-Medium, '2'-Hard",
   code varchar(6) NOT NULL COMMENT "Course code (e.g CO3069)",
   image varchar(1000) COMMENT "image name",

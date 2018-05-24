@@ -31,7 +31,7 @@ RewriteRule ^questions/create views/questions/create.php [NC,L]
 #RewriteRule ^questions/question views/questions/questions.php [NC,L]
 #RewriteRule ^questions/edit views/questions/edit.php [NC,L]
 RewriteRule ^questions/detail/([0-9]+)/?$ views/questions/detail.php?id=$1 [NC,L]
-RewriteRule ^questions views/questions/list.php [NC,L]
+RewriteRule ^questions views/dashboard/user.php [NC,L]
 
 RewriteRule ^users views/users/list.php [NC,L]
 
