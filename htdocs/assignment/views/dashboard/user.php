@@ -43,7 +43,9 @@
     </header>
 
     <body>
-      <div class="container">
+      <h1 class="text-center">User Dashboard</h1>
+      <div class="col-centered col-md-11">
+        <button class="btn btn-primary my-btn pull-right" type="button" style="margin-bottom: 10px" id="add-question" onClick="createQuestion()">Create question</button>
         <div class="form-group">
           <label for="question">Course:</label>
           <br>
@@ -51,7 +53,6 @@
             <option value="0">All course</option>
           </select>
         </div>
-        <button class="btn btn-primary my-btn pull-right" type="button" style="margin-bottom: 10px" id="add-question" onClick="createQuestion()">Create question</button>
         <table id="question-table" class="table table-bordered">
           <thead>
             <tr>
