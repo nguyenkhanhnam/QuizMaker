@@ -54,7 +54,7 @@
           <option value="2">Hard</option>
           <option value="3" selected>All</option>
         </select>
-        <button class= "btn btn-primary my-btn pull-right" type= "button" id= "add-question" onClick= "createQuestion()">Create question</button>
+        <button class= "btn btn-primary my-btn pull-right" type= "button" style= "margin-bottom: 10px" id= "add-question" onClick= "createQuestion()">Create question</button>
         <table id="question-table" class="table table-bordered">
           <thead>
             <tr>

@@ -122,8 +122,9 @@ if (!$conn->query("DROP PROCEDURE IF EXISTS sp_set_account_info") ||
 					SET @username= concat(LOWER(substr(i_lname, 1, 1)), LOWER(substr(i_mname, 1, 1)), LOWER(i_fname));
 					SET @username= sf_get_username(@username);
 					SET @password= UNIX_TIMESTAMP()% 9000+ 1000;
+					SET @hash_password= MD5(@password);
 					  
-					SET @sql_text= concat(\"INSERT INTO users (username, password, role, firstname, lastname, middlename, dateofbirth, address, phone, email) VALUES (\'\", @username, \"\', \'\", @password
+					SET @sql_text= concat(\"INSERT INTO users (username, password, role, firstname, lastname, middlename, dateofbirth, address, phone, email) VALUES (\'\", @username, \"\', \'\", @hash_password
 																		, \"\', \'\", i_role, \"\', \'\", i_fname
 																		, \"\', \'\", i_lname, \"\', \'\", i_mname
 																		, \"\', \'\", @d_date_of_birth, \"\', \'\", i_address
