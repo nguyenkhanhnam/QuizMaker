@@ -37,33 +37,30 @@
     <header>
       <?php include_once "../share/header.php" ?>
     </header>
-    
+
     <body>
       <div class="container">
         <div class="form-group">
           <label for="question">Course:</label>
           <br>
           <select id="courses" name="code">
-            <option value= "0">All course</option>
+            <option value="0">All course</option>
           </select>
         </div>
-        <label for="difficult">Difficult: </label>
-        <select class="form-group" id="difficult">
-          <option value="0">Easy</option>
-          <option value="1">Medium</option>
-          <option value="2">Hard</option>
-          <option value="3" selected>All</option>
-        </select>
-        <button class= "btn btn-primary my-btn pull-right" type= "button" style= "margin-bottom: 10px" id= "add-question" onClick= "createQuestion()">Create question</button>
+        <button class="btn btn-primary my-btn pull-right" type="button" style="margin-bottom: 10px" id="add-question" onClick="createQuestion()">Create question</button>
         <table id="question-table" class="table table-bordered">
           <thead>
             <tr>
+              <th></th>
               <th>Course code</th>
               <th>Question</th>
               <th>Difficult</th>
               <th></th>
             </tr>
           </thead>
+          <tbody>
+
+          </tbody>
         </table>
       </div>
     </body>
@@ -75,10 +72,13 @@
 </body>
 
 <script>
-  function createQuestion(){
+  function createQuestion() {
     window.location.href = `/questions/create.php`
   }
 </script>
 <script src="/js/questions/list.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+<link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
