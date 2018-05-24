@@ -79,13 +79,6 @@
       font-size: 18px;
     }
   }
-
-  .no-spin::-webkit-inner-spin-button,
-  .no-spin::-webkit-outer-spin-button {
-    -webkit-appearance: none !important;
-    margin: 0 !important;
-    -moz-appearance: textfield !important;
-  }
 </style>
 
 <body>
@@ -95,7 +88,6 @@
 
       <h1 class="dashboard-name text-center">Admin Dashboard</h1>
     </header>
-
 
     <div class="tab">
       <button id="course-tab" class="tablinks" onclick="openTab('course')">Course Management</button>
