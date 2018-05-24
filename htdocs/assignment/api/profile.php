@@ -44,7 +44,6 @@
                 while($row = mysqli_fetch_array($result)){
                     $data = array('id' => $row["id"]
                                         , 'username' => $row["username"]
-                                        , 'role' => $row["role"]
                                         , 'firstname' => $row["firstname"]
                                         , 'lastname' => $row["lastname"]
                                         , 'middlename' => $row["middlename"]
