@@ -137,7 +137,10 @@ function getQuestionWithCode(code) {
                 var questions = JSON.parse(str)
                 dataTable.clear().draw();
                 questions.forEach(question => {
-                    dataTable.rows.add([[question.id, question.code, question.question, getStringDifficult(question.difficult), '<i onclick="removeQuestion(' + question.id + ')" class="material-icons">delete</i>']])
+                    dataTable.rows.add([['<span onclick="getQuestionDetail(' + question.id + ')">' + question.code + '</span>'
+                                        , '<span onclick="getQuestionDetail(' + question.id + ')">' + question.question + '</span>'
+                                        , '<span onclick="getQuestionDetail(' + question.id + ')">' + getStringDifficult(question.difficult) + '</span>'
+                                        , '<i onclick="removeQuestion(' + question.id + ')" class="material-icons">delete</i>']])
                 })
                 dataTable.columns.adjust().draw(); // Redraw the DataTable
             }
