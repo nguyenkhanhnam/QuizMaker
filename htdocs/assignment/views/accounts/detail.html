@@ -58,13 +58,17 @@
 			</div>
 		</div>
 
-		<div class="pull-left">
-			<button type="button" class="btn btn-danger btn-delete" id="btn-delete-account">
-				<i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-		</div>
-		<div class="pull-right">
-			<button type="button" class="btn btn-primary btn-save" id="btn-save-account">
-				<i class="fa fa-edit" aria-hidden="true"></i> Save</button>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="pull-left">
+					<button type="button" class="btn btn-danger btn-delete" id="btn-delete-account">
+						<i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+				</div>
+				<div class="pull-right">
+					<button type="button" class="btn btn-primary btn-save" id="btn-save-account">
+						<i class="fa fa-edit" aria-hidden="true"></i> Save</button>
+				</div>
+			</div>
 		</div>
 	</form>
 </div>
@@ -77,7 +81,7 @@
 	$(document).ready(function () {
 		var input = document.getElementById('address-detail');
 		var options = {
-			componentRestrictions: {country: 'vn'}
+			componentRestrictions: { country: 'vn' }
 		};
 
 		autocomplete = new google.maps.places.Autocomplete(input, options);
