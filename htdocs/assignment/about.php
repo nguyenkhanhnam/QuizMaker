@@ -2,14 +2,15 @@
     include_once "./views/share/head.php";
 ?>
 
-<title>About</title>
+<div class="container">
+    <title>About</title>
+    <header>
+        <?php include_once "./views/share/header.php" ?>
+    </header>
 
-<header>
-    <?php include_once "./views/share/header.php" ?>
-</header>
+    <?php include_once "./views/about.html" ?>
 
-<?php include_once "./views/about.html" ?>
-
-<footer>
-    <?php include_once "./views/share/footer.php" ?>
-</footer>
+    <footer>
+        <?php include_once "./views/share/footer.php" ?>
+    </footer>
+</div>
