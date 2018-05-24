@@ -70,3 +70,16 @@
 </div>
 
 <script src="/js/accounts/detail.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAedSjKCJ4Zk2VX5nGF7GOO76eGuPlkHMU&libraries=places" async
+ defer></script>
+
+<script>
+	$(document).ready(function () {
+		var input = document.getElementById('address-detail');
+		var options = {
+			componentRestrictions: {country: 'vn'}
+		};
+
+		autocomplete = new google.maps.places.Autocomplete(input, options);
+	})
+</script>

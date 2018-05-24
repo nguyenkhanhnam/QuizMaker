@@ -58,7 +58,7 @@
 
 			<div class="text-right">
 				<button type="button" id="btn-add-account" class="btn btn-primary">
-					<i class="fa fa-plus" aria-hidden="true"> Add Account</i>
+					<i class="fa fa-plus" aria-hidden="true"></i> Add Account
 				</button>
 			</div>
 		</form>
@@ -68,6 +68,13 @@
 <script>
 	$(document).ready(function () {
 		$('#datePicker-account-create').datepicker()
+
+		var input = document.getElementById('address-create');
+		var options = {
+			componentRestrictions: {country: 'vn'}
+		};
+
+		autocomplete = new google.maps.places.Autocomplete(input, options);
 	})
 </script>
 

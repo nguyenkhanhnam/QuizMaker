@@ -7,7 +7,7 @@ CREATE TABLE users (
   lastname varchar(16),
   middlename varchar(20),
   dateofbirth date NOT NULL COMMENT "date of birth",
-  address varchar(64),
+  address varchar(200),
   phone varchar(16),
   email varchar(64),
   CONSTRAINT username UNIQUE (username)
