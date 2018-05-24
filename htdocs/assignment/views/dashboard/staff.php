@@ -1,6 +1,6 @@
 <head>
 	<?php include_once "../share/head.php" ?>
-	<title>Quiz Maker</title>
+	<title>Staff Dashboard</title>
 </head>
 
 <?php
@@ -19,31 +19,13 @@
     }
 ?>
 
-<style>
-	#form-center {
-		width: 50%;
-		margin: 0 auto;
-	}
-
-	#forgot {
-		text-decoration: none;
-		display: inline;
-	}
-
-	.ques {
-		margin-right: 20%;
-		margin-left: 20%;
-		margin-top: 10px;
-	}
-</style>
-
 <body>
 	<div class="container">
 		<header>
 			<?php include_once "../share/header.php" ?>
 		</header>
-		<div class="ques">
-			<p class="text-center" style="font-size: 80px">Create exam</p>
+		<div class="col-centered col-md-8">
+			<h1 class="text-center">Create exam</h1>
 			<form id="create-form" class="form-horizontal" method="POST" action="/api/make_paper.php">
 				<div class="form-group">
 					<label for="courses">Course:</label>
@@ -101,8 +83,10 @@
 					</div>
 				</div>
 
-				<div class="text-right">
-					<button type="submit" class="btn btn-primary">Make exam paper</button>
+				<div class="row">
+					<div class="text-right">
+						<button type="submit" class="btn btn-primary">Make exam paper</button>
+					</div>
 				</div>
 			</form>
 		</div>
