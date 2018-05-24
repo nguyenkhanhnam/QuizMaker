@@ -30,6 +30,10 @@
     text-decoration: none;
     display: inline;
   }
+
+  table.dataTable thead th {
+  vertical-align: middle;
+}
 </style>
 
 <body>
@@ -51,7 +55,6 @@
         <table id="question-table" class="table table-bordered">
           <thead>
             <tr>
-              <th></th>
               <th>Course code</th>
               <th>Question</th>
               <th>Difficult</th>
