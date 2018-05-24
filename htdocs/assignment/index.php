@@ -27,15 +27,17 @@
 
 <title>QuizMaker</title>
 
-<header>
-    <?php include_once "./views/share/header.php" ?>
-</header>
+<div class="container">
+    <header>
+        <?php include_once "./views/share/header.php" ?>
+    </header>
 
-<?php include_once "./views/about.html" ?>
+    <?php include_once "./views/about.html" ?>
 
-<footer>
-    <?php include_once "./views/share/footer.php" ?>
-</footer>
+    <footer>
+        <?php include_once "./views/share/footer.php" ?>
+    </footer>
+</div>
 
 <?php
     if(isset($_SESSION['token']) && $_SESSION['token']!=''){
