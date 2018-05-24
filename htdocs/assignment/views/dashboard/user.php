@@ -17,7 +17,7 @@
 ?>
 
 <head>
-  <title>Quiz Maker</title>
+  <title>User Dashboard</title>
 </head>
 
 <style>
