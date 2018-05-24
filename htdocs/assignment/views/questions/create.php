@@ -31,7 +31,7 @@
 			<?php include_once "../share/header.php" ?>
 		</header>
 		<h1 class="text-center">Create Question</h1>
-		<div>
+		<div class="col-md-10 col-centered">
 			<form id="create-form" class="form-horizontal">
 				<div class="form-group">
 					<label for="question">Course<span class="star">*</span></label>

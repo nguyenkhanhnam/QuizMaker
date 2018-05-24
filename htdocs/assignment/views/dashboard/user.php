@@ -33,7 +33,7 @@
 
   table.dataTable thead th {
   vertical-align: middle;
-}
+  }
 </style>
 
 <body>

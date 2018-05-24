@@ -19,12 +19,11 @@
     }
 ?>
 
-<header>
-  <?php include_once "../share/header.php" ?>
-</header>
-
-<body>
-  <div class="container">
+<body class="container">
+  <header>
+    <?php include_once "../share/header.php" ?>
+  </header>
+  <div class="col-md-10 col-centered">
     <form class="form-horizontal" id="edit-form">
       <div class="form-group">
         <label for="question">Course:</label>
@@ -53,7 +52,7 @@
       </div>
       <div class="form-group">
         <label for="answer">Answer: </label>
-        <select id="answer" name= "answer" required>
+        <select class="form-control" id="answer" name="answer" required>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
@@ -78,11 +77,13 @@
       </div>
     </form>
   </div>
+  <br>
+  <br>
+  <br>
+  <footer>
+    <?php include_once "../share/footer.php" ?>
+  </footer>
 </body>
-<footer>
-  <?php include_once "../share/footer.php" ?>
-</footer>
-
 </html>
 
 <script src="/js/questions/detail.js"></script>
