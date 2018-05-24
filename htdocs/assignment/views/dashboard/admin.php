@@ -17,8 +17,8 @@
 ?>
 
 <head>
-  <link href="../css/admin.css" rel="stylesheet" type="text/css">
-  <title>Quiz Maker</title>
+  <link href="/css/admin.css" rel="stylesheet" type="text/css">
+  <title>Admin Dashboard</title>
 </head>
 
 <style>
@@ -93,7 +93,7 @@
     <header>
       <?php include_once "../share/header.php" ?>
 
-      <h1 class="dashboard-name">Admin Dashboard</h1>
+      <h1 class="dashboard-name text-center">Admin Dashboard</h1>
     </header>
 
 
