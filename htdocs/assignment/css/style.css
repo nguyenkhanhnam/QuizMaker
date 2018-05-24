@@ -72,3 +72,9 @@ a {
   margin: 0 !important;
   -moz-appearance: textfield !important;
 }
+
+.col-centered {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
