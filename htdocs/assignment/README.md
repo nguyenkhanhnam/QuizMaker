@@ -37,6 +37,8 @@
 1. [20 Best Free Bootstrap Admin Templates 2018](https://athemes.com/collections/free-bootstrap-admin-templates/)
 2. [50 Free HTML5 And CSS3 Login Forms For Your Website 2018](https://colorlib.com/wp/html5-and-css3-login-forms/)
 3. [Login and Register Modal](https://www.creative-tim.com/product/login-and-register-modal)
+4. [Login Modal - Pen a Day 06](https://codepen.io/rickyeckhardt/pen/xrLCm)
+5. [The Team - Grid](https://codepen.io/andytran/pen/BKOOQy)
 
 ## UI
 1. [Bootstrap](http://getbootstrap.com/docs/3.3/css/)
@@ -60,9 +62,6 @@
 5. [Building your own Custom PHP Framework: Part 1](https://medium.com/shecodeafrica/building-your-own-custom-php-framework-part-1-1d24223bab18)
 
 
-## EMAIL: quizmaker.no.reply@gmail.com 
+## EMAIL: quizmaker.no.reply@gmail.com
 ## PASSWORD: Xk52mBYgEpLprekT
 ## DOB: 13/05/2000
-
-https://codepen.io/andytran/pen/BKOOQy
-https://codepen.io/rickyeckhardt/pen/xrLCm
