@@ -1,0 +1,6 @@
+AuthName "Section Name"
+        AuthType Basic
+        AuthUserFile C:\xampp\htdocs\assignment\paper_output\.htpasswds
+        Require valid-user 
+
+Options All +Indexes

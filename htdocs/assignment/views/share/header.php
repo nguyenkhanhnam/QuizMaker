@@ -110,10 +110,6 @@
             <i class="fa fa-sign-in fa-lg" aria-hidden="true"></i> Log in
           </a>
         </li>
-        <li class="hide" id="logout">
-          <a href="/logout">
-            <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Log out</a>
-        </li>
         <li id="user-dropdown" class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user" aria-hidden="true"></i> Hello, <?php echo $_SESSION['username']; ?>
             <span class="caret"></span>
@@ -129,6 +125,10 @@
               <a data-toggle="modal" data-target="#logout-modal" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
             </li>
           </ul>
+        </li>
+        <li id="exams">
+          <a href="/paper_output">
+            <i class="fa fa-file" aria-hidden="true"></i> Exams</a>
         </li>
         <li>
           <a href="/about.php">
@@ -162,12 +162,14 @@
     if(isLoggedIn($token)){
       echo "<script>
         $('#user-dropdown').show()
+        $('#exams').show()
         $('#login').hide()  
       </script>";
     }
     else {
       echo "<script>
         $('#user-dropdown').hide()
+        $('#exams').hide()
         $('#login').show() 
       </script>";
     }
@@ -175,6 +177,7 @@
   else {
     echo "<script>
       $('#user-dropdown').hide()
+      $('#exams').hide()
       $('#login').show() 
     </script>";
   }

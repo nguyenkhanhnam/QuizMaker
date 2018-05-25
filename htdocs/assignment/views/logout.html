@@ -8,11 +8,21 @@
         <button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
       </div>
       <div class="col-md-6">
-        <a href="/logout"><button type="button" class="btn btn-danger">YES</button></a>
+        <a href="#" onclick="logOut()"><button type="button" class="btn btn-danger">YES</button></a>
       </div>
     </div>
   </section>
 </div>
+
+<script>
+  function logOut(){
+    $.ajax({
+      type: 'GET',
+      url: 'http://logout:logout@localhost/paper_output'
+    })
+    window.location.href = '/logout'
+  }
+</script>
 
 <style>
   #logout-modal section {
