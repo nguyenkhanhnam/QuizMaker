@@ -73,7 +73,9 @@
                     }
                     echo json_encode($data);
                 } else {
-                    echo json_encode(new stdClass);
+                    http_response_code(404);
+                    $data = array('status' => http_response_code(), 'message' => 'Question not found');
+                    echo json_encode($data);
                 }
                 break;
             }

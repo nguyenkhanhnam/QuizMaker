@@ -79,7 +79,8 @@ function getQuestion(id) {
         dataType: 'json',
         complete: function (res) {
             if (res.status !== 200) {
-                console.log(res)
+                const message = JSON.parse(res.responseText.trim()).message
+                return displayToastWithRedirect('error', message, '/dashboard/user')
             } else {
                 var str = res.responseText.trim()
                 var question = JSON.parse(str)
@@ -90,7 +91,6 @@ function getQuestion(id) {
                 $('#option3').val(question.option3)
                 $('#option4').val(question.option4)
                 $('#answer').val(question.answer)
-                console.log(question.answer)
                 $("input[value='" + question.difficult + "']").prop('checked', true)
             }
         }
