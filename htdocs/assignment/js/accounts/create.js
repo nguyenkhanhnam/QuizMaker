@@ -17,14 +17,12 @@
                 url: '/api/accounts/',
                 data: accountData,
                 success: function (data, textStatus, xhr) {
-                    console.log(xhr.status)
                     if (xhr.status == 200) {
                         getAccounts()
                         return displayToast('success', 'Account added successfully')
                     }
                 },
                 error: function (xhr, textStatus, errorThrown) {
-                    console.log(xhr.status)
                     if (xhr.status == 409) {
                         return displayToast('error', 'Something wrong!') 
                     }

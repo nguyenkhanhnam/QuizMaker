@@ -3,8 +3,11 @@
 		<form>
 			<div class="form-group row">
 				<div class="col-sm-4">
-					<label for="first_name">First name<span class="star">*</span></label>
-					<input class="form-control" name="first_name" id="firstname-create" type="text" placeholder="First name" autocomplete="off" required>
+					<label for="first_name">First name
+						<span class="star">*</span>
+					</label>
+					<input class="form-control" name="first_name" id="firstname-create" type="text" placeholder="First name" autocomplete="off"
+					 required>
 				</div>
 				<div class="col-sm-4">
 					<label for="last_name">Last name</label>
@@ -19,7 +22,9 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-sm-4">
-						<label for="role">Role<span class="star">*</span></label>
+						<label for="role">Role
+							<span class="star">*</span>
+						</label>
 						<select class="form-control " name="role" id="role-create" autocomplete="off" required>
 							<option value="0">Admin</option>
 							<option value="1">User</option>
@@ -43,23 +48,31 @@
 			</div>
 
 			<div class="form-group row">
-					<div class="col-sm-12">
-				<label for="email">Email<span class="star">*</span></label>
-				<input class="form-control" name="email" id="email-create" type="text" placeholder="Email" autocomplete="off" required>
-					</div>
+				<div class="col-sm-12">
+					<label for="email">Email
+						<span class="star">*</span>
+					</label>
+					<input class="form-control" name="email" id="email-create" type="text" placeholder="Email" autocomplete="off" required>
+				</div>
 			</div>
 
 			<div class="form-group row">
-					<div class="col-sm-12">
-				<label for="phone">Phone number<span class="star">*</span></label>
-				<input class="form-control no-spin" name="phone" id="phone-create" type="number" placeholder="Phone number" autocomplete="off">
-			</div>
+				<div class="col-sm-12">
+					<label for="phone">Phone number
+						<span class="star">*</span>
+					</label>
+					<input class="form-control no-spin" name="phone" id="phone-create" type="number" placeholder="Phone number" autocomplete="off">
+				</div>
 			</div>
 
-			<div class="text-right">
-				<button type="button" id="btn-add-account" class="btn btn-primary">
-					<i class="fa fa-plus" aria-hidden="true"></i> Add Account
-				</button>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="text-right">
+						<button type="button" id="btn-add-account" class="btn btn-primary">
+							<i class="fa fa-plus" aria-hidden="true"></i> Add Account
+						</button>
+					</div>
+				</div>
 			</div>
 		</form>
 	</div>
@@ -71,7 +84,7 @@
 
 		var input = document.getElementById('address-create');
 		var options = {
-			componentRestrictions: {country: 'vn'}
+			componentRestrictions: { country: 'vn' }
 		};
 
 		autocomplete = new google.maps.places.Autocomplete(input, options);
