@@ -10,14 +10,18 @@
 <?php
     if(isset($_SESSION['token'])){
         $token = $_SESSION['token'];
-        if(!isLoggedIn($token)){
-            http_response_code(401);
-            return var_dump(http_response_code());
+        if(!isAdminLoggedIn($token)){
+            http_response_code(403);
+            $data = array('status' => var_dump(http_response_code()), 'message' => 'Invalid request');
+            echo json_encode($data);
+            return;
         }
     }
     else {
-        http_response_code(401);
-        return var_dump(http_response_code());
+        http_response_code(403);
+        $data = array('status' => http_response_code(), 'message' => 'Invalid request');
+        echo json_encode($data);
+        return;
     }
     // get the HTTP method, path and body of the request
     $method = $_SERVER['REQUEST_METHOD'];

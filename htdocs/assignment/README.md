@@ -39,6 +39,7 @@
 3. [Login and Register Modal](https://www.creative-tim.com/product/login-and-register-modal)
 4. [Login Modal - Pen a Day 06](https://codepen.io/rickyeckhardt/pen/xrLCm)
 5. [The Team - Grid](https://codepen.io/andytran/pen/BKOOQy)
+6. [Under Construction](https://codepen.io/jexordexan/pen/DnLod)
 
 ## UI
 1. [Bootstrap](http://getbootstrap.com/docs/3.3/css/)
