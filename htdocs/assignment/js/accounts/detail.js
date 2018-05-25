@@ -35,6 +35,11 @@ function getAccount(accountUsername) {
 }
 
 function removeAccount(_username) {
+  var r = confirm('Are you sure you want to delete ' + _username + '?');
+  if (r == true) {
+  } else {
+    return
+  }
   $.ajax({
     url: '/api/accounts/',
     type: 'DELETE',

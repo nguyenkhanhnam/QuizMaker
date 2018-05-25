@@ -24,7 +24,11 @@ function getCourse(courseCode) {
 }
 
 function removeCourse() {
-  console.log($('#code').val().trim())
+  var r = confirm('Are you sure you want to delete this course?');
+  if (r == true) {
+  } else {
+    return
+  }
   $.ajax({
     url: '/api/courses/',
     type: 'DELETE',

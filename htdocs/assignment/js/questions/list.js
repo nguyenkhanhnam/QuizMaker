@@ -67,6 +67,11 @@ function getQuestionDetail(id) {
 }
 
 function removeQuestion(id) {
+    var r = confirm('Are you sure you want to delete this question?');
+    if (r == true) {
+    } else {
+      return
+    }
     $.ajax({
         url: '/api/questions/',
         type: 'DELETE',
