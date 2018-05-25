@@ -5,14 +5,18 @@
 <?php
     if(isset($_SESSION['token'])){
         $token = $_SESSION['token'];
-        if(!isLoggedIn($token)){
-            http_response_code(401);
-            return var_dump(http_response_code());
+        if(!isUserLoggedIn($token)){
+            http_response_code(403);
+            $data = array('status' => var_dump(http_response_code()), 'message' => 'Invalid request');
+            echo json_encode($data);
+            return;
         }
     }
     else {
         http_response_code(401);
-        return var_dump(http_response_code());
+        $data = array('status' => var_dump(http_response_code()), 'message' => 'Invalid request');
+        echo json_encode($data);
+        return;
     }
     $method = $_SERVER['REQUEST_METHOD'];
     $data = array();
@@ -81,10 +85,6 @@
             }
         }
         case 'POST': {
-            if(!isUserLoggedIn($token)){
-                http_response_code(403);
-                return var_dump(http_response_code());
-            }
             $image_name = '';
             if(isset($_FILES['fileToUpload']) && $_FILES['fileToUpload']['size'] > 0){
                 $image_name = $_POST["question"] . $_FILES["fileToUpload"]["name"];
@@ -188,10 +188,6 @@
            
         }
         case 'PUT': {
-            if(!isUserLoggedIn($token)){
-                http_response_code(403);
-                return var_dump(http_response_code());
-            }
             parse_str(file_get_contents('php://input'), $_PUT);
 
             if(!isset($_PUT["id"])
@@ -238,10 +234,6 @@
             break;
         }
         case 'DELETE': {
-            if(!isUserLoggedIn($token)){
-                http_response_code(403);
-                return var_dump(http_response_code());
-            }
             parse_str(file_get_contents('php://input'), $_DELETE);
             if(!isset($_DELETE["id"])){
                 return var_dump(http_response_code(400));

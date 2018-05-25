@@ -61,7 +61,9 @@
         case 'POST': {
             if(!isAdminLoggedIn($token)){
                 http_response_code(403);
-                return var_dump(http_response_code());
+                $data = array('status' => var_dump(http_response_code()), 'message' => 'Invalid request');
+                echo json_encode($data);
+                return;
             }
             $code = trim($_POST["code"], " \t\n\r\0\x0B");
             $name = $_POST["name"];
@@ -84,7 +86,9 @@
         case 'PUT': {
             if(!isAdminLoggedIn($token)){
                 http_response_code(403);
-                return var_dump(http_response_code(123));
+                $data = array('status' => var_dump(http_response_code()), 'message' => 'Invalid request');
+                echo json_encode($data);
+                return;
             }
             parse_str(file_get_contents('php://input'), $_PUT);
 
@@ -117,7 +121,9 @@
         case 'DELETE': {
             if(!isAdminLoggedIn($token)){
                 http_response_code(403);
-                return var_dump(http_response_code());
+                $data = array('status' => var_dump(http_response_code()), 'message' => 'Invalid request');
+                echo json_encode($data);
+                return;
             }
             parse_str(file_get_contents('php://input'), $_DELETE);
             if(!isset($_DELETE["code"])){
