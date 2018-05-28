@@ -40,6 +40,7 @@
 			$this->SetY(-15);
 			// Arial italic 8
 			$this->SetFont('Times','',8);
+			$this->AliasNbPages();
 			// Page number
 			$this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
 		}

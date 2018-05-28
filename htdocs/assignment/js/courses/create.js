@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     $('#btn-add').click(function () {
-        var courseCode = $("#code").val()
+        var courseCode = $("#code").val().toUpperCase()
         var courseName = $("#name").val()
         var courseData = {
             code: courseCode,
