@@ -3,6 +3,14 @@
   font-family: Montserrat, sans-serif;
 }
 
+.btn-primary {
+  background: green !important;
+}
+
+.btn-primary:hover {
+  background: green !important;
+}
+
 /* The snackbar - position it at the bottom and in the middle of the screen */
 #snackbar {
   visibility: hidden; /* Hidden by default. Visible on click */
@@ -48,4 +56,29 @@ However, delay the fade out process for 2.5 seconds */
 @keyframes fadeout {
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.star {
+  color: red;
+}
+
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+  -moz-appearance: textfield !important;
+}
+
+.col-centered {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+tbody>tr {
+  cursor: pointer;
 }

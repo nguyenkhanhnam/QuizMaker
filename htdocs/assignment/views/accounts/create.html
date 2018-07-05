@@ -1,0 +1,97 @@
+﻿<body>
+	<div id="create-account-form">
+		<form>
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label for="first_name">First name
+						<span class="star">*</span>
+					</label>
+					<input class="form-control" name="first_name" id="firstname-create" type="text" placeholder="First name" autocomplete="off"
+					 required>
+				</div>
+				<div class="col-sm-4">
+					<label for="last_name">Last name</label>
+					<input class="form-control" name="last_name" id="lastname-create" type="text" placeholder="Last name" autocomplete="off">
+				</div>
+				<div class="col-sm-4">
+					<label for="middle_name">Middle name</label>
+					<input class="form-control" name="middel_name" id="middlename-create" type="text" placeholder="Middle name" autocomplete="off">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-sm-4">
+						<label for="role">Role
+							<span class="star">*</span>
+						</label>
+						<select class="form-control " name="role" id="role-create" autocomplete="off" required>
+							<option value="0">Admin</option>
+							<option value="1">User</option>
+							<option value="2">Staff</option>
+						</select>
+					</div>
+					<div class="col-sm-8">
+						<label for="date">Date of birth</label>
+						<div class="date">
+							<input class="form-control" type="text" class="form-control" name="date" id="datePicker-account-create" required autocomplete="off">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm-12">
+					<label for="address">Adrress</label>
+					<input class="form-control" name="address" id="address-create" type="text" placeholder="Address" autocomplete="off">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm-12">
+					<label for="email">Email
+						<span class="star">*</span>
+					</label>
+					<input class="form-control" name="email" id="email-create" type="text" placeholder="Email" autocomplete="off" required>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm-12">
+					<label for="phone">Phone number
+						<span class="star">*</span>
+					</label>
+					<input class="form-control no-spin" name="phone" id="phone-create" type="number" placeholder="Phone number" autocomplete="off">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="text-right">
+						<button type="button" id="btn-add-account" class="btn btn-primary">
+							<i class="fa fa-plus" aria-hidden="true"></i> Add Account
+						</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+
+<script>
+	$(document).ready(function () {
+		$('#datePicker-account-create').datepicker()
+
+		var input = document.getElementById('address-create');
+		var options = {
+			componentRestrictions: { country: 'vn' }
+		};
+
+		autocomplete = new google.maps.places.Autocomplete(input, options);
+	})
+</script>
+
+<script src="/js/accounts/create.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>

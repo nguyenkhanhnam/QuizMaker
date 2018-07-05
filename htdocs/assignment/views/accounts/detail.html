@@ -1,0 +1,89 @@
+﻿<div id="edit-form-account">
+	<form>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-sm-4">
+					<label for="first_name">First name </label>
+					<input class="form-control" name="first_name" id="firstname-detail" type="text" placeholder="First name" autocomplete="off"
+					 required>
+				</div>
+				<div class="col-sm-4">
+					<label for="last_name">Last name </label>
+					<input class="form-control" name="last_name" id="lastname-detail" type="text" placeholder="Last name" autocomplete="off">
+				</div>
+				<div class="col-sm-4">
+					<label for="middle_name">Middle name </label>
+					<input class="form-control" name="middel_name" id="middlename-detail" type="text" placeholder="Middle name" autocomplete="off">
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="row">
+				<div class="col-sm-4">
+					<label for="role">Role </label>
+					<select class="form-control" name="role" id="role-detail" required>
+						<option value="0">Admin</option>
+						<option value="1">User</option>
+						<option value="2">Staff</option>
+					</select>
+				</div>
+				<div class="col-sm-8">
+					<label for="date">Date of birth</label>
+					<div class="date">
+						<input class="form-control" type="text" class="form-control" name="date" id="datePicker-account-detail" required autocomplete="off">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-12">
+				<label for="address">Adrress</label>
+				<input class="form-control" name="address" id="address-detail" type="text" placeholder="Address" autocomplete="off">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-12">
+				<label for="email">Email</label>
+				<input class="form-control" name="email" id="email-detail" type="email" placeholder="Email" autocomplete="off">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-12">
+				<label for="phone">Phone number</label>
+				<input class="form-control no-spin" name="phone" id="phone-detail" type="number" placeholder="Phone number" autocomplete="off">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="pull-left">
+					<button type="button" class="btn btn-danger btn-delete" id="btn-delete-account">
+						<i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+				</div>
+				<div class="pull-right">
+					<button type="button" class="btn btn-primary btn-save" id="btn-save-account">
+						<i class="fa fa-edit" aria-hidden="true"></i> Save</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script src="/js/accounts/detail.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAedSjKCJ4Zk2VX5nGF7GOO76eGuPlkHMU&libraries=places" async
+ defer></script>
+
+<script>
+	$(document).ready(function () {
+		var input = document.getElementById('address-detail');
+		var options = {
+			componentRestrictions: { country: 'vn' }
+		};
+
+		autocomplete = new google.maps.places.Autocomplete(input, options);
+	})
+</script>
